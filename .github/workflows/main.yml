@@ -20,7 +20,15 @@ jobs:
           config: pageLoadTimeout=100000
           record: true
           parallel: true
-          group: 'Testes End-to-end'
+          group: 'chrome'
+        
+         with:
+          browser: firefox
+          config: pageLoadTimeout=100000
+          record: true
+          parallel: true
+          group: 'firefox'
+
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
