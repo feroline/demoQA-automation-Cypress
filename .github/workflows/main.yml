@@ -12,8 +12,8 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
-          config: pageLoadTimeout=100000, baseUrl=$BASE_URL
-          # record: true
+          config: pageLoadTimeout=100000
+          record: true
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
