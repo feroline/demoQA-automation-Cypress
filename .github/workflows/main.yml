@@ -3,17 +3,24 @@ on: push
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1,2]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
           config: pageLoadTimeout=100000
           record: true
+          parallel: true
+          group: 'Testes End-to-end'
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
