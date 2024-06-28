@@ -12,7 +12,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
-          config: pageLoadTimeout=100000, baseUrl=https://example.cypress.io/todo
+          config: pageLoadTimeout=100000, baseUrl=${{ variables.BASE_URL}}
           # record: true
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
