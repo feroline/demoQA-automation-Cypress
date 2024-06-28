@@ -3,11 +3,6 @@ on: push
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
-    
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1,2]
 
     steps:
       - name: Checkout
@@ -21,13 +16,6 @@ jobs:
           record: true
           parallel: true
           group: 'chrome'
-        
-         with:
-          browser: firefox
-          config: pageLoadTimeout=100000
-          record: true
-          parallel: true
-          group: 'firefox'
 
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
