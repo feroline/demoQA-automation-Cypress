@@ -11,8 +11,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npm start
-          build: npm run build
           browser: chrome
           config: pageLoadTimeout=100000, baseUrl=https://example.cypress.io/todo
           record: true
