@@ -6,16 +6,22 @@ class HomePage {
   }
 
   getBanner() {
-    return cy.get(`div.home-banner a[href="${this.getLink()}"]`);
+    return cy.get(`div.home-banner a[href="${this.getLink()}"]`)
+  }
+
+  getElements() {
+    return cy.get('.category-cards > :nth-child(1)')
   }
 
   setLink(link: string) {
-    return (this.link = link);
+    return (this.link = link)
   }
 
   getLink() {
-    return this.link;
+    return this.link
   }
+
+
 }
 
-export default HomePage;
+export default HomePage

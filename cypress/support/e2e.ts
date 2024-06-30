@@ -18,3 +18,16 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+require('@cypress/xpath');
+
+declare global {
+    namespace Cypress {
+        interface Chainable {
+        /**
+       * Comando customizado para selecionar elementos usando xpath
+       * @example cy.xpath('//button[@id="my-button"]')
+       */
+        xpath(xpathSelector: string ): Chainable<any>
+        }
+    }
+}
