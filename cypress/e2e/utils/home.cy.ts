@@ -3,6 +3,7 @@ const Home = new HomePage();
 
 const linkBanner = "https://www.toolsqa.com/selenium-training/";
 const linkElments = "https://demoqa.com/elements"
+
 beforeEach(() => {
   cy.visit("/");
 });
@@ -10,9 +11,13 @@ beforeEach(() => {
 describe("Teste de Home", () => {
   describe("Verificando Visibilidade", () => {
     it("Banner", () => {
-      Home.setLink(linkBanner);
-      Home.getBanner().should("be.visible");
-    });
+      Home.setLink(linkBanner)
+      Home.getBanner().should("be.visible")
+    })
+
+    it("Elements", () => {
+        Home.setLink()
+    })
   });
 
   describe("Verificando Redirecionamento", () => {
