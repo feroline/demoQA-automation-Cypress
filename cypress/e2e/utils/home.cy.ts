@@ -1,4 +1,4 @@
-import HomePage from "../pages/HomePage"
+import HomePage from "../../pages/HomePage"
 const Home = new HomePage();
 
 beforeEach(() => {
