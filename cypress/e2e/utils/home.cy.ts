@@ -9,6 +9,7 @@ beforeEach(() => {
   cy.visit("/")
 });
 
+//TODO: Verificar redirecionamento e visibilidade de todos os outros elementos da HOME
 describe("Teste de Home", () => {
   describe("Verificando Visibilidade", () => {
     it("Banner", () => {
@@ -19,6 +20,7 @@ describe("Teste de Home", () => {
 
     it.only("Elements", () => {
         Home.setLink(linkElments)
+        //TODO: Implementar o comando xpath para pegar elemento Elements 
         cy.xpath('//div[contains(@class, "category-cards")]')
         // cy.get('.category-cards > :nth-child(1)')
         //div[contains(@class, 'nome-da-classe')][contains(.,'texto-procurado')] 
@@ -39,3 +41,4 @@ describe("Teste de Home", () => {
     })
   })
 })
+
