@@ -3,22 +3,23 @@ const Home = new HomePage();
 
 beforeEach(() => {
   cy.visit("/");
+  Home.setLinkBanner("https://www.toolsqa.com/selenium-training/");
 });
 
-describe("Home", () => {
-  describe("Visibilidade", () => {
-    it("Banner", () => {
+describe("Teste de Home", () => {
+  describe("Verificando Visibilidade", () => {
+    it.only("Banner", () => {
       Home.getBanner().should("be.visible");
     });
   });
 
-  describe("Redirecionamento", () => {
+  describe("Verificando Redirecionamento", () => {
     it("Banner", () => {
-      Home.getLinkBanner()
+      Home.getBanner()
         .should("exist")
         .click()
         .then(() => {
-          cy.request("eq", Home.getStringLinkBanner)
+          cy.request("eq", Home.getLinkBanner())
             .its("status")
             .should("eq", 200);
         });

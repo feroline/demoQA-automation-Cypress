@@ -1,16 +1,21 @@
-const linkBanner = "https://www.toolsqa.com/selenium-training/";
 const selectorBanner = "div.home-banner";
 class HomePage {
+  linkBanner?: string;
+
+  constructor(linkBanner?: string) {
+    this.linkBanner = linkBanner;
+  }
+
   getBanner() {
-    return cy.get(selectorBanner);
+    return cy.get(`${selectorBanner} a[href="${this.getLinkBanner()}"]`);
+  }
+
+  setLinkBanner(linkBanner: string) {
+    return (this.linkBanner = linkBanner);
   }
 
   getLinkBanner() {
-    return cy.get(`${selectorBanner} a[href="${linkBanner}"]`);
-  }
-
-  getStringLinkBanner() {
-    return linkBanner;
+    return this.linkBanner;
   }
 }
 
