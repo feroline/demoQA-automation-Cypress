@@ -1,4 +1,3 @@
-const selectorBanner = "div.home-banner";
 class HomePage {
   linkBanner?: string;
 
@@ -7,7 +6,7 @@ class HomePage {
   }
 
   getBanner() {
-    return cy.get(`${selectorBanner} a[href="${this.getLinkBanner()}"]`);
+    return cy.get(`div.home-banner a[href="${this.getLinkBanner()}"]`);
   }
 
   setLinkBanner(linkBanner: string) {
