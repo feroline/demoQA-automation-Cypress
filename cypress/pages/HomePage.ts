@@ -1,20 +1,20 @@
 class HomePage {
-  linkBanner?: string;
+  link?: string;
 
-  constructor(linkBanner?: string) {
-    this.linkBanner = linkBanner;
+  constructor(link?: string) {
+    this.link = link;
   }
 
   getBanner() {
-    return cy.get(`div.home-banner a[href="${this.getLinkBanner()}"]`);
+    return cy.get(`div.home-banner a[href="${this.getLink()}"]`);
   }
 
-  setLinkBanner(linkBanner: string) {
-    return (this.linkBanner = linkBanner);
+  setLink(link: string) {
+    return (this.link = link);
   }
 
-  getLinkBanner() {
-    return this.linkBanner;
+  getLink() {
+    return this.link;
   }
 }
 

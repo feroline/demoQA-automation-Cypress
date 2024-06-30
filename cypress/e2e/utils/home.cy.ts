@@ -1,27 +1,28 @@
 import HomePage from "../../pages/HomePage";
 const Home = new HomePage();
 
+const linkBanner = "https://www.toolsqa.com/selenium-training/";
+const linkElments = "https://demoqa.com/elements"
 beforeEach(() => {
   cy.visit("/");
-  Home.setLinkBanner("https://www.toolsqa.com/selenium-training/");
 });
 
 describe("Teste de Home", () => {
   describe("Verificando Visibilidade", () => {
-    it.only("Banner", () => {
+    it("Banner", () => {
+      Home.setLink(linkBanner);
       Home.getBanner().should("be.visible");
     });
   });
 
   describe("Verificando Redirecionamento", () => {
     it("Banner", () => {
+      Home.setLink(linkBanner);
       Home.getBanner()
         .should("exist")
         .click()
         .then(() => {
-          cy.request("eq", Home.getLinkBanner())
-            .its("status")
-            .should("eq", 200);
+          cy.request("eq", Home.getLink()).its("status").should("eq", 200);
         });
     });
   });
