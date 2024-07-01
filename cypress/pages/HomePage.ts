@@ -13,6 +13,12 @@ class HomePage {
     return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Elements')]")
   }
 
+  getForms() {
+    return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Forms')]")
+  }
+
+
+
   setLink(link: string) {
     return (this.link = link)
   }

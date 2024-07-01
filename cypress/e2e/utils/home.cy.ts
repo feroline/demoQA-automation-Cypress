@@ -4,6 +4,7 @@ const Home = new HomePage()
 
 const linkBanner = "https://www.toolsqa.com/selenium-training/"
 const linkElments = "https://demoqa.com/elements"
+const linkForms = "https://demoqa.com/forms"
 
 beforeEach(() => {
   cy.visit("/")
@@ -20,6 +21,10 @@ describe("Teste de Home", () => {
     it("Elements", () => {
         Home.getElements().should("be.visible")
     })
+
+    it("Forms", () => {
+        Home.getForms().should("be.visible")
+    })
   });
 
   describe("Verificando Redirecionamento", () => {
@@ -33,9 +38,15 @@ describe("Teste de Home", () => {
         })
     })
 
-    it.only("Elements", () => {
+    it("Elements", () => {
       Home.setLink(linkElments);
       Home.getElements().click();
+      cy.url().should("eq", Home.getLink())
+    })
+
+    it("Forms", () => {
+      Home.setLink(linkForms)
+      Home.getForms().click()
       cy.url().should("eq", Home.getLink())
     })
   })
