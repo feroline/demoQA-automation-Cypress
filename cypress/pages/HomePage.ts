@@ -29,6 +29,10 @@ class HomePage {
     return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Interactions')]")
   }
 
+  getBookStore() {
+    return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Book Store Application')]")
+  }
+
   setLink(link: string) {
     return (this.link = link)
   }

@@ -8,6 +8,7 @@ const linkForms = "https://demoqa.com/forms"
 const linkAlertsFramesWindows = "https://demoqa.com/alertsWindows"
 const linkWidgets = "https://demoqa.com/widgets"
 const linkInteractions = "https://demoqa.com/interaction"
+const linkBookStore = "https://demoqa.com/books"
 
 beforeEach(() => {
   cy.visit("/")
@@ -38,10 +39,15 @@ describe("Teste de Home", () => {
       Home.getWidgets().should("be.visible")
     })
 
-    it.only("Interactions", () => {
+    it("Interactions", () => {
       Home.setLink(linkInteractions)
       Home.getInteractions().should("be.visible")
     })
+  
+    it("Book Store", () => {
+      Home.setLink(linkBookStore)
+      Home.getBookStore().should("be.visible")
+    })  
 
   });
 
@@ -80,12 +86,18 @@ describe("Teste de Home", () => {
       cy.url().should("eq", Home.getLink())
     })
 
-    it.only("Interactions", () => {
+    it("Interactions", () => {
       Home.setLink(linkInteractions)
       Home.getInteractions().click()
       cy.url().should("eq", Home.getLink())
     })
     
+    it("Book Store", () => {
+      Home.setLink(linkBookStore)
+      Home.getBookStore().click()
+      cy.url().should("eq", Home.getLink())
+    })
+
   })
 
 })
