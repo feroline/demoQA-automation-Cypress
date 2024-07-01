@@ -6,6 +6,7 @@ const linkBanner = "https://www.toolsqa.com/selenium-training/"
 const linkElments = "https://demoqa.com/elements"
 const linkForms = "https://demoqa.com/forms"
 const linkAlertsFramesWindows = "https://demoqa.com/alertsWindows"
+const linkWidgets = "https://demoqa.com/widgets"
 
 beforeEach(() => {
   cy.visit("/")
@@ -29,6 +30,11 @@ describe("Teste de Home", () => {
 
     it("Alerts, Frames & Windows", () => {
       Home.getAlertsFramesWindows().should("be.visible")
+    })
+
+    it.only("Widgets", () => {
+      Home.setLink(linkWidgets)
+      Home.getWidgets().should("be.visible")
     })
 
   });
@@ -61,6 +67,13 @@ describe("Teste de Home", () => {
       Home.getAlertsFramesWindows().click()
       cy.url().should("eq", Home.getLink())
     })
+
+    it.only("Widgets", () => {
+      Home.setLink(linkWidgets)
+      Home.getWidgets().click()
+      cy.url().should("eq", Home.getLink())
+    })
   })
+  
 })
 
