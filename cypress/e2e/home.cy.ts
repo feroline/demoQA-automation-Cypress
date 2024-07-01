@@ -1,14 +1,7 @@
-import HomePage from "../../pages/HomePage"
+import HomePage from "../pages/HomePage"
+import HomeLinks from "../support/Enum/links/Home"
+
 const Home = new HomePage()
-
-
-const linkBanner = "https://www.toolsqa.com/selenium-training/"
-const linkElments = "https://demoqa.com/elements"
-const linkForms = "https://demoqa.com/forms"
-const linkAlertsFramesWindows = "https://demoqa.com/alertsWindows"
-const linkWidgets = "https://demoqa.com/widgets"
-const linkInteractions = "https://demoqa.com/interaction"
-const linkBookStore = "https://demoqa.com/books"
 
 beforeEach(() => {
   cy.visit("/")
@@ -17,7 +10,7 @@ beforeEach(() => {
 describe("Teste de Home", () => {
   describe("Verificando Visibilidade", () => {
     it("Banner", () => {
-      Home.setLink(linkBanner)
+      Home.setLink(HomeLinks.BANNER)
       Home.getBanner().should("be.visible")
     })
 
@@ -45,7 +38,6 @@ describe("Teste de Home", () => {
     })
   
     it("Book Store", () => {
-      Home.setLink(linkBookStore)
       Home.getBookStore().should("be.visible")
     })  
 
@@ -53,49 +45,42 @@ describe("Teste de Home", () => {
 
   describe("Verificando Redirecionamento", () => {
     it("Banner", () => {
-      Home.setLink(linkBanner)
       Home.getBanner()
         .should("exist")
         .click()
         .then(() => {
-          cy.request("eq", Home.getLink()).its("status").should("eq", 200)
+          cy.request("eq", HomeLinks.BANNER).its("status").should("eq", 200)
         })
     })
 
     it("Elements", () => {
-      Home.setLink(linkElments);
       Home.getElements().click();
-      cy.url().should("eq", Home.getLink())
+      cy.url().should("contains", HomeLinks.ELEMENTS)
     })
 
     it("Forms", () => {
-      Home.setLink(linkForms)
       Home.getForms().click()
-      cy.url().should("eq", Home.getLink())
+      cy.url().should("contains", HomeLinks.FORMS)
     })
 
     it("Alerts, Frames & Windows", () => {
-      Home.setLink(linkAlertsFramesWindows)
       Home.getAlertsFramesWindows().click()
-      cy.url().should("eq", Home.getLink())
+      cy.url().should("contains", HomeLinks.ALERTS_FRAMES_WINDOWS)
     })
 
     it("Widgets", () => {
-      Home.setLink(linkWidgets)
       Home.getWidgets().click()
-      cy.url().should("eq", Home.getLink())
+      cy.url().should("contains", HomeLinks.WIDGETS)
     })
 
     it("Interactions", () => {
-      Home.setLink(linkInteractions)
       Home.getInteractions().click()
-      cy.url().should("eq", Home.getLink())
+      cy.url().should("contains", HomeLinks.INTERACTIONS)
     })
     
     it("Book Store", () => {
-      Home.setLink(linkBookStore)
       Home.getBookStore().click()
-      cy.url().should("eq", Home.getLink())
+      cy.url().should("contains",HomeLinks.BOOKSTORE)
     })
 
   })
