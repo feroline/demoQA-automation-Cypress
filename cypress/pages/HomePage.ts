@@ -17,6 +17,9 @@ class HomePage {
     return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Forms')]")
   }
 
+  getAlertsFramesWindows() {
+    return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Alerts, Frame & Windows')]")
+  }
 
 
   setLink(link: string) {
