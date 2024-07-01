@@ -3,6 +3,7 @@ import HomeLinks from "../support/Enum/links/Home"
 
 const Home = new HomePage()
 
+
 beforeEach(() => {
   cy.visit("/")
 });
@@ -28,12 +29,11 @@ describe("Teste de Home", () => {
     })
 
     it("Widgets", () => {
-      Home.setLink(linkWidgets)
       Home.getWidgets().should("be.visible")
     })
 
     it("Interactions", () => {
-      Home.setLink(linkInteractions)
+
       Home.getInteractions().should("be.visible")
     })
   
@@ -45,42 +45,49 @@ describe("Teste de Home", () => {
 
   describe("Verificando Redirecionamento", () => {
     it("Banner", () => {
+      Home.setLink(HomeLinks.BANNER)
       Home.getBanner()
         .should("exist")
         .click()
         .then(() => {
-          cy.request("eq", HomeLinks.BANNER).its("status").should("eq", 200)
+          cy.request("eq", Home.getLink()).its("status").should("eq", 200)
         })
     })
 
     it("Elements", () => {
+      Home.setLink(HomeLinks.ELEMENTS);
       Home.getElements().click();
-      cy.url().should("contains", HomeLinks.ELEMENTS)
+      cy.url().should("contains", Home.getLink())
     })
 
     it("Forms", () => {
+      Home.setLink(HomeLinks.FORMS)
       Home.getForms().click()
-      cy.url().should("contains", HomeLinks.FORMS)
+      cy.url().should("contains", Home.getLink())
     })
 
     it("Alerts, Frames & Windows", () => {
+      Home.setLink(HomeLinks.ALERTS_FRAMES_WINDOWS)
       Home.getAlertsFramesWindows().click()
-      cy.url().should("contains", HomeLinks.ALERTS_FRAMES_WINDOWS)
+      cy.url().should("contains", Home.getLink())
     })
 
     it("Widgets", () => {
+      Home.setLink(HomeLinks.WIDGETS)
       Home.getWidgets().click()
-      cy.url().should("contains", HomeLinks.WIDGETS)
+      cy.url().should("contains", Home.getLink())
     })
 
     it("Interactions", () => {
+      Home.setLink(HomeLinks.INTERACTIONS)
       Home.getInteractions().click()
-      cy.url().should("contains", HomeLinks.INTERACTIONS)
+      cy.url().should("contains", Home.getLink())
     })
     
     it("Book Store", () => {
+      Home.setLink(HomeLinks.BOOKSTORE)
       Home.getBookStore().click()
-      cy.url().should("contains",HomeLinks.BOOKSTORE)
+      cy.url().should("contains", Home.getLink())
     })
 
   })
