@@ -10,7 +10,7 @@ class HomePage {
   }
 
   getElements() {
-    return cy.get('.category-cards > :nth-child(1)')
+    return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Elements')]")
   }
 
   setLink(link: string) {

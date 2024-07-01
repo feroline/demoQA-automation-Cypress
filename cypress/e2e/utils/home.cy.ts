@@ -9,7 +9,6 @@ beforeEach(() => {
   cy.visit("/")
 });
 
-//TODO: Verificar redirecionamento e visibilidade de todos os outros elementos da HOME
 describe("Teste de Home", () => {
   describe("Verificando Visibilidade", () => {
     it("Banner", () => {
@@ -18,14 +17,8 @@ describe("Teste de Home", () => {
     })
 
 
-    it.only("Elements", () => {
-        Home.setLink(linkElments)
-        //TODO: Implementar o comando xpath para pegar elemento Elements 
-        cy.xpath('//div[contains(@class, "category-cards")]')
-        // cy.get('.category-cards > :nth-child(1)')
-        //div[contains(@class, 'nome-da-classe')][contains(.,'texto-procurado')] 
-
-        // Home.getElements().should("be.visible")
+    it("Elements", () => {
+        Home.getElements().should("be.visible")
     })
   });
 
@@ -38,6 +31,12 @@ describe("Teste de Home", () => {
         .then(() => {
           cy.request("eq", Home.getLink()).its("status").should("eq", 200)
         })
+    })
+
+    it.only("Elements", () => {
+      Home.setLink(linkElments);
+      Home.getElements().click();
+      cy.url().should("eq", Home.getLink())
     })
   })
 })
