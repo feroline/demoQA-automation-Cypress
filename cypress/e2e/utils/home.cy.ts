@@ -7,6 +7,7 @@ const linkElments = "https://demoqa.com/elements"
 const linkForms = "https://demoqa.com/forms"
 const linkAlertsFramesWindows = "https://demoqa.com/alertsWindows"
 const linkWidgets = "https://demoqa.com/widgets"
+const linkInteractions = "https://demoqa.com/interaction"
 
 beforeEach(() => {
   cy.visit("/")
@@ -32,9 +33,14 @@ describe("Teste de Home", () => {
       Home.getAlertsFramesWindows().should("be.visible")
     })
 
-    it.only("Widgets", () => {
+    it("Widgets", () => {
       Home.setLink(linkWidgets)
       Home.getWidgets().should("be.visible")
+    })
+
+    it.only("Interactions", () => {
+      Home.setLink(linkInteractions)
+      Home.getInteractions().should("be.visible")
     })
 
   });
@@ -68,12 +74,19 @@ describe("Teste de Home", () => {
       cy.url().should("eq", Home.getLink())
     })
 
-    it.only("Widgets", () => {
+    it("Widgets", () => {
       Home.setLink(linkWidgets)
       Home.getWidgets().click()
       cy.url().should("eq", Home.getLink())
     })
+
+    it.only("Interactions", () => {
+      Home.setLink(linkInteractions)
+      Home.getInteractions().click()
+      cy.url().should("eq", Home.getLink())
+    })
+    
   })
-  
+
 })
 
