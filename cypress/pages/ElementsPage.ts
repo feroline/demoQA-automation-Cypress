@@ -1,9 +1,8 @@
 class ElementsPage {
 
-    getMensagemInicial(mensagem: string) {
-        return cy.xpath(`//div[contains(@class,'playgound-body')][contains(.,'${mensagem}')]`)
+    getTextBoxMenu() {
+        return cy.getItemMenu('Text Box')
     }
-
 
 }
 
