@@ -12,13 +12,13 @@ beforeEach(() => {
 
 describe('Testes da página Elements', () => {
     describe('Tela inicial', () => {
-        it.only('Verifica mensagem apresentada', () => {
+        it('Verifica mensagem apresentada', () => {
             cy.verificaMensagemInicial();            
         });
     });
 
     // TODO: Implementar os testes abaixo
-    describe.only('Text Box', () => {
+    describe('Text Box', () => {
         
         it('Verifica URL da página', () => {
             Elements.getTextBoxMenu().click();
