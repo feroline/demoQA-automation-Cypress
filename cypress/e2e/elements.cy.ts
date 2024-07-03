@@ -6,7 +6,7 @@ const Home = new HomePage()
 const Elements = new ElementsPage()
 
 beforeEach(() => {
-    cy.visit('/');
+    cy.visitarToolsQA();
     Home.getElements().click();
 });
 

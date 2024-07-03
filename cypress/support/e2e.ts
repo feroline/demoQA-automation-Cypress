@@ -30,6 +30,7 @@ declare global {
         xpath(xpathSelector: string ): Chainable<any>
         getItemMenu(textoItem: string): Chainable<any>
         verificaMensagemInicial(): Chainable<any>
+        visitarToolsQA(): Chainable<any>
         }
     }
 }

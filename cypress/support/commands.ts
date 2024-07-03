@@ -44,3 +44,7 @@ Cypress.Commands.add('verificaMensagemInicial', () =>  {
     const mensagem = "Please select an item from left to start practice."
     return cy.xpath(`//div[contains(@class,'playgound-body')][contains(.,'${mensagem}')]`).should('be.visible');
 })
+
+Cypress.Commands.add('visitarToolsQA', () => {
+    cy.visit('/',{failOnStatusCode: false});
+})
