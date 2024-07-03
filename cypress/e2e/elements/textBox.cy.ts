@@ -63,7 +63,7 @@ describe('Teste da tela com Text Box', () => {
                    
             })
         })
-        it.only('Preencher somente o campo de E-mail', () => {
+        it('Preencher somente o campo de E-mail', () => {
             cy.fixture('/usuarios/valido').then(usuario => {
                 
                 TextBox.email().type(usuario.email)
@@ -78,8 +78,22 @@ describe('Teste da tela com Text Box', () => {
                    
             })
         })
-        it('Preencher somente o campo de Endereço Atual', () => {})
-        it('Preencher somente o campo de Endereço Permanente', () => {})
+        it('Preencher somente o campo de Endereço Atual', () => {
+            cy.fixture('/usuarios/valido').then(usuario => {
+                
+                TextBox.currentAddress().type(usuario.currentAddress)
+                TextBox.submitButton().click();    
+
+                TextBox.outputName().should('not.exist')
+                TextBox.outputEmail().should('not.exist')
+                TextBox.outputCurrentAddress()
+                    .should('contain.text', 'Current Address')
+                    .and('contain.text',usuario.currentAddress)
+                TextBox.outputPermanentAddress().should('not.exist')
+                   
+            })
+        })
+        it.only('Preencher somente o campo de Endereço Permanente', () => {})
     })
     
     describe('Partição Inválida', () => {
