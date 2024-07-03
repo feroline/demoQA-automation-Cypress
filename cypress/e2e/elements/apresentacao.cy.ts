@@ -1,35 +1,32 @@
-import HomePage from "../../pages/HomePage"
-const Home = new HomePage()
+import HomePage from "../../pages/HomePage";
+const Home = new HomePage();
 
 beforeEach(() => {
-    cy.visitarToolsQA();
-    Home.getElements().click();
+  cy.visitarToolsQA();
+  Home.elements().click();
 });
 
-describe('Testes da página Elements', () => {
-    describe('Tela inicial', () => {
-        it('Verifica mensagem apresentada', () => {
-            cy.verificaMensagemInicial();            
-        });
+describe("Testes da página Elements", () => {
+  describe("Tela inicial", () => {
+    it("Verifica mensagem apresentada", () => {
+      cy.verificaMensagemInicial();
     });
- 
-    // TODO: Implementar testes abaixo em arquivos separados
-    describe('Check Box', () => {})
+  });
 
-    describe('Radio Button', () => {})
+  // TODO: Implementar testes abaixo em arquivos separados
+  describe("Check Box", () => {});
 
-    describe('Web Tables', () => {})
+  describe("Radio Button", () => {});
 
-    describe('Buttons', () => {})
+  describe("Web Tables", () => {});
 
-    describe('Links', () => {})
+  describe("Buttons", () => {});
 
-    describe('Broken Links - Images', () => {})
+  describe("Links", () => {});
 
-    describe('Upload and Download', () => {})
-    
-    describe('Dynamic Properties', () => {})
+  describe("Broken Links - Images", () => {});
 
-})
+  describe("Upload and Download", () => {});
 
-
+  describe("Dynamic Properties", () => {});
+});
