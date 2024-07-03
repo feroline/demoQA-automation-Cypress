@@ -24,6 +24,10 @@ class ElementsPage {
         return cy.get('#submit')
     }
 
+    output() {
+        return cy.get('#output')
+    }
+
 }
 
 export default ElementsPage
