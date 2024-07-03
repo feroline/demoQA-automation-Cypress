@@ -8,6 +8,7 @@ const Elements = new ElementsPage()
 beforeEach(() => {
     cy.visitarToolsQA();
     Home.getElements().click();
+    cy.fixture('/usuarios/valido').as('usuarioValido.fixture');
 });
 
 describe('Testes da página Elements', () => {
@@ -27,12 +28,16 @@ describe('Testes da página Elements', () => {
         describe('Partição Valida', () => {
             it.only('Preencher todos os campos com dados válidos', () => {
                 Elements.getTextBoxMenu().click();
-                cy.get('#userName').type('Username');
-                cy.get('#userEmail').type('username@gmail.com')
-                cy.get('#currentAddress').type('Current Address')
-                cy.get('#permanentAddress').type('Permanent Address')
-                cy.get('#submit').click();
 
+                cy.fixture('/usuarios/valido').then(usuario => {
+                    cy.get('#userName').type(usuario.name);
+                    cy.get('#userEmail').type(usuario.email)
+                    cy.get('#currentAddress').type(usuario.currentAddress)
+                    cy.get('#permanentAddress').type(usuario.permanentAddress)
+                    cy.get('#submit').click();    
+                })
+
+               
                 // Name:Username
                 // Email:username@gmail.com
                 // Current Address :Current Address
