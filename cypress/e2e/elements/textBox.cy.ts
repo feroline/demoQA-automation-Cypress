@@ -132,7 +132,7 @@ describe('Teste da tela com Text Box', () => {
             })
 
         })
-        it.only('Preencher campo de e-mail com e-mail inválido', () => {
+        it('Preencher campo de e-mail com e-mail inválido', () => {
                 
                 cy.fixture('/usuarios/invalido').then(usuario => {
                     
@@ -151,12 +151,13 @@ describe('Teste da tela com Text Box', () => {
                     
                 })
         })
-        it('Não preencher os campos e clicar em "Submit"', () => {
+        it.only('Não preencher os campos e clicar em "Submit"', () => {
             TextBox.submitButton().click()    
 
-            TextBox.output()
-                .should('not.be.visible')
-            // TODO: Colocar pelos IDs
+            TextBox.outputName().should('not.exist')
+            TextBox.outputEmail().should('not.exist')
+            TextBox.outputCurrentAddress().should('not.exist')
+            TextBox.outputPermanentAddress().should('not.exist')
 
         })
     })
