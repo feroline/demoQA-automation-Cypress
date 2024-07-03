@@ -20,7 +20,7 @@ describe('Teste da tela com Text Box', () => {
     })
 
     describe('Partição Valida', () => {
-        it('Preencher todos os campos com dados válidos', () => {
+        it.only('Preencher todos os campos com dados válidos', () => {
 
             cy.fixture('/usuarios/valido').then(usuario => {
                 
@@ -31,10 +31,22 @@ describe('Teste da tela com Text Box', () => {
                 TextBox.submitButton().click();    
 
                 TextBox.output()
-                    .should('contain.text', `Name:${usuario.name}`)
-                    .and('contain.text', `Email:${usuario.email}`)
-                    .and('contain.text', `Current Address :${usuario.currentAddress}`)
-                    .and('contain.text', `Permananet Address :${usuario.permanentAddress}`)
+                    .find('#name')
+                    .should('contain.text', 'Name')
+                    .and('contain.text',usuario.name)
+                TextBox.output()
+                    .find('#email')
+                    .should('contain.text', 'Email')
+                    .and('contain.text',usuario.email)
+                TextBox.output()
+                    .find('#currentAddress')
+                    .should('contain.text', 'Current Address')
+                    .and('contain.text',usuario.currentAddress)
+                TextBox.output()
+                    .find('#permanentAddress')
+                    .should('contain.text','Permananet Address')
+                    .and('contain.text',usuario.permanentAddress)
+                   
             })
             
         })
@@ -55,13 +67,13 @@ describe('Teste da tela com Text Box', () => {
                 // TODO: Converter em método
                 TextBox.output()
                     .should('not.contain.text', `Name:${usuario.name}`)
-                    // .and('contain.text', `Email:${usuario.email}`) TODO: COLOCAR VERIFICAÇÃO DE E-MAIL
+                    .and('not.contain.text', `Email:${usuario.email}`) // TODO: COLOCAR VERIFICAÇÃO DE E-MAIL
                     .and('not.contain.text', `Current Address :${usuario.currentAddress}`)
                     .and('not.contain.text', `Permananet Address :${usuario.permanentAddress}`)
             })
 
         })
-        it.only('Preencher campo de e-mail com e-mail inválido', () => {
+        it('Preencher campo de e-mail com e-mail inválido', () => {
                 
                 cy.fixture('/usuarios/invalido').then(usuario => {
                     
@@ -71,12 +83,25 @@ describe('Teste da tela com Text Box', () => {
                     TextBox.permanentAddress().type(usuario.permanentAddress)
                     TextBox.submitButton().click();    
     
+                    // TODO: Converter em método
                     TextBox.email()
                         .should('have.class', 'field-error')
                         .and('css', 'border-color', 'rgb(255, 0, 0)') //TODO: COLOCAR COR DE ERRO EM UM ENUM
                     
+                    TextBox.output()
+                        .should('not.contain.text', `Name:${usuario.name}`)
+                        .and('not.contain.text', `Email:${usuario.email}`)
+                        .and('not.contain.text', `Current Address :${usuario.currentAddress}`)
+                        .and('not.contain.text', `Permananet Address :${usuario.permanentAddress}`)
                 })
         })
-        it('Não preencher os campos e clicar em "Submit"', () => {})
+        it('Não preencher os campos e clicar em "Submit"', () => {
+            TextBox.submitButton().click();    
+
+            TextBox.output()
+                .should('not.be.visible')
+            // TODO: Colocar pelos IDs
+
+        })
     })
 })
