@@ -20,7 +20,7 @@ describe('Teste da tela com Text Box', () => {
     })
 
     describe('Partição Valida', () => {
-        it.only('Preencher todos os campos com dados válidos', () => {
+        it('Preencher todos os campos com dados válidos', () => {
 
             cy.fixture('/usuarios/valido').then(usuario => {
                 
@@ -33,7 +33,7 @@ describe('Teste da tela com Text Box', () => {
                 TextBox.outputName()
                     .should('contain.text', 'Name')
                     .and('contain.text',usuario.name)
-                
+
                 TextBox.outputEmail()
                     .should('contain.text', 'Email')
                     .and('contain.text',usuario.email)
@@ -50,7 +50,22 @@ describe('Teste da tela com Text Box', () => {
             
         })
 
-        it('Preencher somente o campo de Nome', () => {})
+        it.only('Preencher somente o campo de Nome', () => {
+
+            cy.fixture('/usuarios/valido').then(usuario => {
+    
+                TextBox.username().type(usuario.name);
+                TextBox.submitButton().click();    
+
+                TextBox.outputName()
+                    .should('contain.text', 'Name')
+                    .and('contain.text',usuario.name)
+                TextBox.outputEmail().should('not.exist')
+                TextBox.outputCurrentAddress().should('not.exist')
+                TextBox.outputPermanentAddress().should('not.exist')
+                   
+            })
+        })
         it('Preencher somente o campo de E-mail', () => {})
         it('Preencher somente o campo de Endereço Atual', () => {})
         it('Preencher somente o campo de Endereço Permanente', () => {})
