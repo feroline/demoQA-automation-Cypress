@@ -151,7 +151,7 @@ describe('Teste da tela com Text Box', () => {
                     
                 })
         })
-        it.only('Não preencher os campos e clicar em "Submit"', () => {
+        it('Não preencher os campos e clicar em "Submit"', () => {
             TextBox.submitButton().click()    
 
             TextBox.outputName().should('not.exist')
