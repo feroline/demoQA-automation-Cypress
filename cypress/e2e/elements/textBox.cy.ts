@@ -36,7 +36,6 @@ describe('Teste da tela com Text Box', () => {
                     .and('contain.text', `Email:${usuario.email}`)
                     .and('contain.text', `Current Address :${usuario.currentAddress}`)
                     .and('contain.text', `Permananet Address :${usuario.permanentAddress}`)
-
             })
             
         })
