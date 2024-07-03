@@ -33,15 +33,12 @@ describe('Teste da tela com Text Box', () => {
                 TextBox.outputName()
                     .should('contain.text', 'Name')
                     .and('contain.text',usuario.name)
-
                 TextBox.outputEmail()
                     .should('contain.text', 'Email')
                     .and('contain.text',usuario.email)
-
                 TextBox.outputCurrentAddress()
                     .should('contain.text', 'Current Address')
                     .and('contain.text',usuario.currentAddress)
-
                 TextBox.outputPermanentAddress()
                     .should('contain.text','Permananet Address')
                     .and('contain.text',usuario.permanentAddress)
@@ -50,7 +47,7 @@ describe('Teste da tela com Text Box', () => {
             
         })
 
-        it.only('Preencher somente o campo de Nome', () => {
+        it('Preencher somente o campo de Nome', () => {
 
             cy.fixture('/usuarios/valido').then(usuario => {
     
@@ -66,7 +63,21 @@ describe('Teste da tela com Text Box', () => {
                    
             })
         })
-        it('Preencher somente o campo de E-mail', () => {})
+        it.only('Preencher somente o campo de E-mail', () => {
+            cy.fixture('/usuarios/valido').then(usuario => {
+                
+                TextBox.email().type(usuario.email)
+                TextBox.submitButton().click();    
+
+                TextBox.outputName().should('not.exist')
+                TextBox.outputEmail()
+                    .should('contain.text', 'Email')
+                    .and('contain.text',usuario.email)
+                TextBox.outputCurrentAddress().should('not.exist')
+                TextBox.outputPermanentAddress().should('not.exist')
+                   
+            })
+        })
         it('Preencher somente o campo de Endereço Atual', () => {})
         it('Preencher somente o campo de Endereço Permanente', () => {})
     })
