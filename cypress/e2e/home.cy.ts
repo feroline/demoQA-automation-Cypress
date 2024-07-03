@@ -3,7 +3,7 @@ import HomeLinks from "../support/Enum/links/Home"
 
 const Home = new HomePage()
 
-
+//TODO: retirar os get dos métodos que  não são get
 beforeEach(() => {
   cy.visit("/")
 });
