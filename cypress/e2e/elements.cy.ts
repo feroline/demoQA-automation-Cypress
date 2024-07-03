@@ -32,6 +32,17 @@ describe('Testes da página Elements', () => {
                 cy.get('#currentAddress').type('Current Address')
                 cy.get('#permanentAddress').type('Permanent Address')
                 cy.get('#submit').click();
+
+                // Name:Username
+                // Email:username@gmail.com
+                // Current Address :Current Address
+                // Permananet Address :Permanent Address
+
+                cy.get('#output')
+                    .should('contain.text', 'Name:Username')
+                    .and('contain.text', 'Email:username@gmail.com')
+                    .and('contain.text', 'Current Address :Current Address')
+                    .and('contain.text', 'Permananet Address :Permanent Address')
             })
         })
         
