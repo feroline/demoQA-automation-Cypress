@@ -7,7 +7,7 @@ const TextBox = new TextBoxPage();
 
 beforeEach(() => {
   cy.visitarToolsQA();
-  Home.getElements().click();
+  Home.elements().click();
   cy.fixture("/usuarios/valido").as("usuarioValido.fixture");
   TextBox.textBoxMenu().click();
 });
