@@ -21,33 +21,30 @@ describe('Testes da página Elements', () => {
     describe('Text Box', () => {
         
         it('Verifica URL da página', () => {
-            Elements.getTextBoxMenu().click();
+            Elements.textBoxMenu().click();
             cy.url().should('include', ElementsLink.TEXT_BOX);
         })
 
         describe('Partição Valida', () => {
             it.only('Preencher todos os campos com dados válidos', () => {
-                Elements.getTextBoxMenu().click();
+                Elements.textBoxMenu().click();
 
                 cy.fixture('/usuarios/valido').then(usuario => {
-                    cy.get('#userName').type(usuario.name);
-                    cy.get('#userEmail').type(usuario.email)
-                    cy.get('#currentAddress').type(usuario.currentAddress)
-                    cy.get('#permanentAddress').type(usuario.permanentAddress)
-                    cy.get('#submit').click();    
+                    
+                    Elements.username().type(usuario.name);
+                    Elements.email().type(usuario.email)
+                    Elements.currentAddress().type(usuario.currentAddress)
+                    Elements.permanentAddress().type(usuario.permanentAddress)
+                    Elements.submitButton().click();    
+
+                    cy.get('#output')
+                        .should('contain.text', `Name:${usuario.name}`)
+                        .and('contain.text', `Email:${usuario.email}`)
+                        .and('contain.text', `Current Address :${usuario.currentAddress}`)
+                        .and('contain.text', `Permananet Address :${usuario.permanentAddress}`)
                 })
 
-               
-                // Name:Username
-                // Email:username@gmail.com
-                // Current Address :Current Address
-                // Permananet Address :Permanent Address
-
-                cy.get('#output')
-                    .should('contain.text', 'Name:Username')
-                    .and('contain.text', 'Email:username@gmail.com')
-                    .and('contain.text', 'Current Address :Current Address')
-                    .and('contain.text', 'Permananet Address :Permanent Address')
+                
             })
         })
         
