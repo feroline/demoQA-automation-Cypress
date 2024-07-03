@@ -28,6 +28,9 @@ declare global {
        * @example cy.xpath('//button[@id="my-button"]')
        */
         xpath(xpathSelector: string ): Chainable<any>
+        getItemMenu(textoItem: string): Chainable<any>
+        verificaMensagemInicial(): Chainable<any>
+        visitarToolsQA(): Chainable<any>
         }
     }
 }
