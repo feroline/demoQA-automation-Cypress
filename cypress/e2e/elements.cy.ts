@@ -17,7 +17,6 @@ describe('Testes da página Elements', () => {
         });
     });
 
-    // TODO: Implementar os testes abaixo
     describe('Text Box', () => {
         
         it('Verifica URL da página', () => {
@@ -26,8 +25,13 @@ describe('Testes da página Elements', () => {
         })
 
         describe('Partição Valida', () => {
-            it('Preencher todos os campos com dados válidos', () => {
-               
+            it.only('Preencher todos os campos com dados válidos', () => {
+                Elements.getTextBoxMenu().click();
+                cy.get('#userName').type('Username');
+                cy.get('#userEmail').type('username@gmail.com')
+                cy.get('#currentAddress').type('Current Address')
+                cy.get('#permanentAddress').type('Permanent Address')
+                cy.get('#submit').click();
             })
         })
         
