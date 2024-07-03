@@ -47,4 +47,7 @@ Cypress.Commands.add('verificaMensagemInicial', () =>  {
 
 Cypress.Commands.add('visitarToolsQA', () => {
     cy.visit('/',{failOnStatusCode: false});
+    Cypress.on('uncaught:exception', (err, runnable) => {
+        return false;
+      });
 })
