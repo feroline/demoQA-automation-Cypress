@@ -5,43 +5,47 @@ class HomePage {
     this.link = link;
   }
 
-  getBanner() {
-    return cy.get(`div.home-banner a[href="${this.getLink()}"]`)
+  banner() {
+    return cy.get(`div.home-banner a[href="${this.getLink()}"]`);
   }
 
-  getElements() {
-    return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Elements')]")
+  elements() {
+    return this.cardByTitle("Elements");
   }
 
-  getForms() {
-    return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Forms')]")
+  forms() {
+    return this.cardByTitle("Forms");
   }
 
-  getAlertsFramesWindows() {
-    return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Alerts, Frame & Windows')]")
+  alertsFramesWindows() {
+    return this.cardByTitle("Alerts, Frame & Windows");
   }
 
-  getWidgets() {
-    return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Widgets')]")
+  widgets() {
+    return this.cardByTitle("Widgets");
   }
 
-  getInteractions() {
-    return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Interactions')]")
+  interactions() {
+    return this.cardByTitle("Interactions");
   }
 
-  getBookStore() {
-    return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Book Store Application')]")
+  bookStore() {
+    return this.cardByTitle("Book Store Application");
   }
 
   setLink(link: string) {
-    return (this.link = link)
+    return (this.link = link);
   }
 
   getLink() {
-    return this.link
+    return this.link;
   }
 
-
+  private cardByTitle(title: string) {
+    return cy.xpath(
+      `//div[contains(@class, 'card-body')][contains(.,'${title}')]`
+    );
+  }
 }
 
-export default HomePage
+export default HomePage;
