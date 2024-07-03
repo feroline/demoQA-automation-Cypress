@@ -93,7 +93,21 @@ describe('Teste da tela com Text Box', () => {
                    
             })
         })
-        it.only('Preencher somente o campo de Endereço Permanente', () => {})
+        it('Preencher somente o campo de Endereço Permanente', () => {
+            cy.fixture('/usuarios/valido').then(usuario => {
+                
+                TextBox.permanentAddress().type(usuario.permanentAddress)
+                TextBox.submitButton().click();    
+
+                TextBox.outputName().should('not.exist')
+                TextBox.outputEmail().should('not.exist')
+                TextBox.outputCurrentAddress().should('not.exist')
+                TextBox.outputPermanentAddress()
+                    .should('contain.text','Permananet Address')
+                    .and('contain.text',usuario.permanentAddress)
+                   
+            })
+        })
     })
     
     describe('Partição Inválida', () => {
