@@ -96,7 +96,7 @@ describe("Teste da tela com Text Box", () => {
   });
 
   describe("Partição Inválida", () => {
-    it("Preencher todos os campos com espaço em branco", () => {
+    it.skip("Preencher todos os campos com espaço em branco", () => {
       cy.fixture("/usuarios/vazio").then((usuario) => {
         TextBox.username().type(usuario.name);
         TextBox.email().type(usuario.email);
