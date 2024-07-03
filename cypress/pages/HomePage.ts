@@ -5,31 +5,31 @@ class HomePage {
     this.link = link;
   }
 
-  getBanner() {
+  banner() {
     return cy.get(`div.home-banner a[href="${this.getLink()}"]`)
   }
 
-  getElements() {
+  elements() {
     return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Elements')]")
   }
 
-  getForms() {
+  forms() {
     return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Forms')]")
   }
 
-  getAlertsFramesWindows() {
+  alertsFramesWindows() {
     return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Alerts, Frame & Windows')]")
   }
 
-  getWidgets() {
+  widgets() {
     return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Widgets')]")
   }
 
-  getInteractions() {
+  interactions() {
     return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Interactions')]")
   }
 
-  getBookStore() {
+  bookStore() {
     return cy.xpath("//div[contains(@class, 'card-body')][contains(.,'Book Store Application')]")
   }
 

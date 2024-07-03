@@ -12,33 +12,33 @@ describe("Teste de Home", () => {
   describe("Verificando Visibilidade", () => {
     it("Banner", () => {
       Home.setLink(HomeLinks.BANNER)
-      Home.getBanner().should("be.visible")
+      Home.banner().should("be.visible")
     })
 
 
     it("Elements", () => {
-        Home.getElements().should("be.visible")
+        Home.elements().should("be.visible")
     })
 
     it("Forms", () => {
-        Home.getForms().should("be.visible")
+        Home.forms().should("be.visible")
     })
 
     it("Alerts, Frames & Windows", () => {
-      Home.getAlertsFramesWindows().should("be.visible")
+      Home.alertsFramesWindows().should("be.visible")
     })
 
     it("Widgets", () => {
-      Home.getWidgets().should("be.visible")
+      Home.widgets().should("be.visible")
     })
 
     it("Interactions", () => {
 
-      Home.getInteractions().should("be.visible")
+      Home.interactions().should("be.visible")
     })
   
     it("Book Store", () => {
-      Home.getBookStore().should("be.visible")
+      Home.bookStore().should("be.visible")
     })  
 
   });
@@ -46,7 +46,7 @@ describe("Teste de Home", () => {
   describe("Verificando Redirecionamento", () => {
     it("Banner", () => {
       Home.setLink(HomeLinks.BANNER)
-      Home.getBanner()
+      Home.banner()
         .should("exist")
         .click()
         .then(() => {
@@ -56,37 +56,37 @@ describe("Teste de Home", () => {
 
     it("Elements", () => {
       Home.setLink(HomeLinks.ELEMENTS);
-      Home.getElements().click();
+      Home.elements().click();
       cy.url().should("contains", Home.getLink())
     })
 
     it("Forms", () => {
       Home.setLink(HomeLinks.FORMS)
-      Home.getForms().click()
+      Home.forms().click()
       cy.url().should("contains", Home.getLink())
     })
 
     it("Alerts, Frames & Windows", () => {
       Home.setLink(HomeLinks.ALERTS_FRAMES_WINDOWS)
-      Home.getAlertsFramesWindows().click()
+      Home.alertsFramesWindows().click()
       cy.url().should("contains", Home.getLink())
     })
 
     it("Widgets", () => {
       Home.setLink(HomeLinks.WIDGETS)
-      Home.getWidgets().click()
+      Home.widgets().click()
       cy.url().should("contains", Home.getLink())
     })
 
     it("Interactions", () => {
       Home.setLink(HomeLinks.INTERACTIONS)
-      Home.getInteractions().click()
+      Home.interactions().click()
       cy.url().should("contains", Home.getLink())
     })
     
     it("Book Store", () => {
       Home.setLink(HomeLinks.BOOKSTORE)
-      Home.getBookStore().click()
+      Home.bookStore().click()
       cy.url().should("contains", Home.getLink())
     })
 
