@@ -1,3 +1,4 @@
+import Colors from "./../support/Enum/colors"
 class ElementsPage {
 
     textBoxMenu() {
@@ -44,6 +45,11 @@ class ElementsPage {
        return this.output().find('#permanentAddress') 
     }
  
+    validateErrorEmail() {
+        return this.email()
+            .should('have.class', 'field-error')
+            .and('css', 'border-color', Colors.ERROR)
+    }
 }
 
 export default ElementsPage

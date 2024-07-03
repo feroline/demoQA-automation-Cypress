@@ -2,14 +2,15 @@ import HomePage from "../../pages/HomePage"
 import TextBoxPage from "../../pages/TextBoxPage"
 import ElementsLink from "../../support/Enum/links/Elements"
 
+
 const Home = new HomePage()
 const TextBox = new TextBoxPage()
 
 beforeEach(() => {
     cy.visitarToolsQA();
-    Home.getElements().click();
+    Home.getElements().click()
     cy.fixture('/usuarios/valido').as('usuarioValido.fixture');
-    TextBox.textBoxMenu().click();
+    TextBox.textBoxMenu().click()
 });
 
 
@@ -28,7 +29,7 @@ describe('Teste da tela com Text Box', () => {
                 TextBox.email().type(usuario.email)
                 TextBox.currentAddress().type(usuario.currentAddress)
                 TextBox.permanentAddress().type(usuario.permanentAddress)
-                TextBox.submitButton().click();    
+                TextBox.submitButton().click()    
 
                 TextBox.outputName()
                     .should('contain.text', 'Name')
@@ -52,7 +53,7 @@ describe('Teste da tela com Text Box', () => {
             cy.fixture('/usuarios/valido').then(usuario => {
     
                 TextBox.username().type(usuario.name);
-                TextBox.submitButton().click();    
+                TextBox.submitButton().click()    
 
                 TextBox.outputName()
                     .should('contain.text', 'Name')
@@ -67,7 +68,7 @@ describe('Teste da tela com Text Box', () => {
             cy.fixture('/usuarios/valido').then(usuario => {
                 
                 TextBox.email().type(usuario.email)
-                TextBox.submitButton().click();    
+                TextBox.submitButton().click()    
 
                 TextBox.outputName().should('not.exist')
                 TextBox.outputEmail()
@@ -82,7 +83,7 @@ describe('Teste da tela com Text Box', () => {
             cy.fixture('/usuarios/valido').then(usuario => {
                 
                 TextBox.currentAddress().type(usuario.currentAddress)
-                TextBox.submitButton().click();    
+                TextBox.submitButton().click()    
 
                 TextBox.outputName().should('not.exist')
                 TextBox.outputEmail().should('not.exist')
@@ -97,7 +98,7 @@ describe('Teste da tela com Text Box', () => {
             cy.fixture('/usuarios/valido').then(usuario => {
                 
                 TextBox.permanentAddress().type(usuario.permanentAddress)
-                TextBox.submitButton().click();    
+                TextBox.submitButton().click()    
 
                 TextBox.outputName().should('not.exist')
                 TextBox.outputEmail().should('not.exist')
@@ -115,23 +116,23 @@ describe('Teste da tela com Text Box', () => {
 
             cy.fixture('/usuarios/vazio').then(usuario => {
                 
-                // TODO: Converter em método
                 TextBox.username().type(usuario.name);
                 TextBox.email().type(usuario.email)
                 TextBox.currentAddress().type(usuario.currentAddress)
                 TextBox.permanentAddress().type(usuario.permanentAddress)
-                TextBox.submitButton().click();    
+                TextBox.submitButton().click()    
 
-                // TODO: Converter em método
-                TextBox.output()
-                    .should('not.contain.text', `Name:${usuario.name}`)
-                    .and('not.contain.text', `Email:${usuario.email}`) // TODO: COLOCAR VERIFICAÇÃO DE E-MAIL
-                    .and('not.contain.text', `Current Address :${usuario.currentAddress}`)
-                    .and('not.contain.text', `Permananet Address :${usuario.permanentAddress}`)
+                TextBox.outputName().should('not.exist')
+                TextBox.outputEmail().should('not.exist')
+                TextBox.outputCurrentAddress().should('not.exist')
+                TextBox.outputPermanentAddress().should('not.exist')
+
+                TextBox.validateErrorEmail()
+
             })
 
         })
-        it('Preencher campo de e-mail com e-mail inválido', () => {
+        it.only('Preencher campo de e-mail com e-mail inválido', () => {
                 
                 cy.fixture('/usuarios/invalido').then(usuario => {
                     
@@ -139,22 +140,19 @@ describe('Teste da tela com Text Box', () => {
                     TextBox.email().type(usuario.email)
                     TextBox.currentAddress().type(usuario.currentAddress)
                     TextBox.permanentAddress().type(usuario.permanentAddress)
-                    TextBox.submitButton().click();    
+                    TextBox.submitButton().click()    
     
-                    // TODO: Converter em método
-                    TextBox.email()
-                        .should('have.class', 'field-error')
-                        .and('css', 'border-color', 'rgb(255, 0, 0)') //TODO: COLOCAR COR DE ERRO EM UM ENUM
+                    TextBox.outputName().should('not.exist')
+                    TextBox.outputEmail().should('not.exist')
+                    TextBox.outputCurrentAddress().should('not.exist')
+                    TextBox.outputPermanentAddress().should('not.exist')
                     
-                    TextBox.output()
-                        .should('not.contain.text', `Name:${usuario.name}`)
-                        .and('not.contain.text', `Email:${usuario.email}`)
-                        .and('not.contain.text', `Current Address :${usuario.currentAddress}`)
-                        .and('not.contain.text', `Permananet Address :${usuario.permanentAddress}`)
+                    TextBox.validateErrorEmail()
+                    
                 })
         })
         it('Não preencher os campos e clicar em "Submit"', () => {
-            TextBox.submitButton().click();    
+            TextBox.submitButton().click()    
 
             TextBox.output()
                 .should('not.be.visible')
