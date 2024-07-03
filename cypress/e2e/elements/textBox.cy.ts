@@ -30,26 +30,30 @@ describe('Teste da tela com Text Box', () => {
                 TextBox.permanentAddress().type(usuario.permanentAddress)
                 TextBox.submitButton().click();    
 
-                TextBox.output()
-                    .find('#name')
+                TextBox.outputName()
                     .should('contain.text', 'Name')
                     .and('contain.text',usuario.name)
-                TextBox.output()
-                    .find('#email')
+                
+                TextBox.outputEmail()
                     .should('contain.text', 'Email')
                     .and('contain.text',usuario.email)
-                TextBox.output()
-                    .find('#currentAddress')
+
+                TextBox.outputCurrentAddress()
                     .should('contain.text', 'Current Address')
                     .and('contain.text',usuario.currentAddress)
-                TextBox.output()
-                    .find('#permanentAddress')
+
+                TextBox.outputPermanentAddress()
                     .should('contain.text','Permananet Address')
                     .and('contain.text',usuario.permanentAddress)
                    
             })
             
         })
+
+        it('Preencher somente o campo de Nome', () => {})
+        it('Preencher somente o campo de E-mail', () => {})
+        it('Preencher somente o campo de Endereço Atual', () => {})
+        it('Preencher somente o campo de Endereço Permanente', () => {})
     })
     
     describe('Partição Inválida', () => {

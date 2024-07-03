@@ -28,6 +28,22 @@ class ElementsPage {
         return cy.get('#output')
     }
 
+    outputName() {
+        return this.output().find('#name')
+    }
+
+    outputEmail(){
+        return this.output().find('#email')
+    }
+
+    outputCurrentAddress() {
+        return this.output().find('#currentAddress')
+    }
+
+    outputPermanentAddress() {
+       return this.output().find('#permanentAddress') 
+    }
+ 
 }
 
 export default ElementsPage
