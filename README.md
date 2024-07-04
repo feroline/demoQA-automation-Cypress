@@ -1,9 +1,12 @@
 # Automação do site demoQA com Cypress
 
+![Static Badge](https://img.shields.io/badge/status-Status?style=for-the-badge&label=Em%20Andamento&labelColor=yellow&color=black)
+
 [![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)](https://www.cypress.io/)
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org)
 [![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/)
 [![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://docs.github.com/en/actions)
+
 
 [![demoQA-automation-Cypress](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/detailed/34y8av/main&style=for-the-badge&logo=cypress)](https://cloud.cypress.io/projects/34y8av/runs)
 
