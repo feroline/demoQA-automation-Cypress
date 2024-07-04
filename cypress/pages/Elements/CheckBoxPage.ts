@@ -1,5 +1,6 @@
 class CheckBoxPage {
     
+    //FIXME: CORRIGIR COLAPSE E EXPAND PARA SEUS SIGNIFICADOS CORRETOS 
     /**
      * @param elementNode é o elemento que deseja expandir
      * @type Cypress.Chainable<JQuery<HTMLElement>>
