@@ -21,11 +21,10 @@ describe('Testes da tela com Check Box', () => {
             it.only('Expand Home', () => {
                 CheckBox.collapseButton(CheckBox.nodeHome())
                     .click().then(() => {
-                        cy.get('label[for="tree-node-desktop"]').should('be.visible').and('contain.text', 'Desktop')
-                        cy.get('label[for="tree-node-documents"]').should('be.visible').and('contain.text', 'Documents')
-                        cy.get('label[for="tree-node-downloads"]').should('be.visible').and('contain.text', 'Downloads')
+                        CheckBox.nodeDesktop().should('be.visible').and('contain.text', 'Desktop')
+                        CheckBox.nodeDocuments().should('be.visible').and('contain.text', 'Documents')
+                        CheckBox.nodeDownloads().should('be.visible').and('contain.text', 'Downloads')
                     })
-
             })
         })
 

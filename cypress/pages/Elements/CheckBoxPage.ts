@@ -14,6 +14,18 @@ class CheckBoxPage {
         return cy.get('label[for="tree-node-home"]')
     }
 
+    nodeDesktop() {
+        return cy.get('label[for="tree-node-desktop"]')
+    }
+
+    nodeDocuments() {
+        return cy.get('label[for="tree-node-documents"]')
+    }
+
+    nodeDownloads() {
+        return cy.get('label[for="tree-node-downloads"]')
+    }
+
 }
 
 export default CheckBoxPage;
