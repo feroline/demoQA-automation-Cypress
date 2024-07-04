@@ -1,4 +1,4 @@
-import Colors from "./../support/Enum/Colors";
+import Colors from "../../support/Enum/Colors";
 class ElementsPage {
   textBoxMenu() {
     return cy.getItemMenu("Text Box");
