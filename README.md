@@ -15,14 +15,14 @@ A automação foi realizada no site [demoQA](https://demoqa.com/), no qual cont�
 
 As instruções abaixo fornecem uma cópia do projeto, permitindo que seja executado em sua máquina local.
 
-### Pré-requisitos 
+## Pré-requisitos 
 
 Requisitos para as ferramentas 
 - [Node.js](https://nodejs.org/en)
 - [NPM](https://www.npmjs.com/)
 - [Typescript](https://www.typescriptlang.org/)
 
-### Instalando
+## Instalando
  
 * Clone o repositório para seu diretório de preferência.
  <small>Se você não sabe como clonar um repositório, clique [aqui ](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository)</small>
