@@ -1,8 +1,9 @@
-import HomePage from '../../pages/HomePage';
-import ElementsLink from '../../support/Enum/links/Elements';
+import HomePage from '../../pages/HomePage'
+import ElementsLink from '../../support/Enum/links/Elements'
+import CheckBoxPage from '../../pages/elements/CheckBoxPage'
 
-const Home = new HomePage();
-
+const Home = new HomePage()
+const CheckBox = new CheckBoxPage()
 
 beforeEach(() => {
   cy.visitarToolsQA();
@@ -18,8 +19,7 @@ describe('Testes da tela com Check Box', () => {
     describe('Partição Válida', () => {
         describe('Expand itens do Checkbox', () => {
             it.only('Expand Home', () => {
-                cy.get('label[for="tree-node-home"]')
-                    .siblings('button.rct-collapse-btn')
+                CheckBox.collapseButton(CheckBox.nodeHome())
                     .click().then(() => {
                         cy.get('label[for="tree-node-desktop"]').should('be.visible').and('contain.text', 'Desktop')
                         cy.get('label[for="tree-node-documents"]').should('be.visible').and('contain.text', 'Documents')
