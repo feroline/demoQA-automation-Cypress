@@ -53,7 +53,21 @@ describe('Testes da tela com Check Box', () => {
 				.and('contain.text', CheckBoxEnum.TEXT_COMMANDS);
 		});
 
-		it('Documents');
+		it.only('Documents', () => {
+			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+
+			CheckBox.nodeDocuments()
+				.should('be.visible')
+				.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
+
+			CheckBox.collapseExpandButton(CheckBox.nodeDocuments()).click();
+			CheckBox.liNode(CheckBox.nodeDocuments())
+				.should('contain.html', CheckBox.getHTMLnode('workspace'))
+				.and('contain.text', CheckBoxEnum.TEXT_WORKSPACE)
+				.should('contain.html', CheckBox.getHTMLnode('office'))
+				.and('contain.text', CheckBoxEnum.TEXT_OFFICE);
+		});
+
 		it('Downloads');
 	});
 
@@ -88,6 +102,23 @@ describe('Testes da tela com Check Box', () => {
 				.and('not.contain.text', CheckBoxEnum.TEXT_NOTES)
 				.should('not.contain.html', CheckBox.getHTMLnode('commands'))
 				.and('not.contain.text', CheckBoxEnum.TEXT_COMMANDS);
+		});
+
+		it.only('Documents', () => {
+			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+
+			CheckBox.nodeDocuments()
+				.should('be.visible')
+				.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
+
+			CheckBox.collapseExpandButton(CheckBox.nodeDocuments()).click();
+			CheckBox.collapseExpandButton(CheckBox.nodeDocuments()).click();
+
+			CheckBox.liNode(CheckBox.nodeDocuments())
+				.should('not.contain.html', CheckBox.getHTMLnode('workspace'))
+				.and('not.contain.text', CheckBoxEnum.TEXT_WORKSPACE)
+				.should('not.contain.html', CheckBox.getHTMLnode('office'))
+				.and('not.contain.text', CheckBoxEnum.TEXT_OFFICE);
 		});
 	});
 });
