@@ -17,10 +17,9 @@ describe('Testes da tela com Check Box', () => {
 	});
 
 	describe('Partição Válida', () => {
-		describe.skip('Expand itens do Checkbox', () => {
-			//TODO: CORRIGIR COLAPSE E EXPAND PARA SEUS SIGNIFICADOS CORRETOS
+		describe('Expand itens do Checkbox', () => {
 			it.only('Expand Home', () => {
-				CheckBox.collapseButton(CheckBox.nodeHome())
+				CheckBox.collapseExpandButton(CheckBox.nodeHome())
 					.click()
 					.then(() => {
 						CheckBox.nodeDesktop()
