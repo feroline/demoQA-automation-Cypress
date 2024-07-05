@@ -151,4 +151,6 @@ describe('Testes da tela com Check Box', () => {
 				.and('not.contain.text', CheckBoxEnum.TEXT_EXCEL_FILE);
 		});
 	});
+
+	// TODO Adicionar validação de Check
 });
