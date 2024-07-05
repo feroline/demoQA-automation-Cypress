@@ -17,38 +17,48 @@ describe('Testes da tela com Check Box', () => {
 		cy.url().should('include', ElementsLink.CHECK_BOX);
 	});
 
-	describe('Partição Mista (Colapse e Expand juntos)', () => {
-		describe('Expand e Collapse itens do Checkbox', () => {
-			it.only('Home', () => {
-				CheckBox.nodeHome()
-					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_HOME);
+	describe('Partição Expand', () => {
+		it.only('Home', () => {
+			CheckBox.nodeHome()
+				.should('be.visible')
+				.and('contain.text', CheckBoxEnum.TEXT_HOME);
 
-				CheckBox.collapseExpandButton(CheckBox.nodeHome())
-					.click()
-					.then(() => {
-						CheckBox.nodeDesktop()
-							.should('be.visible')
-							.and('contain.text', CheckBoxEnum.TEXT_DESKTOP);
-						CheckBox.nodeDocuments()
-							.should('be.visible')
-							.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
-						CheckBox.nodeDownloads()
-							.should('be.visible')
-							.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
-					});
-
-				CheckBox.collapseExpandButton(CheckBox.nodeHome())
-					.click()
-					.then(() => {
-						CheckBox.nodeDesktop().should('not.exist');
-						CheckBox.nodeDocuments().should('not.exist');
-						CheckBox.nodeDownloads().should('not.exist');
-					});
-			});
+			CheckBox.collapseExpandButton(CheckBox.nodeHome())
+				.click()
+				.then(() => {
+					CheckBox.nodeDesktop()
+						.should('be.visible')
+						.and('contain.text', CheckBoxEnum.TEXT_DESKTOP);
+					CheckBox.nodeDocuments()
+						.should('be.visible')
+						.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
+					CheckBox.nodeDownloads()
+						.should('be.visible')
+						.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
+				});
 		});
+
+		it('Desktop');
+		it('Documents');
+		it('Downloads');
 	});
 
 	// TODO: implementar partição inválida
-	describe('Partição Inválida', () => {});
+	describe('Partição Collapse', () => {
+		it.only('Home', () => {
+			CheckBox.nodeHome()
+				.should('be.visible')
+				.and('contain.text', CheckBoxEnum.TEXT_HOME);
+
+			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+
+			CheckBox.collapseExpandButton(CheckBox.nodeHome())
+				.click()
+				.then(() => {
+					CheckBox.nodeDesktop().should('not.exist');
+					CheckBox.nodeDocuments().should('not.exist');
+					CheckBox.nodeDownloads().should('not.exist');
+				});
+		});
+	});
 });
