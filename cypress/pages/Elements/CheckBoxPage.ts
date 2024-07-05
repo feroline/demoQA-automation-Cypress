@@ -1,3 +1,4 @@
+import Node from '../../support/Types/node';
 class CheckBoxPage {
 	/**
 	 * @param elementNode é o elemento irmão do botão que deseja expandir e colapsar
@@ -32,6 +33,17 @@ class CheckBoxPage {
 
 	nodeDownloads() {
 		return cy.get('label[for="tree-node-downloads"]');
+	}
+
+	/**
+	 * @param nodeName é o nome do node
+	 * @type Node
+	 * @returns string HTML
+     * @example 
+			cy.get('elemento').should('contain.html', CheckBox.getHTMLnode('notes'))
+	 */
+	getHTMLnode(nodeName: Node) {
+		return `<label for="tree-node-${nodeName}">`;
 	}
 }
 
