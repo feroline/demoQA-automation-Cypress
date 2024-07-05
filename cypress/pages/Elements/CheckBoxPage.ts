@@ -36,7 +36,7 @@ class CheckBoxPage {
 	}
 
 	/**
-	 * @param nodeName é o nome do node
+	 * @param nodeName é o tipo do node que será buscado
 	 * @type Node
 	 * @returns string HTML
      * @example 

@@ -53,7 +53,7 @@ describe('Testes da tela com Check Box', () => {
 				.and('contain.text', CheckBoxEnum.TEXT_COMMANDS);
 		});
 
-		it.only('Documents', () => {
+		it('Documents', () => {
 			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
 
 			CheckBox.nodeDocuments()
@@ -68,7 +68,20 @@ describe('Testes da tela com Check Box', () => {
 				.and('contain.text', CheckBoxEnum.TEXT_OFFICE);
 		});
 
-		it('Downloads');
+		it('Downloads', () => {
+			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+
+			CheckBox.nodeDownloads()
+				.should('be.visible')
+				.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
+
+			CheckBox.collapseExpandButton(CheckBox.nodeDownloads()).click();
+			CheckBox.liNode(CheckBox.nodeDownloads())
+				.should('contain.html', CheckBox.getHTMLnode('wordFile'))
+				.and('contain.text', CheckBoxEnum.TEXT_WORD_FILE)
+				.should('contain.html', CheckBox.getHTMLnode('excelFile'))
+				.and('contain.text', CheckBoxEnum.TEXT_EXCEL_FILE);
+		});
 	});
 
 	describe('Partição Collapse', () => {
@@ -104,7 +117,7 @@ describe('Testes da tela com Check Box', () => {
 				.and('not.contain.text', CheckBoxEnum.TEXT_COMMANDS);
 		});
 
-		it.only('Documents', () => {
+		it('Documents', () => {
 			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
 
 			CheckBox.nodeDocuments()
@@ -119,6 +132,23 @@ describe('Testes da tela com Check Box', () => {
 				.and('not.contain.text', CheckBoxEnum.TEXT_WORKSPACE)
 				.should('not.contain.html', CheckBox.getHTMLnode('office'))
 				.and('not.contain.text', CheckBoxEnum.TEXT_OFFICE);
+		});
+
+		it('Downloads', () => {
+			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+
+			CheckBox.nodeDownloads()
+				.should('be.visible')
+				.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
+
+			CheckBox.collapseExpandButton(CheckBox.nodeDownloads()).click();
+			CheckBox.collapseExpandButton(CheckBox.nodeDownloads()).click();
+
+			CheckBox.liNode(CheckBox.nodeDownloads())
+				.should('not.contain.html', CheckBox.getHTMLnode('wordFile'))
+				.and('not.contain.text', CheckBoxEnum.TEXT_WORD_FILE)
+				.should('not.contain.html', CheckBox.getHTMLnode('excelFile'))
+				.and('not.contain.text', CheckBoxEnum.TEXT_EXCEL_FILE);
 		});
 	});
 });

@@ -7,6 +7,8 @@ enum CheckBox {
 	TEXT_COMMANDS = 'Commands',
 	TEXT_WORKSPACE = 'WorkSpace',
 	TEXT_OFFICE = 'Office',
+	TEXT_WORD_FILE = 'Word File.doc',
+	TEXT_EXCEL_FILE = 'Excel File.doc',
 }
 
 export default CheckBox;
