@@ -1,6 +1,6 @@
 class CheckBoxPage {
 	/**
-	 * @param elementNode é o elemento Cypress que deseja expandir e colapsar
+	 * @param elementNode é o elemento irmão do botão que deseja expandir e colapsar
 	 * @type Cypress.Chainable<JQuery<HTMLElement>>
 	 * @returns collapse e expand button do elemento que foi passado
 	 * @example  CheckBox.collapseExpandButton(CheckBox.nodeHome())
