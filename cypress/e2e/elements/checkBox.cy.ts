@@ -1,6 +1,7 @@
 import HomePage from '../../pages/HomePage';
 import ElementsLink from '../../support/Enum/links/Elements';
 import CheckBoxPage from '../../pages/Elements/CheckBoxPage';
+import CheckBoxEnum from '../../support/Enum/CheckBox';
 
 const Home = new HomePage();
 const CheckBox = new CheckBoxPage();
@@ -16,27 +17,28 @@ describe('Testes da tela com Check Box', () => {
 		cy.url().should('include', ElementsLink.CHECK_BOX);
 	});
 
-	describe('Partição Válida', () => {
-		describe('Expand itens do Checkbox', () => {
-			it.only('Expand Home', () => {
+	describe('Partição Mista (Colapse e Expand juntos)', () => {
+		describe('Expand e Collapse itens do Checkbox', () => {
+			it.only('Home', () => {
+				CheckBox.nodeHome()
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_HOME);
+
 				CheckBox.collapseExpandButton(CheckBox.nodeHome())
 					.click()
 					.then(() => {
 						CheckBox.nodeDesktop()
 							.should('be.visible')
-							.and('contain.text', 'Desktop');
+							.and('contain.text', CheckBoxEnum.TEXT_DESKTOP);
 						CheckBox.nodeDocuments()
 							.should('be.visible')
-							.and('contain.text', 'Documents');
+							.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
 						CheckBox.nodeDownloads()
 							.should('be.visible')
-							.and('contain.text', 'Downloads');
+							.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
 					});
 			});
 		});
-
-		//TODO: CORRIGIR COLAPSE E EXPAND PARA SEUS SIGNIFICADOS CORRETOS
-		describe('Collapse itens do Checkbox', () => {});
 	});
 
 	// TODO: implementar partição inválida
