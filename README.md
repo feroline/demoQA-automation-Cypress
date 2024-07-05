@@ -33,9 +33,9 @@ Requisitos para as ferramentas
 * Dentro do projeto, execute o comando `npm install` para baixar todas as dependências. 
 
 
-* Para abrir o Cypress e executar os testes localmente com visão dos testes pelo navegador execute o comando `npx cypress open`
+* Para abrir o Cypress e executar os testes localmente com visão dos testes pelo navegador execute o comando `npm run cy:open`
 
-* Para executar os testes localmente, sem abrir o Cypress e abrir o navegador, sendo apenas terminal execute o comando `npx cypress run`
+* Para executar os testes localmente, sem abrir o Cypress e abrir o navegador, sendo apenas terminal execute o comando `npm run cy:run`
 
 * Para executar os testes com Integração Continua, será necessário realizar um fork do projeto pelo github e configurar as Actions no github, adicionando também o `projectId` no arquivo de configuração `\cypress.config.ts`. Os testes serão executados a cada push na branch main e pull request para main.
 
