@@ -3,6 +3,8 @@ enum CheckBox {
 	TEXT_DESKTOP = 'Desktop',
 	TEXT_DOCUMENTS = 'Documents',
 	TEXT_DOWNLOADS = 'Downloads',
+	TEXT_NOTES = 'Notes',
+	TEXT_COMMANDS = 'Commands',
 }
 
 export default CheckBox;

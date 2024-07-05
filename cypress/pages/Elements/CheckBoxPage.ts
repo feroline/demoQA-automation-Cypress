@@ -12,6 +12,12 @@ class CheckBoxPage {
 		return elementNode.siblings('button.rct-collapse-btn');
 	}
 
+	liNode(
+		elementNode: Cypress.Chainable<JQuery<HTMLElement>>
+	): Cypress.Chainable<JQuery<HTMLLIElement>> {
+		return elementNode.parent('span').parent('li');
+	}
+
 	nodeHome() {
 		return cy.get('label[for="tree-node-home"]');
 	}

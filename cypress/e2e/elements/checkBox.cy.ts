@@ -18,7 +18,7 @@ describe('Testes da tela com Check Box', () => {
 	});
 
 	describe('Partição Expand', () => {
-		it.only('Home', () => {
+		it('Home', () => {
 			CheckBox.nodeHome()
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_HOME);
@@ -38,14 +38,31 @@ describe('Testes da tela com Check Box', () => {
 				});
 		});
 
-		it('Desktop');
+		it.only('Desktop', () => {
+			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+
+			CheckBox.nodeDesktop()
+				.should('be.visible')
+				.and('contain.text', CheckBoxEnum.TEXT_DESKTOP);
+
+			CheckBox.collapseExpandButton(CheckBox.nodeDesktop()).click();
+			CheckBox.liNode(CheckBox.nodeDesktop()).contains(
+				'label',
+				CheckBoxEnum.TEXT_NOTES
+			);
+			CheckBox.liNode(CheckBox.nodeDesktop()).contains(
+				'label',
+				CheckBoxEnum.TEXT_COMMANDS
+			);
+		});
+
 		it('Documents');
 		it('Downloads');
 	});
 
 	// TODO: implementar partição inválida
 	describe('Partição Collapse', () => {
-		it.only('Home', () => {
+		it('Home', () => {
 			CheckBox.nodeHome()
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_HOME);
