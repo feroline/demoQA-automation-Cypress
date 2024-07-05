@@ -14,23 +14,23 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 require('@cypress/xpath');
 
 declare global {
-    namespace Cypress {
-        interface Chainable {
-        /**
-       * Comando customizado para selecionar elementos usando xpath
-       * @example cy.xpath('//button[@id="my-button"]')
-       */
-        xpath(xpathSelector: string ): Chainable<any>
-        getItemMenu(textoItem: string): Chainable<any>
-        verificaMensagemInicial(): Chainable<any>
-        visitarToolsQA(): Chainable<any>
-        }
-    }
+	namespace Cypress {
+		interface Chainable {
+			/**
+			 * Comando customizado para selecionar elementos usando xpath
+			 * @example cy.xpath('//button[@id="my-button"]')
+			 */
+			xpath(xpathSelector: string): Chainable<any>;
+			getItemMenu(textoItem: string): Chainable<any>;
+			verificaMensagemInicial(): Chainable<any>;
+			visitarToolsQA(): Chainable<any>;
+		}
+	}
 }

@@ -1,5 +1,5 @@
 enum Colors {
-    ERROR = 'rgb(255, 0, 0)'
+	ERROR = 'rgb(255, 0, 0)',
 }
 
-export default Colors
+export default Colors;
