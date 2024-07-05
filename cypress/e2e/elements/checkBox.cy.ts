@@ -37,6 +37,14 @@ describe('Testes da tela com Check Box', () => {
 							.should('be.visible')
 							.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
 					});
+
+				CheckBox.collapseExpandButton(CheckBox.nodeHome())
+					.click()
+					.then(() => {
+						CheckBox.nodeDesktop().should('not.exist');
+						CheckBox.nodeDocuments().should('not.exist');
+						CheckBox.nodeDownloads().should('not.exist');
+					});
 			});
 		});
 	});
