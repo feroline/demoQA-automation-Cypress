@@ -41,7 +41,7 @@ Requisitos para as ferramentas
 
 ## Autores
 
-  - **Ana Carolina Rodrigues Rocha** - *QA Tester e Tester Automation* -
+  - **Ana Carolina Rodrigues Rocha** - *QA Analista de Teste* -
     [linkedin](https://www.linkedin.com/in/anacarolinarodriguesrocha/)
 
 ## Referências
