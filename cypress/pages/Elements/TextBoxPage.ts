@@ -1,54 +1,54 @@
-import Colors from "../../support/Enum/Colors";
+import Colors from '../../support/Enum/Colors';
 class ElementsPage {
-  textBoxMenu() {
-    return cy.getItemMenu("Text Box");
-  }
+	textBoxMenu() {
+		return cy.getItemMenu('Text Box');
+	}
 
-  username() {
-    return cy.get("#userName");
-  }
+	username() {
+		return cy.get('#userName');
+	}
 
-  email() {
-    return cy.get("#userEmail");
-  }
+	email() {
+		return cy.get('#userEmail');
+	}
 
-  currentAddress() {
-    return cy.get("#currentAddress");
-  }
+	currentAddress() {
+		return cy.get('#currentAddress');
+	}
 
-  permanentAddress() {
-    return cy.get("#permanentAddress");
-  }
+	permanentAddress() {
+		return cy.get('#permanentAddress');
+	}
 
-  submitButton() {
-    return cy.get("#submit");
-  }
+	submitButton() {
+		return cy.get('#submit');
+	}
 
-  output() {
-    return cy.get("#output");
-  }
+	output() {
+		return cy.get('#output');
+	}
 
-  outputName() {
-    return this.output().find("#name");
-  }
+	outputName() {
+		return this.output().find('#name');
+	}
 
-  outputEmail() {
-    return this.output().find("#email");
-  }
+	outputEmail() {
+		return this.output().find('#email');
+	}
 
-  outputCurrentAddress() {
-    return this.output().find("#currentAddress");
-  }
+	outputCurrentAddress() {
+		return this.output().find('#currentAddress');
+	}
 
-  outputPermanentAddress() {
-    return this.output().find("#permanentAddress");
-  }
+	outputPermanentAddress() {
+		return this.output().find('#permanentAddress');
+	}
 
-  validateErrorEmail() {
-    return this.email()
-      .should("have.class", "field-error")
-      .and("css", "border-color", Colors.ERROR);
-  }
+	validateErrorEmail() {
+		return this.email()
+			.should('have.class', 'field-error')
+			.and('css', 'border-color', Colors.ERROR);
+	}
 }
 
 export default ElementsPage;
