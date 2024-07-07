@@ -1,4 +1,4 @@
-import Node from '../../support/Types/node';
+import Node from '../../support/Types/Node';
 class CheckBoxPage {
 	/**
 	 * @param elementNode é o elemento irmão do botão que deseja expandir e colapsar
