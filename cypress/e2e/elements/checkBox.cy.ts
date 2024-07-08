@@ -23,7 +23,7 @@ describe('Testes da tela com Check Box', () => {
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_HOME);
 
-			CheckBox.collapseExpandButton('home').then(() => {
+			CheckBox.collapseExpandNode('home').then(() => {
 				CheckBox.getNode('desktop')
 					.should('be.visible')
 					.and('contain.text', CheckBoxEnum.TEXT_DESKTOP);
@@ -34,30 +34,16 @@ describe('Testes da tela com Check Box', () => {
 					.should('be.visible')
 					.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
 			});
-
-			/* CheckBox.collapseExpandButton(CheckBox.nodeHome())
-				.click()
-				.then(() => {
-					CheckBox.nodeDesktop()
-						.should('be.visible')
-						.and('contain.text', CheckBoxEnum.TEXT_DESKTOP);
-					CheckBox.nodeDocuments()
-						.should('be.visible')
-						.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
-					CheckBox.nodeDownloads()
-						.should('be.visible')
-						.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
-				}); */
 		});
 
 		it('Desktop', () => {
-			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
 
 			CheckBox.nodeDesktop()
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_DESKTOP);
 
-			CheckBox.collapseExpandButton(CheckBox.nodeDesktop()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeDesktop()).click();
 			CheckBox.liNode(CheckBox.nodeDesktop())
 				.should('contain.html', CheckBox.getHTMLnode('notes'))
 				.and('contain.text', CheckBoxEnum.TEXT_NOTES)
@@ -66,39 +52,39 @@ describe('Testes da tela com Check Box', () => {
 		});
 
 		it.skip('Documents', () => {
-			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
 
 			CheckBox.nodeDocuments()
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
 
-			CheckBox.collapseExpandButton(CheckBox.nodeDocuments()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeDocuments()).click();
 			CheckBox.nodeWorkspace()
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_WORKSPACE);
 
-			CheckBox.collapseExpandButton(CheckBox.nodeWorkspace()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeWorkspace()).click();
 			CheckBox.nodeReact()
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_REACT)
 				.and('contain.text', CheckBoxEnum.TEXT_ANGULAR)
 				.and('contain.text', CheckBoxEnum.TEXT_VEU);
-			CheckBox.collapseExpandButton(CheckBox.nodeWorkspace()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeWorkspace()).click();
 
 			CheckBox.nodeOffice()
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_OFFICE);
-			CheckBox.collapseExpandButton(CheckBox.nodeOffice()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeOffice()).click();
 		});
 
 		it('Downloads', () => {
-			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
 
 			CheckBox.nodeDownloads()
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
 
-			CheckBox.collapseExpandButton(CheckBox.nodeDownloads()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeDownloads()).click();
 			CheckBox.liNode(CheckBox.nodeDownloads())
 				.should('contain.html', CheckBox.getHTMLnode('wordFile'))
 				.and('contain.text', CheckBoxEnum.TEXT_WORD_FILE)
@@ -126,9 +112,9 @@ describe('Testes da tela com Check Box', () => {
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_HOME);
 
-			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
 
-			CheckBox.collapseExpandButton(CheckBox.nodeHome())
+			CheckBox.collapseExpandNode(CheckBox.nodeHome())
 				.click()
 				.then(() => {
 					CheckBox.nodeDesktop().should('not.exist');
@@ -138,14 +124,14 @@ describe('Testes da tela com Check Box', () => {
 		});
 
 		it('Desktop', () => {
-			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
 
 			CheckBox.nodeDesktop()
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_DESKTOP);
 
-			CheckBox.collapseExpandButton(CheckBox.nodeDesktop()).click();
-			CheckBox.collapseExpandButton(CheckBox.nodeDesktop()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeDesktop()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeDesktop()).click();
 			CheckBox.liNode(CheckBox.nodeDesktop())
 				.should('not.contain.html', CheckBox.getHTMLnode('notes'))
 				.and('not.contain.text', CheckBoxEnum.TEXT_NOTES)
@@ -154,14 +140,14 @@ describe('Testes da tela com Check Box', () => {
 		});
 
 		it('Documents', () => {
-			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
 
 			CheckBox.nodeDocuments()
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
 
-			CheckBox.collapseExpandButton(CheckBox.nodeDocuments()).click();
-			CheckBox.collapseExpandButton(CheckBox.nodeDocuments()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeDocuments()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeDocuments()).click();
 
 			CheckBox.liNode(CheckBox.nodeDocuments())
 				.should('not.contain.html', CheckBox.getHTMLnode('workspace'))
@@ -171,14 +157,14 @@ describe('Testes da tela com Check Box', () => {
 		});
 
 		it('Downloads', () => {
-			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
 
 			CheckBox.nodeDownloads()
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
 
-			CheckBox.collapseExpandButton(CheckBox.nodeDownloads()).click();
-			CheckBox.collapseExpandButton(CheckBox.nodeDownloads()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeDownloads()).click();
+			CheckBox.collapseExpandNode(CheckBox.nodeDownloads()).click();
 
 			CheckBox.liNode(CheckBox.nodeDownloads())
 				.should('not.contain.html', CheckBox.getHTMLnode('wordFile'))
