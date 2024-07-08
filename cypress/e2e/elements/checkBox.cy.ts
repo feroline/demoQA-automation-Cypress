@@ -61,11 +61,16 @@ describe('Testes da tela com Check Box', () => {
 				.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
 
 			CheckBox.collapseExpandButton(CheckBox.nodeDocuments()).click();
-			CheckBox.liNode(CheckBox.nodeDocuments())
-				.should('contain.html', CheckBox.getHTMLnode('workspace'))
-				.and('contain.text', CheckBoxEnum.TEXT_WORKSPACE)
-				.should('contain.html', CheckBox.getHTMLnode('office'))
-				.and('contain.text', CheckBoxEnum.TEXT_OFFICE);
+			CheckBox.nodeWorkspace()
+				.should('be.visible')
+				.and('contain.text', CheckBoxEnum.TEXT_WORKSPACE);
+
+			CheckBox.collapseExpandButton(CheckBox.nodeWorkspace()).click();
+			CheckBox.nodeReact()
+				.should('be.visible')
+				.and('contain.text', CheckBoxEnum.TEXT_REACT)
+				.and('contain.text', CheckBoxEnum.TEXT_ANGULAR)
+				.and('contain.text', CheckBoxEnum.TEXT_VEU);
 		});
 
 		it('Downloads', () => {
@@ -81,6 +86,19 @@ describe('Testes da tela com Check Box', () => {
 				.and('contain.text', CheckBoxEnum.TEXT_WORD_FILE)
 				.should('contain.html', CheckBox.getHTMLnode('excelFile'))
 				.and('contain.text', CheckBoxEnum.TEXT_EXCEL_FILE);
+		});
+
+		it('Expand Todos os itens', () => {
+			CheckBox.nodeHome().should('be.visible');
+
+			cy.get('#tree-node .rct-options button.rct-option-expand-all').click();
+
+			cy.get('#tree-node').then(($treeNode) => {
+				CheckBox.nodeDesktop().should('be.visible');
+				CheckBox.nodeDocuments().should('be.visible');
+				CheckBox.nodeDownloads().should('be.visible');
+				// TODO Adicionar validações
+			});
 		});
 	});
 

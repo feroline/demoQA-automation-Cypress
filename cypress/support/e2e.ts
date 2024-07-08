@@ -8,7 +8,7 @@ declare global {
 			xpath(xpathSelector: string): Chainable;
 			getItemMenu(textoItem: string): Chainable;
 			verificaMensagemInicial(): Chainable;
-			visitarToolsQA(): Chainable;
+			visitarToolsQA(): Chainable<any>;
 		}
 	}
 }

@@ -31,19 +31,16 @@ class CheckBoxPage {
 		return cy.get('label[for="tree-node-documents"]');
 	}
 
-	nodeDownloads() {
-		return cy.get('label[for="tree-node-downloads"]');
+	nodeWorkspace() {
+		return cy.get('label[for="tree-node-workspace"]');
 	}
 
-	/**
-	 * @param nodeName é o tipo do node que será buscado
-	 * @type Node
-	 * @returns string HTML
-     * @example 
-			cy.get('elemento').should('contain.html', CheckBox.getHTMLnode('notes'))
-	 */
-	getHTMLnode(nodeName: Node) {
-		return `<label for="tree-node-${nodeName}">`;
+	nodeReact() {
+		return cy.get('label[for="tree-node-react"]');
+	}
+
+	nodeDownloads() {
+		return cy.get('label[for="tree-node-downloads"]');
 	}
 }
 
