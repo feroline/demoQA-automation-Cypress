@@ -114,35 +114,40 @@ describe('Testes da tela com Check Box', () => {
 			});
 		});
 
-		it('Expand Todos os itens', () => {
-			CheckBox.nodeHome().should('be.visible');
+		it.only('Expand Todos os itens', () => {
+			CheckBox.getNode('home').should('be.visible');
 
-			cy.get('#tree-node .rct-options button.rct-option-expand-all').click();
+			CheckBox.collapseAll();
 
-			cy.get('#tree-node').then(($treeNode) => {
-				CheckBox.nodeDesktop().should('be.visible');
-				CheckBox.nodeDocuments().should('be.visible');
-				CheckBox.nodeDownloads().should('be.visible');
-				// TODO Adicionar validações
+			CheckBox.treeNode().then(() => {
+				CheckBox.getNode('desktop').should('be.visible');
+				CheckBox.getNode('documents').should('be.visible');
+				CheckBox.getNode('downloads').should('be.visible');
+				CheckBox.getNode('notes').should('be.visible');
+				CheckBox.getNode('commands').should('be.visible');
+				CheckBox.getNode('workspace').should('be.visible');
+				CheckBox.getNode('react').should('be.visible');
+				CheckBox.getNode('angular').should('be.visible');
+				CheckBox.getNode('veu').should('be.visible');
+				CheckBox.getNode('office').should('be.visible');
+				CheckBox.getNode('public').should('be.visible');
+				CheckBox.getNode('private').should('be.visible');
+				CheckBox.getNode('classified').should('be.visible');
+				CheckBox.getNode('general').should('be.visible');
+				CheckBox.getNode('wordFile').should('be.visible');
+				CheckBox.getNode('excelFile').should('be.visible');
 			});
 		});
 	});
 
 	describe('Partição Collapse', () => {
 		it('Home', () => {
-			CheckBox.nodeHome()
-				.should('be.visible')
-				.and('contain.text', CheckBoxEnum.TEXT_HOME);
-
-			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
-
-			CheckBox.collapseExpandNode(CheckBox.nodeHome())
-				.click()
-				.then(() => {
-					CheckBox.nodeDesktop().should('not.exist');
-					CheckBox.nodeDocuments().should('not.exist');
-					CheckBox.nodeDownloads().should('not.exist');
-				});
+			CheckBox.collapseExpandNode('home');
+			CheckBox.collapseExpandNode('home').then(() => {
+				CheckBox.getNode('desktop').should('not.exist');
+				CheckBox.getNode('documents').should('not.exist');
+				CheckBox.getNode('downloads').should('not.exist');
+			});
 		});
 
 		it('Desktop', () => {

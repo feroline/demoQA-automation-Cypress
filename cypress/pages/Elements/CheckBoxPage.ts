@@ -1,5 +1,6 @@
 import Node from '../../support/Types/Node';
 class CheckBoxPage {
+	// FIXME CORRIGIR O COMENTÁRIO ABAIXO
 	/**
 	 * @param elementNode é o elemento irmão do botão que deseja expandir e colapsar
 	 * @type Cypress.Chainable<JQuery<HTMLElement>>
@@ -9,6 +10,14 @@ class CheckBoxPage {
 	 */
 	collapseExpandNode(node: Node): Cypress.Chainable<JQuery<HTMLElement>> {
 		return this.getNode(node).siblings('button.rct-collapse-btn').click();
+	}
+
+	collapseAll() {
+		return cy.get('#tree-node button.rct-option-expand-all').click();
+	}
+
+	treeNode() {
+		return cy.get('#tree-node');
 	}
 
 	liNode(
