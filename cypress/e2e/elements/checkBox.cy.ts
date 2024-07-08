@@ -114,7 +114,7 @@ describe('Testes da tela com Check Box', () => {
 			});
 		});
 
-		it.only('Expand Todos os itens', () => {
+		it('Expand Todos os itens', () => {
 			CheckBox.getNode('home').should('be.visible');
 
 			CheckBox.collapseAll();
@@ -150,20 +150,13 @@ describe('Testes da tela com Check Box', () => {
 			});
 		});
 
-		it('Desktop', () => {
-			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
-
-			CheckBox.nodeDesktop()
-				.should('be.visible')
-				.and('contain.text', CheckBoxEnum.TEXT_DESKTOP);
-
-			CheckBox.collapseExpandNode(CheckBox.nodeDesktop()).click();
-			CheckBox.collapseExpandNode(CheckBox.nodeDesktop()).click();
-			CheckBox.liNode(CheckBox.nodeDesktop())
-				.should('not.contain.html', CheckBox.getHTMLnode('notes'))
-				.and('not.contain.text', CheckBoxEnum.TEXT_NOTES)
-				.should('not.contain.html', CheckBox.getHTMLnode('commands'))
-				.and('not.contain.text', CheckBoxEnum.TEXT_COMMANDS);
+		it.only('Desktop', () => {
+			CheckBox.collapseExpandNode('home');
+			CheckBox.collapseExpandNode('desktop');
+			CheckBox.collapseExpandNode('desktop').then(() => {
+				CheckBox.getNode('notes').should('not.exist');
+				CheckBox.getNode('commands').should('not.exist');
+			});
 		});
 
 		it('Documents', () => {
