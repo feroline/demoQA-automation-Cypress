@@ -150,7 +150,7 @@ describe('Testes da tela com Check Box', () => {
 			});
 		});
 
-		it.only('Desktop', () => {
+		it('Desktop', () => {
 			CheckBox.collapseExpandNode('home');
 			CheckBox.collapseExpandNode('desktop');
 			CheckBox.collapseExpandNode('desktop').then(() => {
@@ -159,21 +159,29 @@ describe('Testes da tela com Check Box', () => {
 			});
 		});
 
-		it('Documents', () => {
-			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
+		it.only('Documents', () => {
+			CheckBox.collapseExpandNode('home');
+			CheckBox.collapseExpandNode('documents');
 
-			CheckBox.nodeDocuments()
-				.should('be.visible')
-				.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
+			CheckBox.collapseExpandNode('workspace');
+			CheckBox.collapseExpandNode('workspace').then(() => {
+				CheckBox.getNode('react').should('not.exist');
+				CheckBox.getNode('angular').should('not.exist');
+				CheckBox.getNode('veu').should('not.exist');
+			});
 
-			CheckBox.collapseExpandNode(CheckBox.nodeDocuments()).click();
-			CheckBox.collapseExpandNode(CheckBox.nodeDocuments()).click();
+			CheckBox.collapseExpandNode('office');
+			CheckBox.collapseExpandNode('office').then(() => {
+				CheckBox.getNode('public').should('not.exist');
+				CheckBox.getNode('private').should('not.exist');
+				CheckBox.getNode('classified').should('not.exist');
+				CheckBox.getNode('general').should('not.exist');
+			});
 
-			CheckBox.liNode(CheckBox.nodeDocuments())
-				.should('not.contain.html', CheckBox.getHTMLnode('workspace'))
-				.and('not.contain.text', CheckBoxEnum.TEXT_WORKSPACE)
-				.should('not.contain.html', CheckBox.getHTMLnode('office'))
-				.and('not.contain.text', CheckBoxEnum.TEXT_OFFICE);
+			CheckBox.collapseExpandNode('documents').then(() => {
+				CheckBox.getNode('workspace').should('not.exist');
+				CheckBox.getNode('office').should('not.exist');
+			});
 		});
 
 		it('Downloads', () => {
