@@ -36,7 +36,7 @@ describe('Testes da tela com Check Box', () => {
 			});
 		});
 
-		it.only('Desktop', () => {
+		it('Desktop', () => {
 			CheckBox.collapseExpandNode('home');
 
 			CheckBox.getNode('desktop')
@@ -54,30 +54,47 @@ describe('Testes da tela com Check Box', () => {
 			});
 		});
 
-		it.skip('Documents', () => {
-			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
+		it.only('Documents', () => {
+			CheckBox.collapseExpandNode('home');
 
-			CheckBox.nodeDocuments()
+			CheckBox.getNode('documents')
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
+			CheckBox.collapseExpandNode('documents').then(() => {
+				CheckBox.getNode('workspace')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_WORKSPACE);
+				CheckBox.getNode('office')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_OFFICE);
+			});
 
-			CheckBox.collapseExpandNode(CheckBox.nodeDocuments()).click();
-			CheckBox.nodeWorkspace()
-				.should('be.visible')
-				.and('contain.text', CheckBoxEnum.TEXT_WORKSPACE);
+			CheckBox.collapseExpandNode('workspace').then(() => {
+				CheckBox.getNode('react')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_REACT);
+				CheckBox.getNode('angular')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_ANGULAR);
+				CheckBox.getNode('veu')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_VEU);
+			});
 
-			CheckBox.collapseExpandNode(CheckBox.nodeWorkspace()).click();
-			CheckBox.nodeReact()
-				.should('be.visible')
-				.and('contain.text', CheckBoxEnum.TEXT_REACT)
-				.and('contain.text', CheckBoxEnum.TEXT_ANGULAR)
-				.and('contain.text', CheckBoxEnum.TEXT_VEU);
-			CheckBox.collapseExpandNode(CheckBox.nodeWorkspace()).click();
-
-			CheckBox.nodeOffice()
-				.should('be.visible')
-				.and('contain.text', CheckBoxEnum.TEXT_OFFICE);
-			CheckBox.collapseExpandNode(CheckBox.nodeOffice()).click();
+			CheckBox.collapseExpandNode('office').then(() => {
+				CheckBox.getNode('public')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_PUBLIC);
+				CheckBox.getNode('private')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_PRIVATE);
+				CheckBox.getNode('classified')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_CLASSIFIED);
+				CheckBox.getNode('general')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_GENERAL);
+			});
 		});
 
 		it('Downloads', () => {

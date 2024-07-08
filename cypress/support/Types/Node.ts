@@ -6,7 +6,14 @@ type Node =
 	| 'notes'
 	| 'commands'
 	| 'workspace'
+	| 'react'
+	| 'angular'
+	| 'veu'
 	| 'office'
+	| 'public'
+	| 'private'
+	| 'classified'
+	| 'general'
 	| 'wordFile'
 	| 'excelFile';
 
