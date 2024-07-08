@@ -12,8 +12,12 @@ class CheckBoxPage {
 		return this.getNode(node).siblings('button.rct-collapse-btn').click();
 	}
 
-	collapseAll() {
+	expandAll() {
 		return cy.get('#tree-node button.rct-option-expand-all').click();
+	}
+
+	collapseAll() {
+		return cy.get('#tree-node button.rct-option-collapse-all').click();
 	}
 
 	treeNode() {

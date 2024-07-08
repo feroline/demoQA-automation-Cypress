@@ -117,7 +117,7 @@ describe('Testes da tela com Check Box', () => {
 		it('Expand Todos os itens', () => {
 			CheckBox.getNode('home').should('be.visible');
 
-			CheckBox.collapseAll();
+			CheckBox.expandAll();
 
 			CheckBox.treeNode().then(() => {
 				CheckBox.getNode('desktop').should('be.visible');
@@ -159,7 +159,7 @@ describe('Testes da tela com Check Box', () => {
 			});
 		});
 
-		it.only('Documents', () => {
+		it('Documents', () => {
 			CheckBox.collapseExpandNode('home');
 			CheckBox.collapseExpandNode('documents');
 
@@ -185,20 +185,38 @@ describe('Testes da tela com Check Box', () => {
 		});
 
 		it('Downloads', () => {
-			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
+			CheckBox.collapseExpandNode('home');
+			CheckBox.collapseExpandNode('downloads');
+			CheckBox.collapseExpandNode('downloads').then(() => {
+				CheckBox.getNode('wordFile').should('not.exist');
+				CheckBox.getNode('excelFile').should('not.exist');
+			});
+		});
 
-			CheckBox.nodeDownloads()
-				.should('be.visible')
-				.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
+		it('Colapsar Todos os itens', () => {
+			CheckBox.getNode('home').should('be.visible');
 
-			CheckBox.collapseExpandNode(CheckBox.nodeDownloads()).click();
-			CheckBox.collapseExpandNode(CheckBox.nodeDownloads()).click();
+			CheckBox.expandAll();
+			CheckBox.collapseAll();
 
-			CheckBox.liNode(CheckBox.nodeDownloads())
-				.should('not.contain.html', CheckBox.getHTMLnode('wordFile'))
-				.and('not.contain.text', CheckBoxEnum.TEXT_WORD_FILE)
-				.should('not.contain.html', CheckBox.getHTMLnode('excelFile'))
-				.and('not.contain.text', CheckBoxEnum.TEXT_EXCEL_FILE);
+			CheckBox.treeNode().then(() => {
+				CheckBox.getNode('desktop').should('not.exist');
+				CheckBox.getNode('documents').should('not.exist');
+				CheckBox.getNode('downloads').should('not.exist');
+				CheckBox.getNode('notes').should('not.exist');
+				CheckBox.getNode('commands').should('not.exist');
+				CheckBox.getNode('workspace').should('not.exist');
+				CheckBox.getNode('react').should('not.exist');
+				CheckBox.getNode('angular').should('not.exist');
+				CheckBox.getNode('veu').should('not.exist');
+				CheckBox.getNode('office').should('not.exist');
+				CheckBox.getNode('public').should('not.exist');
+				CheckBox.getNode('private').should('not.exist');
+				CheckBox.getNode('classified').should('not.exist');
+				CheckBox.getNode('general').should('not.exist');
+				CheckBox.getNode('wordFile').should('not.exist');
+				CheckBox.getNode('excelFile').should('not.exist');
+			});
 		});
 	});
 
