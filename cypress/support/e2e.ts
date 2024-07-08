@@ -5,9 +5,9 @@ require('@cypress/xpath');
 declare global {
 	namespace Cypress {
 		interface Chainable {
-			xpath(xpathSelector: string): Chainable<any>;
-			getItemMenu(textoItem: string): Chainable<any>;
-			verificaMensagemInicial(): Chainable<any>;
+			xpath(xpathSelector: string): Chainable;
+			getItemMenu(textoItem: string): Chainable;
+			verificaMensagemInicial(): Chainable;
 			visitarToolsQA(): Chainable<any>;
 		}
 	}
