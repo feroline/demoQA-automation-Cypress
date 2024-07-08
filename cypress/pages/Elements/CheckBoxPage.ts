@@ -6,8 +6,8 @@ class CheckBoxPage {
 	 * @returns ação de collapse e expand do elemento desejado
 	 * @example  CheckBox.collapseExpandNode('home')
 	 */
-	collapseExpandNode(node: Node): Cypress.Chainable<JQuery<HTMLElement>> {
-		return this.getNode(node).siblings('button.rct-collapse-btn').click();
+	collapseExpandNode(node: Node) {
+		return this.nodeByLabel(node).siblings('button.rct-collapse-btn').click();
 	}
 
 	expandAll() {
@@ -22,8 +22,12 @@ class CheckBoxPage {
 		return cy.get('#tree-node');
 	}
 
-	getNode(node: Node): Cypress.Chainable<JQuery<HTMLElement>> {
+	nodeByLabel(node: Node) {
 		return cy.get(`label[for="tree-node-${node}"]`);
+	}
+
+	inputCheck(node: Node) {
+		return this.nodeByLabel(node).find('input[type="checkbox"]');
 	}
 }
 
