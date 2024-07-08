@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2023",
     "lib": [
-      "es5",
+      "ES2023",
       "dom"
     ],
     "types": [
