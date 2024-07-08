@@ -7,16 +7,18 @@ class CheckBoxPage {
 	 * @example  CheckBox.collapseExpandButton(CheckBox.nodeHome())
 	 * OR CheckBox.collapseExpandButton(cy.get('label[for="tree-node-home"]'))
 	 */
-	collapseExpandButton(
-		elementNode: Cypress.Chainable<JQuery<HTMLElement>>
-	): Cypress.Chainable<JQuery<HTMLElement>> {
-		return elementNode.siblings('button.rct-collapse-btn');
+	collapseExpandButton(node: Node): Cypress.Chainable<JQuery<HTMLElement>> {
+		return this.getNode(node).siblings('button.rct-collapse-btn').click();
 	}
 
 	liNode(
 		elementNode: Cypress.Chainable<JQuery<HTMLElement>>
 	): Cypress.Chainable<JQuery<HTMLLIElement>> {
 		return elementNode.parent('span').parent('li');
+	}
+
+	getNode(node: Node): Cypress.Chainable<JQuery<HTMLElement>> {
+		return cy.get(`label[for="tree-node-${node}"]`);
 	}
 
 	nodeHome() {
@@ -37,6 +39,10 @@ class CheckBoxPage {
 
 	nodeReact() {
 		return cy.get('label[for="tree-node-react"]');
+	}
+
+	nodeOffice() {
+		return cy.get('label[for="tree-node-office"]');
 	}
 
 	nodeDownloads() {

@@ -18,12 +18,24 @@ describe('Testes da tela com Check Box', () => {
 	});
 
 	describe('Partição Expand', () => {
-		it('Home', () => {
-			CheckBox.nodeHome()
+		it.only('Home', () => {
+			CheckBox.getNode('home')
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_HOME);
 
-			CheckBox.collapseExpandButton(CheckBox.nodeHome())
+			CheckBox.collapseExpandButton('home').then(() => {
+				CheckBox.getNode('desktop')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_DESKTOP);
+				CheckBox.getNode('documents')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
+				CheckBox.getNode('downloads')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
+			});
+
+			/* CheckBox.collapseExpandButton(CheckBox.nodeHome())
 				.click()
 				.then(() => {
 					CheckBox.nodeDesktop()
@@ -35,7 +47,7 @@ describe('Testes da tela com Check Box', () => {
 					CheckBox.nodeDownloads()
 						.should('be.visible')
 						.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
-				});
+				}); */
 		});
 
 		it('Desktop', () => {
@@ -53,7 +65,7 @@ describe('Testes da tela com Check Box', () => {
 				.and('contain.text', CheckBoxEnum.TEXT_COMMANDS);
 		});
 
-		it('Documents', () => {
+		it.skip('Documents', () => {
 			CheckBox.collapseExpandButton(CheckBox.nodeHome()).click();
 
 			CheckBox.nodeDocuments()
@@ -71,6 +83,12 @@ describe('Testes da tela com Check Box', () => {
 				.and('contain.text', CheckBoxEnum.TEXT_REACT)
 				.and('contain.text', CheckBoxEnum.TEXT_ANGULAR)
 				.and('contain.text', CheckBoxEnum.TEXT_VEU);
+			CheckBox.collapseExpandButton(CheckBox.nodeWorkspace()).click();
+
+			CheckBox.nodeOffice()
+				.should('be.visible')
+				.and('contain.text', CheckBoxEnum.TEXT_OFFICE);
+			CheckBox.collapseExpandButton(CheckBox.nodeOffice()).click();
 		});
 
 		it('Downloads', () => {

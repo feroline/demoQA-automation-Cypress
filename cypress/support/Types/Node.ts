@@ -1,4 +1,8 @@
 type Node =
+	| 'home'
+	| 'desktop'
+	| 'documents'
+	| 'downloads'
 	| 'notes'
 	| 'commands'
 	| 'workspace'
