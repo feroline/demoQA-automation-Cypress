@@ -54,7 +54,7 @@ describe('Testes da tela com Check Box', () => {
 			});
 		});
 
-		it.only('Documents', () => {
+		it('Documents', () => {
 			CheckBox.collapseExpandNode('home');
 
 			CheckBox.getNode('documents')
@@ -98,18 +98,20 @@ describe('Testes da tela com Check Box', () => {
 		});
 
 		it('Downloads', () => {
-			CheckBox.collapseExpandNode(CheckBox.nodeHome()).click();
+			CheckBox.collapseExpandNode('home');
 
-			CheckBox.nodeDownloads()
+			CheckBox.getNode('downloads')
 				.should('be.visible')
 				.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
 
-			CheckBox.collapseExpandNode(CheckBox.nodeDownloads()).click();
-			CheckBox.liNode(CheckBox.nodeDownloads())
-				.should('contain.html', CheckBox.getHTMLnode('wordFile'))
-				.and('contain.text', CheckBoxEnum.TEXT_WORD_FILE)
-				.should('contain.html', CheckBox.getHTMLnode('excelFile'))
-				.and('contain.text', CheckBoxEnum.TEXT_EXCEL_FILE);
+			CheckBox.collapseExpandNode('downloads').then(() => {
+				CheckBox.getNode('wordFile')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_WORD_FILE);
+				CheckBox.getNode('excelFile')
+					.should('be.visible')
+					.and('contain.text', CheckBoxEnum.TEXT_EXCEL_FILE);
+			});
 		});
 
 		it('Expand Todos os itens', () => {
