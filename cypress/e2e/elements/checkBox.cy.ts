@@ -221,7 +221,7 @@ describe('Testes da tela com Check Box', () => {
 	});
 
 	describe('Partição marcar Itens', () => {
-		it.only('Home', () => {
+		it('Home', () => {
 			CheckBox.nodeByLabel('home').click();
 			CheckBox.inputCheck('home').should('be.checked');
 			CheckBox.expandAll();
@@ -243,10 +243,60 @@ describe('Testes da tela com Check Box', () => {
 			CheckBox.inputCheck('wordFile').should('be.checked');
 			CheckBox.inputCheck('excelFile').should('be.checked');
 		});
+
+		it('Desktop', () => {
+			CheckBox.collapseExpandNode('home');
+			CheckBox.collapseExpandNode('desktop');
+
+			CheckBox.nodeByLabel('desktop').click();
+			CheckBox.inputCheck('desktop').should('be.checked');
+			CheckBox.inputCheck('notes').should('be.checked');
+			CheckBox.inputCheck('commands').should('be.checked');
+
+			CheckBox.inputCheck('documents').should('not.be.checked');
+			CheckBox.inputCheck('downloads').should('not.be.checked');
+		});
+
+		it('Documents', () => {
+			CheckBox.collapseExpandNode('home');
+			CheckBox.collapseExpandNode('documents');
+			CheckBox.collapseExpandNode('workspace');
+			CheckBox.collapseExpandNode('office');
+
+			CheckBox.nodeByLabel('documents').click();
+			CheckBox.inputCheck('documents').should('be.checked');
+
+			CheckBox.inputCheck('workspace').should('be.checked');
+			CheckBox.inputCheck('react').should('be.checked');
+			CheckBox.inputCheck('angular').should('be.checked');
+			CheckBox.inputCheck('veu').should('be.checked');
+
+			CheckBox.inputCheck('office').should('be.checked');
+			CheckBox.inputCheck('public').should('be.checked');
+			CheckBox.inputCheck('private').should('be.checked');
+			CheckBox.inputCheck('classified').should('be.checked');
+			CheckBox.inputCheck('general').should('be.checked');
+
+			CheckBox.inputCheck('desktop').should('not.be.checked');
+			CheckBox.inputCheck('downloads').should('not.be.checked');
+		});
+
+		it('Downloads', () => {
+			CheckBox.collapseExpandNode('home');
+			CheckBox.collapseExpandNode('downloads');
+
+			CheckBox.nodeByLabel('downloads').click();
+			CheckBox.inputCheck('downloads').should('be.checked');
+			CheckBox.inputCheck('wordFile').should('be.checked');
+			CheckBox.inputCheck('excelFile').should('be.checked');
+
+			CheckBox.inputCheck('documents').should('not.be.checked');
+			CheckBox.inputCheck('desktop').should('not.be.checked');
+		});
 	});
 
 	describe('Partição desmarcar Itens', () => {
-		it.only('Home', () => {
+		it('Home', () => {
 			CheckBox.nodeByLabel('home').dblclick();
 			CheckBox.inputCheck('home').should('not.be.checked');
 			CheckBox.expandAll();
@@ -265,6 +315,47 @@ describe('Testes da tela com Check Box', () => {
 			CheckBox.inputCheck('private').should('not.be.checked');
 			CheckBox.inputCheck('classified').should('not.be.checked');
 			CheckBox.inputCheck('general').should('not.be.checked');
+			CheckBox.inputCheck('wordFile').should('not.be.checked');
+			CheckBox.inputCheck('excelFile').should('not.be.checked');
+		});
+
+		it('Desktop', () => {
+			CheckBox.collapseExpandNode('home');
+			CheckBox.collapseExpandNode('desktop');
+
+			CheckBox.nodeByLabel('desktop').dblclick();
+			CheckBox.inputCheck('desktop').should('not.be.checked');
+			CheckBox.inputCheck('notes').should('not.be.checked');
+			CheckBox.inputCheck('commands').should('not.be.checked');
+		});
+
+		it('Documents', () => {
+			CheckBox.collapseExpandNode('home');
+			CheckBox.collapseExpandNode('documents');
+			CheckBox.collapseExpandNode('workspace');
+			CheckBox.collapseExpandNode('office');
+
+			CheckBox.nodeByLabel('documents').dblclick();
+			CheckBox.inputCheck('documents').should('not.be.checked');
+
+			CheckBox.inputCheck('workspace').should('not.be.checked');
+			CheckBox.inputCheck('react').should('not.be.checked');
+			CheckBox.inputCheck('angular').should('not.be.checked');
+			CheckBox.inputCheck('veu').should('not.be.checked');
+
+			CheckBox.inputCheck('office').should('not.be.checked');
+			CheckBox.inputCheck('public').should('not.be.checked');
+			CheckBox.inputCheck('private').should('not.be.checked');
+			CheckBox.inputCheck('classified').should('not.be.checked');
+			CheckBox.inputCheck('general').should('not.be.checked');
+		});
+
+		it('Downloads', () => {
+			CheckBox.collapseExpandNode('home');
+			CheckBox.collapseExpandNode('downloads');
+
+			CheckBox.nodeByLabel('downloads').dblclick();
+			CheckBox.inputCheck('downloads').should('not.be.checked');
 			CheckBox.inputCheck('wordFile').should('not.be.checked');
 			CheckBox.inputCheck('excelFile').should('not.be.checked');
 		});
