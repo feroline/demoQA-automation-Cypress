@@ -9,7 +9,7 @@ const CheckBox = new CheckBoxPage();
 beforeEach(() => {
 	cy.visitarToolsQA();
 	Home.elements().click();
-	cy.getItemMenu('Check Box').click();
+	CheckBox.checkBoxMenu();
 });
 
 describe('Testes da tela com Check Box', () => {
