@@ -1,6 +1,6 @@
 class RadioButtonPage {
 	radioBtnMenu() {
-		return cy.getItemMenu('Radio Button');
+		return cy.getItemMenu('Radio Button').click();
 	}
 
 	yesByRadio() {

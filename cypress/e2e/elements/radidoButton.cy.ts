@@ -7,7 +7,7 @@ const RadioButton = new RadioButtonPage();
 beforeEach(() => {
 	cy.visitarToolsQA();
 	Home.elements().click();
-	RadioButton.radioBtnMenu().click();
+	RadioButton.radioBtnMenu();
 });
 
 describe('Partição Check - Validar os que foram checkados', () => {
