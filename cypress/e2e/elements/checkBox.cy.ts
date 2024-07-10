@@ -1,7 +1,7 @@
 import HomePage from '../../pages/HomePage';
 import ElementsLink from '../../support/Enum/links/Elements';
 import CheckBoxPage from '../../pages/Elements/CheckBoxPage';
-import CheckBoxEnum from '../../support/Enum/CheckBox';
+import CheckBoxText from '../../support/Enum/CheckBoxText';
 
 const Home = new HomePage();
 const CheckBox = new CheckBoxPage();
@@ -21,18 +21,18 @@ describe('Testes da tela com Check Box', () => {
 		it('Home', () => {
 			CheckBox.nodeByLabel('home')
 				.should('be.visible')
-				.and('contain.text', CheckBoxEnum.TEXT_HOME);
+				.and('contain.text', CheckBoxText.HOME);
 
 			CheckBox.collapseExpandNode('home').then(() => {
 				CheckBox.nodeByLabel('desktop')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_DESKTOP);
+					.and('contain.text', CheckBoxText.DESKTOP);
 				CheckBox.nodeByLabel('documents')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
+					.and('contain.text', CheckBoxText.DOCUMENTS);
 				CheckBox.nodeByLabel('downloads')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
+					.and('contain.text', CheckBoxText.DOWNLOADS);
 			});
 		});
 
@@ -41,16 +41,16 @@ describe('Testes da tela com Check Box', () => {
 
 			CheckBox.nodeByLabel('desktop')
 				.should('be.visible')
-				.and('contain.text', CheckBoxEnum.TEXT_DESKTOP);
+				.and('contain.text', CheckBoxText.DESKTOP);
 
 			CheckBox.collapseExpandNode('desktop').then(() => {
 				CheckBox.nodeByLabel('notes')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_NOTES);
+					.and('contain.text', CheckBoxText.NOTES);
 
 				CheckBox.nodeByLabel('commands')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_COMMANDS);
+					.and('contain.text', CheckBoxText.COMMANDS);
 			});
 		});
 
@@ -59,41 +59,41 @@ describe('Testes da tela com Check Box', () => {
 
 			CheckBox.nodeByLabel('documents')
 				.should('be.visible')
-				.and('contain.text', CheckBoxEnum.TEXT_DOCUMENTS);
+				.and('contain.text', CheckBoxText.DOCUMENTS);
 			CheckBox.collapseExpandNode('documents').then(() => {
 				CheckBox.nodeByLabel('workspace')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_WORKSPACE);
+					.and('contain.text', CheckBoxText.WORKSPACE);
 				CheckBox.nodeByLabel('office')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_OFFICE);
+					.and('contain.text', CheckBoxText.OFFICE);
 			});
 
 			CheckBox.collapseExpandNode('workspace').then(() => {
 				CheckBox.nodeByLabel('react')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_REACT);
+					.and('contain.text', CheckBoxText.REACT);
 				CheckBox.nodeByLabel('angular')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_ANGULAR);
+					.and('contain.text', CheckBoxText.ANGULAR);
 				CheckBox.nodeByLabel('veu')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_VEU);
+					.and('contain.text', CheckBoxText.VEU);
 			});
 
 			CheckBox.collapseExpandNode('office').then(() => {
 				CheckBox.nodeByLabel('public')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_PUBLIC);
+					.and('contain.text', CheckBoxText.PUBLIC);
 				CheckBox.nodeByLabel('private')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_PRIVATE);
+					.and('contain.text', CheckBoxText.PRIVATE);
 				CheckBox.nodeByLabel('classified')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_CLASSIFIED);
+					.and('contain.text', CheckBoxText.CLASSIFIED);
 				CheckBox.nodeByLabel('general')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_GENERAL);
+					.and('contain.text', CheckBoxText.GENERAL);
 			});
 		});
 
@@ -102,15 +102,15 @@ describe('Testes da tela com Check Box', () => {
 
 			CheckBox.nodeByLabel('downloads')
 				.should('be.visible')
-				.and('contain.text', CheckBoxEnum.TEXT_DOWNLOADS);
+				.and('contain.text', CheckBoxText.DOWNLOADS);
 
 			CheckBox.collapseExpandNode('downloads').then(() => {
 				CheckBox.nodeByLabel('wordFile')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_WORD_FILE);
+					.and('contain.text', CheckBoxText.WORD_FILE);
 				CheckBox.nodeByLabel('excelFile')
 					.should('be.visible')
-					.and('contain.text', CheckBoxEnum.TEXT_EXCEL_FILE);
+					.and('contain.text', CheckBoxText.EXCEL_FILE);
 			});
 		});
 
