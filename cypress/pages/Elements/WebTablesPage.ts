@@ -1,3 +1,4 @@
+const searchInput = '#searchBox';
 class WebTablesPage {
 	webTablesMenu() {
 		return cy.getItemMenu('Web Tables').click();
@@ -9,11 +10,21 @@ class WebTablesPage {
 
 	/**
 	 *
-	 * @param index
-	 * @returns linha da tabela de acordo com o index passado
+	 * @param index localização da linha
+	 * @returns a linhha ou as linhas da tabela
 	 */
-	rowTable(index: number) {
-		return cy.get(`div[role="rowgroup"]:nth-child(${index})`);
+	rowTable(index?: number) {
+		if (index) return cy.get(`div[role="rowgroup"]:nth-child(${index})`);
+
+		return cy.get('div[role="rowgroup"]');
+	}
+
+	setSearchBox(text: string) {
+		return cy.get(searchInput).type(text);
+	}
+
+	searchBtn() {
+		return cy.get(searchInput).siblings('div.input-group-append');
 	}
 }
 
