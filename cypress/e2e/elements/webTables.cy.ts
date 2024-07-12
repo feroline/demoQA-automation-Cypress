@@ -22,7 +22,7 @@ describe('Visualizar Dados', () => {
 				.should('contain.text', `${colunas.action}`);
 		});
 	});
-	it.only('Verifica se os dados estão sendo apresentados na tebela', () => {
+	it('Verifica se os dados estão sendo apresentados na tebela', () => {
 		cy.fixture('/webTables/data').then((datas) => {
 			for (let i in datas) {
 				cy.log('Dados da linha da tabela: ');
