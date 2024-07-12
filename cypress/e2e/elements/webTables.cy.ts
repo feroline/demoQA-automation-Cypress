@@ -74,3 +74,7 @@ describe('Partição Pesquisar Dados', () => {
 		});
 	});
 });
+
+// TODO: ADICIONAR PARTIÇÃO DE ADICIONAR
+// TODO: ADICIONAR PARTIÇÃO DE EDITAR
+// TODO: ADICIONAR PARTIÇÃO DE EXCLUIR
