@@ -1,28 +1,31 @@
-name: Teste de integração com Cypress e Github Actions 
-on: 
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+name: Teste de integração com Cypress e Github Actions
+on:
+ push:
+  branches: ['main']
+ pull_request:
+  branches: ['main']
 
 jobs:
-  cypress-run:
-    runs-on: ubuntu-22.04
+ cypress-run:
+  runs-on: ubuntu-22.04
+  strategy:
+   fail-fast: false
+   matrix:
+    containers: [1, 2]
+  steps:
+   - name: Checkout
+     uses: actions/checkout@v4
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+   - name: Cypress run
+     uses: cypress-io/github-action@v6
+     with:
+      browser: chrome
+      config: pageLoadTimeout=100000
+      record: true
+      parallel: true
+      group: 'chrome'
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          browser: chrome
-          config: pageLoadTimeout=100000
-          record: true
-          parallel: true
-          group: 'chrome'
-
-        env: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+     env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
