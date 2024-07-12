@@ -12,40 +12,28 @@ beforeEach(() => {
 
 describe('Visualizar Dados', () => {
 	it('Verifica se as colunas estão sendo apresentadas na tabela', () => {
-		cy.fixture('/webTables/data').then((data) => {
-			cy
-				.get('div.ReactTable div.rt-thead.-header')
-				.should('contain.text', `${data.colunas.firstname}`)
-				.should('contain.text', `${data.colunas.lastnamae}`)
-				.should('contain.text', `${data.colunas.age}`)
-				.should('contain.text', `${data.colunas.salary}`)
-				.should('contain.text', `${data.colunas.department}`)
-				.should('contain.text', `${data.colunas.action}`);
+		cy.fixture('/webTables/data').then((colunas) => {
+			WebTables.headerTable()
+				.should('contain.text', `${colunas.firstname}`)
+				.should('contain.text', `${colunas.lastnamae}`)
+				.should('contain.text', `${colunas.age}`)
+				.should('contain.text', `${colunas.salary}`)
+				.should('contain.text', `${colunas.department}`)
+				.should('contain.text', `${colunas.action}`);
 		});
 	});
 	it.only('Verifica se os dados estão sendo apresentados na tebela', () => {
-		cy.fixture('/webTables/data').then((data) => {
-			cy
-				.get('div[role="rowgroup"]:nth-child(1)')
-				.should('contain.text', `${data.data00.firstname}`)
-				.and('contain.text', `${data.data00.lastname}`)
-				.and('contain.text', `${data.data00.age}`)
-				.and('contain.text', `${data.data00.salary}`)
-				.and('contain.text', `${data.data00.department}`);
-			cy
-				.get('div[role="rowgroup"]:nth-child(2)')
-				.should('contain.text', `${data.data01.firstname}`)
-				.and('contain.text', `${data.data01.lastname}`)
-				.and('contain.text', `${data.data01.age}`)
-				.and('contain.text', `${data.data01.salary}`)
-				.and('contain.text', `${data.data01.department}`);
-			cy
-				.get('div[role="rowgroup"]:nth-child(3)')
-				.should('contain.text', `${data.data02.firstname}`)
-				.and('contain.text', `${data.data02.lastname}`)
-				.and('contain.text', `${data.data02.age}`)
-				.and('contain.text', `${data.data02.salary}`)
-				.and('contain.text', `${data.data02.department}`);
+		cy.fixture('/webTables/data').then((datas) => {
+			for (let i in datas) {
+				cy.log('Dados da linha da tabela: ');
+
+				WebTables.rowTable(parseInt(i) + 1)
+					.should('contain.text', `${datas[i].firstname}`)
+					.and('contain.text', `${datas[i].lastname}`)
+					.and('contain.text', `${datas[i].age}`)
+					.and('contain.text', `${datas[i].salary}`)
+					.and('contain.text', `${datas[i].department}`);
+			}
 		});
 	});
 });

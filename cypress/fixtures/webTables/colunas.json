@@ -1,0 +1,9 @@
+{
+	"firstname": "First Name",
+	"lastname": "Last Name",
+	"age": "Age",
+	"email": "Email",
+	"salary": "Salary",
+	"department": "Department",
+	"action": "Action"
+}
