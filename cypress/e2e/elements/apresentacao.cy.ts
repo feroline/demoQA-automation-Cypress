@@ -1,4 +1,5 @@
 import HomePage from '../../pages/home/HomePage';
+import ElementsLink from '../../support/Enum/links/Elements';
 const Home = new HomePage();
 
 beforeEach(() => {
@@ -8,6 +9,10 @@ beforeEach(() => {
 
 describe('Testes da página Elements', () => {
 	describe('Tela inicial', () => {
+		it('Verifica URL da página', () => {
+			cy.url().should('include', ElementsLink.Elements);
+		});
+
 		it('Verifica mensagem apresentada', () => {
 			cy.verificaMensagemInicial();
 		});
