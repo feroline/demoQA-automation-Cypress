@@ -12,7 +12,10 @@ class CheckBoxPage {
 	 * @example  CheckBox.collapseExpandNode('home')
 	 */
 	collapseExpandNode(node: CheckBoxNode) {
-		return this.nodeByLabel(node).siblings(locators.collapseExpandBtn).click();
+		return cy
+			.get(locators.nodeLabel(node))
+			.siblings(locators.collapseExpandBtn)
+			.click();
 	}
 
 	expandAll() {
@@ -23,15 +26,15 @@ class CheckBoxPage {
 		cy.get(locators.collapseAllBtn()).click();
 	}
 
-	treeNode() {
+	getTreeNode() {
 		return cy.get(locators.treeNode);
 	}
 
-	nodeByLabel(node: CheckBoxNode) {
+	getNodeByLabel(node: CheckBoxNode) {
 		return cy.get(locators.nodeLabel(node));
 	}
 
-	inputCheck(node: CheckBoxNode) {
+	getCheckInput(node: CheckBoxNode) {
 		return cy.get(locators.nodeLabel(node)).find(locators.checkInput);
 	}
 }
