@@ -10,7 +10,7 @@ beforeEach(() => {
 	RadioButton.radioBtnMenu();
 });
 
-describe('Partição Check - Validar os que foram checkados', () => {
+describe('Verificar os itens que foram marcados', () => {
 	it('Marcar Yes', () => {
 		RadioButton.yesByRadio().should('not.be.checked');
 		RadioButton.yesByLabel().click();
@@ -30,7 +30,7 @@ describe('Partição Check - Validar os que foram checkados', () => {
 	});
 });
 
-describe('Partição Não Check - Validar os que não foram checkados', () => {
+describe('Verificar os que não foram marcados', () => {
 	it('Marcar Yes', () => {
 		RadioButton.yesByLabel().click();
 		RadioButton.impressiveByRadio().should('not.be.checked');
