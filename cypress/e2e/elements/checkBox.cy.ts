@@ -14,7 +14,7 @@ beforeEach(() => {
 
 describe('Testes da tela com Check Box', () => {
 	it('Verifica URL da página', () => {
-		cy.url().should('include', ElementsLink.CHECK_BOX);
+		cy.url().should('include', ElementsLink.Checkbox);
 	});
 
 	describe('Expandir itens', () => {

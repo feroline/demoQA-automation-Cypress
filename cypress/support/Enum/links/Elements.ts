@@ -1,6 +1,6 @@
 enum Elements {
-	TEXT_BOX = '/text-box',
-	CHECK_BOX = '/checkbox',
+	Text_box = '/text-box',
+	Checkbox = '/checkbox',
 }
 
 export default Elements;
