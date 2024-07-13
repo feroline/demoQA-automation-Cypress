@@ -58,6 +58,7 @@ describe('Teste de Home', () => {
 
 		it('Forms', () => {
 			Home.setLink(HomeLinks.Forms);
+			Home.forms().click();
 			cy.url().should('contains', Home.getLink());
 		});
 
