@@ -1,4 +1,4 @@
-import HomePage from '../../pages/HomePage';
+import HomePage from '../../pages/home/HomePage';
 import ElementsLink from '../../support/Enum/links/Elements';
 import CheckBoxPage from '../../pages/Elements/CheckBoxPage';
 import CheckBoxText from '../../support/Enum/CheckBoxText';

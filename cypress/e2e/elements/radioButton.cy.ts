@@ -1,4 +1,4 @@
-import HomePage from '../../pages/HomePage';
+import HomePage from '../../pages/home/HomePage';
 import RadioButtonPage from '../../pages/Elements/RadioButtonPage';
 
 const Home = new HomePage();

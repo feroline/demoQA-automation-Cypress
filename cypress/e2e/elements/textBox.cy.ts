@@ -1,4 +1,4 @@
-import HomePage from '../../pages/HomePage';
+import HomePage from '../../pages/home/HomePage';
 import TextBoxPage from '../../pages/Elements/TextBoxPage';
 import ElementsLink from '../../support/Enum/links/Elements';
 
