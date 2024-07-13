@@ -6,7 +6,7 @@ const RadioButton = new RadioButtonPage();
 
 beforeEach(() => {
 	cy.visitarToolsQA();
-	Home.getElements().click();
+	Home.elements().click();
 	RadioButton.radioBtnMenu();
 });
 

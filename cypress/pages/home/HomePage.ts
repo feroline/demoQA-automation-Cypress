@@ -8,31 +8,31 @@ class HomePage {
 		this.link = link;
 	}
 
-	getBanner() {
+	banner() {
 		return cy.get(locators.homeBanner(this.getLink()));
 	}
 
-	getElements() {
+	elements() {
 		return cy.xpath(locators.cardXpath(Cards.Elements));
 	}
 
-	getForms() {
+	forms() {
 		return cy.xpath(locators.cardXpath(Cards.Forms));
 	}
 
-	getAlertsFramesWindows() {
+	alertsFramesWindows() {
 		return cy.xpath(locators.cardXpath(Cards.Alerts_Frames_Windows));
 	}
 
-	getWidgets() {
+	widgets() {
 		return cy.xpath(locators.cardXpath(Cards.Widgets));
 	}
 
-	getInteractions() {
+	interactions() {
 		return cy.xpath(locators.cardXpath(Cards.Interactions));
 	}
 
-	getBookStore() {
+	bookStore() {
 		return cy.xpath(locators.cardXpath(Cards.Book_Store_Application));
 	}
 

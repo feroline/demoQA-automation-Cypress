@@ -8,7 +8,7 @@ const CheckBox = new CheckBoxPage();
 
 beforeEach(() => {
 	cy.visitarToolsQA();
-	Home.getElements().click();
+	Home.elements().click();
 	CheckBox.checkBoxMenu();
 });
 
