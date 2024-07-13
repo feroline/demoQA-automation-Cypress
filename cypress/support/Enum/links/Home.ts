@@ -1,11 +1,11 @@
 enum Home {
-	BANNER = 'https://www.toolsqa.com/selenium-training/',
-	ELEMENTS = '/elements',
-	FORMS = '/forms',
-	ALERTS_FRAMES_WINDOWS = '/alertsWindows',
-	WIDGETS = '/widgets',
-	INTERACTIONS = '/interaction',
-	BOOKSTORE = '/books',
+	Banner = 'https://www.toolsqa.com/selenium-training/',
+	Elements = '/elements',
+	Forms = '/forms',
+	Alerts_Frames_Windows = '/alertsWindows',
+	Widgets = '/widgets',
+	Interaction = '/interaction',
+	Book_store = '/books',
 }
 
 export default Home;
