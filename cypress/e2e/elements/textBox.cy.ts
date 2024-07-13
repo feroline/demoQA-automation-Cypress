@@ -1,5 +1,5 @@
 import HomePage from '../../pages/home/HomePage';
-import TextBoxPage from '../../pages/Elements/TextBoxPage';
+import TextBoxPage from '../../pages/Elements/textBox/TextBoxPage';
 import ElementsLink from '../../support/Enum/links/Elements';
 
 const Home = new HomePage();
@@ -9,7 +9,7 @@ beforeEach(() => {
 	cy.visitarToolsQA();
 	Home.elements().click();
 	cy.fixture('/usuarios/valido').as('usuarioValido.fixture');
-	TextBox.textBoxMenu().click();
+	TextBox.textBoxMenu();
 });
 
 describe('Teste da tela com Text Box', () => {
