@@ -17,7 +17,7 @@ describe('Testes da tela com Check Box', () => {
 		cy.url().should('include', ElementsLink.CHECK_BOX);
 	});
 
-	describe('Partição Expandir itens', () => {
+	describe('Expandir itens', () => {
 		it('Home', () => {
 			CheckBox.nodeByLabel('home')
 				.should('be.visible')
@@ -114,7 +114,7 @@ describe('Testes da tela com Check Box', () => {
 			});
 		});
 
-		it('Expand Todos os itens', () => {
+		it('Todos os itens', () => {
 			CheckBox.nodeByLabel('home').should('be.visible');
 
 			CheckBox.expandAll();
@@ -140,7 +140,7 @@ describe('Testes da tela com Check Box', () => {
 		});
 	});
 
-	describe('Partição Colapsar Itens', () => {
+	describe('Colapsar Itens', () => {
 		it('Home', () => {
 			CheckBox.collapseExpandNode('home');
 			CheckBox.collapseExpandNode('home').then(() => {
@@ -193,7 +193,7 @@ describe('Testes da tela com Check Box', () => {
 			});
 		});
 
-		it('Colapsar Todos os itens', () => {
+		it('Todos os itens', () => {
 			CheckBox.nodeByLabel('home').should('be.visible');
 
 			CheckBox.expandAll();
@@ -220,7 +220,7 @@ describe('Testes da tela com Check Box', () => {
 		});
 	});
 
-	describe('Partição marcar Itens', () => {
+	describe('Marcar Itens', () => {
 		it('Home', () => {
 			CheckBox.nodeByLabel('home').click();
 			CheckBox.inputCheck('home').should('be.checked');
@@ -295,7 +295,7 @@ describe('Testes da tela com Check Box', () => {
 		});
 	});
 
-	describe('Partição desmarcar Itens', () => {
+	describe('Desmarcar Itens', () => {
 		it('Home', () => {
 			CheckBox.nodeByLabel('home').dblclick();
 			CheckBox.inputCheck('home').should('not.be.checked');
