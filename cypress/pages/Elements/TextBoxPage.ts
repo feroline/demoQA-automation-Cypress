@@ -47,7 +47,7 @@ class ElementsPage {
 	validateErrorEmail() {
 		return this.email()
 			.should('have.class', 'field-error')
-			.and('css', 'border-color', Colors.ERROR);
+			.and('css', 'border-color', Colors.Error);
 	}
 }
 
