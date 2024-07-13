@@ -1,4 +1,4 @@
-import HomeLocators from './HomeLocators';
+import locators from './HomeLocators';
 import Cards from '../../support/Enum/Cards';
 
 class HomePage {
@@ -9,31 +9,31 @@ class HomePage {
 	}
 
 	banner() {
-		return cy.get(HomeLocators.homeBanner(this.getLink()));
+		return cy.get(locators.homeBanner(this.getLink()));
 	}
 
 	elements() {
-		return cy.xpath(HomeLocators.cardXpath(Cards.Elements));
+		return cy.xpath(locators.cardXpath(Cards.Elements));
 	}
 
 	forms() {
-		return cy.xpath(HomeLocators.cardXpath(Cards.Forms));
+		return cy.xpath(locators.cardXpath(Cards.Forms));
 	}
 
 	alertsFramesWindows() {
-		return cy.xpath(HomeLocators.cardXpath(Cards.Alerts_Frames_Windows));
+		return cy.xpath(locators.cardXpath(Cards.Alerts_Frames_Windows));
 	}
 
 	widgets() {
-		return cy.xpath(HomeLocators.cardXpath(Cards.Widgets));
+		return cy.xpath(locators.cardXpath(Cards.Widgets));
 	}
 
 	interactions() {
-		return cy.xpath(HomeLocators.cardXpath(Cards.Interactions));
+		return cy.xpath(locators.cardXpath(Cards.Interactions));
 	}
 
 	bookStore() {
-		return cy.xpath(HomeLocators.cardXpath(Cards.Book_Store_Application));
+		return cy.xpath(locators.cardXpath(Cards.Book_Store_Application));
 	}
 
 	setLink(link: string) {

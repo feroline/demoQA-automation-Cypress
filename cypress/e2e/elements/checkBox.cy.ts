@@ -1,6 +1,6 @@
 import HomePage from '../../pages/home/HomePage';
 import ElementsLink from '../../support/Enum/links/Elements';
-import CheckBoxPage from '../../pages/Elements/CheckBoxPage';
+import CheckBoxPage from '../../pages/Elements/CheckBox/CheckBoxPage';
 import CheckBoxText from '../../support/Enum/CheckBoxText';
 
 const Home = new HomePage();
@@ -140,7 +140,7 @@ describe('Testes da tela com Check Box', () => {
 		});
 	});
 
-	describe('Colapsar Itens', () => {
+	describe.only('Colapsar Itens', () => {
 		it('Home', () => {
 			CheckBox.collapseExpandNode('home');
 			CheckBox.collapseExpandNode('home').then(() => {
