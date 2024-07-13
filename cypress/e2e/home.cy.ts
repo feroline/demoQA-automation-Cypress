@@ -11,7 +11,7 @@ beforeEach(() => {
 describe('Teste de Home', () => {
 	describe('Verificando Visibilidade', () => {
 		it('Banner', () => {
-			Home.setLink(HomeLinks.BANNER);
+			Home.setLink(HomeLinks.Banner);
 			Home.banner().should('be.visible');
 		});
 
@@ -42,7 +42,7 @@ describe('Teste de Home', () => {
 
 	describe('Verificando Redirecionamento', () => {
 		it('Banner', () => {
-			Home.setLink(HomeLinks.BANNER);
+			Home.setLink(HomeLinks.Banner);
 			Home.banner()
 				.should('exist')
 				.click()
@@ -52,37 +52,36 @@ describe('Teste de Home', () => {
 		});
 
 		it('Elements', () => {
-			Home.setLink(HomeLinks.ELEMENTS);
+			Home.setLink(HomeLinks.Elements);
 			Home.elements().click();
 			cy.url().should('contains', Home.getLink());
 		});
 
 		it('Forms', () => {
-			Home.setLink(HomeLinks.FORMS);
-			Home.forms().click();
+			Home.setLink(HomeLinks.Forms);
 			cy.url().should('contains', Home.getLink());
 		});
 
 		it('Alerts, Frames & Windows', () => {
-			Home.setLink(HomeLinks.ALERTS_FRAMES_WINDOWS);
+			Home.setLink(HomeLinks.Alerts_Frames_Windows);
 			Home.alertsFramesWindows().click();
 			cy.url().should('contains', Home.getLink());
 		});
 
 		it('Widgets', () => {
-			Home.setLink(HomeLinks.WIDGETS);
+			Home.setLink(HomeLinks.Widgets);
 			Home.widgets().click();
 			cy.url().should('contains', Home.getLink());
 		});
 
 		it('Interactions', () => {
-			Home.setLink(HomeLinks.INTERACTIONS);
+			Home.setLink(HomeLinks.Interaction);
 			Home.interactions().click();
 			cy.url().should('contains', Home.getLink());
 		});
 
 		it('Book Store', () => {
-			Home.setLink(HomeLinks.BOOKSTORE);
+			Home.setLink(HomeLinks.Book_store);
 			Home.bookStore().click();
 			cy.url().should('contains', Home.getLink());
 		});
