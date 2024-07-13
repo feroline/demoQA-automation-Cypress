@@ -1,6 +1,6 @@
 import HomePage from '../../pages/home/HomePage';
 import ElementsLink from '../../support/Enum/links/Elements';
-import RadioButtonPage from '../../pages/Elements/RadioButtonPage';
+import RadioButtonPage from '../../pages/Elements/radioButton/RadioButtonPage';
 
 const Home = new HomePage();
 const RadioButton = new RadioButtonPage();
