@@ -1,4 +1,4 @@
-import Node from '../../support/Types/Node';
+import CheckBoxNode from '../../support/Types/CheckBoxNode';
 class CheckBoxPage {
 	checkBoxMenu() {
 		return cy.getItemMenu('Check Box').click();
@@ -9,7 +9,7 @@ class CheckBoxPage {
 	 * @returns ação de collapse e expand do elemento desejado
 	 * @example  CheckBox.collapseExpandNode('home')
 	 */
-	collapseExpandNode(node: Node) {
+	collapseExpandNode(node: CheckBoxNode) {
 		return this.nodeByLabel(node).siblings('button.rct-collapse-btn').click();
 	}
 
@@ -25,11 +25,11 @@ class CheckBoxPage {
 		return cy.get('#tree-node');
 	}
 
-	nodeByLabel(node: Node) {
+	nodeByLabel(node: CheckBoxNode) {
 		return cy.get(`label[for="tree-node-${node}"]`);
 	}
 
-	inputCheck(node: Node) {
+	inputCheck(node: CheckBoxNode) {
 		return this.nodeByLabel(node).find('input[type="checkbox"]');
 	}
 }
