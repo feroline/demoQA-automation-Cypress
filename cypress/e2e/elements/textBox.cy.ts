@@ -14,7 +14,7 @@ beforeEach(() => {
 
 describe('Teste da tela com Text Box', () => {
 	it('Verifica URL da página', () => {
-		cy.url().should('include', ElementsLink.TEXT_BOX);
+		cy.url().should('include', ElementsLink.Text_box);
 	});
 
 	describe('Partição Valida', () => {
