@@ -48,7 +48,7 @@ class ElementsPage {
 
 	validateErrorEmail() {
 		return cy
-			.get(locators.emailInput)
+			.get(locators.emailInput, { timeout: 6000 })
 			.should('have.class', 'field-error')
 			.and('css', 'border-color', Colors.Error);
 	}
