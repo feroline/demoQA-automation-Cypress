@@ -3,7 +3,7 @@ const Home = new HomePage();
 
 beforeEach(() => {
 	cy.visitarToolsQA();
-	Home.elements().click();
+	Home.getElements().click();
 });
 
 describe('Testes da página Elements', () => {
