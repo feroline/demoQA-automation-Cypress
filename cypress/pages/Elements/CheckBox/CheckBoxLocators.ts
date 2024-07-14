@@ -7,7 +7,7 @@ const CheckBoxLocators = {
 		`${CheckBoxLocators.treeNode} button.rct-option-expand-all`,
 	collapseAllBtn: () =>
 		`${CheckBoxLocators.treeNode} button.rct-option-collapse-all`,
-	nodeLabel: (node: CheckBoxNode) => {
+	nodeLabel: (node: string) => {
 		return `label[for="tree-node-${node}"]`;
 	},
 	checkInput: 'input[type="checkbox"]',
