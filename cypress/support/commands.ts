@@ -11,6 +11,7 @@ Cypress.Commands.add('verificaMensagemInicial', () => {
 		.should('be.visible');
 });
 
+//TODO : SIMPLIFICAR CHAMADA e adicionar info de que pode não funcionar bem no
 Cypress.Commands.add('visitarToolsQA', () => {
 	cy.visit('/', { failOnStatusCode: false });
 	Cypress.on('uncaught:exception', (err, runnable) => {
