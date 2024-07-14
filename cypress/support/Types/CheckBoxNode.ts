@@ -1,4 +1,5 @@
-type Node =
+//TODO excluir essa tipagem e colocar em um enum as strings, simplificando a chamada e verificação
+type CheckBoxNode =
 	| 'home'
 	| 'desktop'
 	| 'documents'
@@ -17,4 +18,4 @@ type Node =
 	| 'wordFile'
 	| 'excelFile';
 
-export default Node;
+export default CheckBoxNode;
