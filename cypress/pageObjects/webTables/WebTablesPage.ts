@@ -1,5 +1,6 @@
 const searchInput = '#searchBox';
 class WebTablesPage {
+	// TODO: ADICIONAR LOCATOR
 	webTablesMenu() {
 		return cy.getItemMenu('Web Tables').click();
 	}
@@ -24,7 +25,7 @@ class WebTablesPage {
 	}
 
 	searchBtn() {
-		return cy.get(searchInput).siblings('div.input-group-append');
+		return cy.get(searchInput).siblings('div.input-group-append').click();
 	}
 }
 

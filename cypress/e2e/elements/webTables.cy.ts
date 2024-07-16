@@ -39,7 +39,18 @@ describe('Partição Visualizar Dados', () => {
 });
 
 describe('Partição Pesquisar Dados', () => {
-	describe('Pesquisar Nome', () => {
+	// TODO: Pesquisar por dado inexistente
+	describe('Pesquisar por Firstname', () => {
+		it('Pesquisa com string completa', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let firstname = data[0].firstname;
+
+				WebTables.setSearchBox(firstname);
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', firstname);
+			});
+		});
+
 		it('Pesquisa com string parcial', () => {
 			cy.fixture('/webTables/data').then((data) => {
 				let firstname = data[0].firstname;
@@ -48,7 +59,7 @@ describe('Partição Pesquisar Dados', () => {
 					WebTables.setSearchBox(firstname[i]);
 				}
 
-				WebTables.searchBtn().click();
+				WebTables.searchBtn();
 				WebTables.rowTable().should('contain.text', firstname);
 			});
 		});
@@ -58,7 +69,7 @@ describe('Partição Pesquisar Dados', () => {
 				let firstname = data[0].firstname;
 
 				WebTables.setSearchBox(firstname.toLowerCase());
-				WebTables.searchBtn().click();
+				WebTables.searchBtn();
 				WebTables.rowTable().should('contain.text', firstname);
 			});
 		});
@@ -67,8 +78,205 @@ describe('Partição Pesquisar Dados', () => {
 				let firstname = data[0].firstname;
 
 				WebTables.setSearchBox(firstname.toUpperCase());
-				WebTables.searchBtn().click();
+				WebTables.searchBtn();
 				WebTables.rowTable().should('contain.text', firstname);
+			});
+		});
+	});
+
+	describe('Pesquisar por Lastname', () => {
+		it('Pesquisa com string completa', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let lastname = data[0].lastname;
+
+				WebTables.setSearchBox(lastname);
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', lastname);
+			});
+		});
+
+		it('Pesquisa com string parcial', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let lastname = data[0].lastname;
+
+				for (let i = 0; i <= 3; i++) {
+					WebTables.setSearchBox(lastname[i]);
+				}
+
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', lastname);
+			});
+		});
+
+		it('Pesquisa com string LowerCase', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let lastname = data[0].lastname;
+
+				WebTables.setSearchBox(lastname.toLowerCase());
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', lastname);
+			});
+		});
+		it('Pesquisa com string UpperCase', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let lastname = data[0].lastname;
+
+				WebTables.setSearchBox(lastname.toUpperCase());
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', lastname);
+			});
+		});
+	});
+
+	describe('Pesquisar por Age', () => {
+		it('Pesquisa com string completa', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let age = data[0].age;
+
+				WebTables.setSearchBox(age);
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', age);
+			});
+		});
+		it('Pesquisa com string parcial', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let age = data[0].age;
+
+				WebTables.setSearchBox(age[1]);
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', age);
+			});
+		});
+	});
+
+	describe('Pesquisar por Email', () => {
+		it('Pesquisa com string completa', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let email = data[0].email;
+
+				WebTables.setSearchBox(email);
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', email);
+			});
+		});
+
+		it('Pesquisa com string parcial', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let email = data[0].email;
+
+				for (let i = 0; i <= 3; i++) {
+					WebTables.setSearchBox(email[i]);
+				}
+
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', email);
+			});
+		});
+
+		it('Pesquisa com string LowerCase', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let email = data[0].email;
+
+				WebTables.setSearchBox(email.toLowerCase());
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', email);
+			});
+		});
+		it('Pesquisa com string UpperCase', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let email = data[0].email;
+
+				WebTables.setSearchBox(email.toUpperCase());
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', email);
+			});
+		});
+	});
+
+	describe('Pesquisar por Salary', () => {
+		it('Pesquisa com string completa', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let salary = data[0].salary;
+
+				WebTables.setSearchBox(salary);
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', salary);
+			});
+		});
+
+		it('Pesquisa com string parcial', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let salary = data[0].salary;
+
+				for (let i = 0; i <= 3; i++) {
+					WebTables.setSearchBox(salary[i]);
+				}
+
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', salary);
+			});
+		});
+
+		it('Pesquisa com string LowerCase', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let salary = data[0].salary;
+
+				WebTables.setSearchBox(salary.toLowerCase());
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', salary);
+			});
+		});
+		it('Pesquisa com string UpperCase', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let salary = data[0].salary;
+
+				WebTables.setSearchBox(salary.toUpperCase());
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', salary);
+			});
+		});
+	});
+
+	describe('Pesquisar por Departament', () => {
+		it('Pesquisa com string completa', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let departament = data[0].department;
+
+				WebTables.setSearchBox(departament);
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', departament);
+			});
+		});
+
+		it('Pesquisa com string parcial', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let departament = data[0].departament;
+
+				for (let i = 0; i <= 3; i++) {
+					WebTables.setSearchBox(departament[i]);
+				}
+
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', departament);
+			});
+		});
+
+		it('Pesquisa com string LowerCase', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let departament = data[0].departament;
+
+				WebTables.setSearchBox(departament.toLowerCase());
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', departament);
+			});
+		});
+		it('Pesquisa com string UpperCase', () => {
+			cy.fixture('/webTables/data').then((data) => {
+				let departament = data[0].departament;
+
+				WebTables.setSearchBox(departament.toUpperCase());
+				WebTables.searchBtn();
+				WebTables.rowTable().should('contain.text', departament);
 			});
 		});
 	});
