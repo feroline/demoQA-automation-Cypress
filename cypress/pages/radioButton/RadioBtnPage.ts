@@ -1,4 +1,4 @@
-import locators from './RadioButtonLocators';
+import locators from './RadioBtnLocators';
 
 class RadioButtonPage {
 	radioBtnMenu() {
