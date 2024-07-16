@@ -1,5 +1,5 @@
 import HomePage from '../../pages/home/HomePage';
-import TextBoxPage from '../../pages/Elements/textBox/TextBoxPage';
+import TextBoxPage from '../../pages/textBox/TextBoxPage';
 import ElementsLink from '../../support/Enum/links/Elements';
 
 const Home = new HomePage();

@@ -1,19 +1,17 @@
-import { TodoCommentRequest } from './../../../../node_modules/typescript/lib/typescript.d';
-import CheckBoxNode from '../../../support/Types/CheckBoxNode';
+import CheckBoxNode from '../../support/Types/CheckBoxNode';
 import locators from './CheckBoxLocators';
 
 class CheckBoxPage {
 	checkBoxMenu() {
 		return cy.getItemMenu(locators.itemMenu).click();
 	}
-	// FIXME: type node alterado para string, passar valores por enum -- simplificar
 	/**
 	 * @param node é o elemento que deseja expandir e collapsar
 	 * @type Node
 	 * @returns ação de collapse e expand do elemento desejado
 	 * @example  CheckBox.collapseExpandNode('home')
 	 */
-	collapseExpandNode(node: string) {
+	collapseExpandNode(node: CheckBoxNode) {
 		return cy
 			.get(locators.nodeLabel(node))
 			.siblings(locators.collapseExpandBtn)
@@ -32,11 +30,11 @@ class CheckBoxPage {
 		return cy.get(locators.treeNode);
 	}
 
-	getNodeByLabel(node: string) {
+	getNodeByLabel(node: CheckBoxNode) {
 		return cy.get(locators.nodeLabel(node));
 	}
 
-	getCheckInput(node: string) {
+	getCheckInput(node: CheckBoxNode) {
 		return cy.get(locators.nodeLabel(node)).find(locators.checkInput);
 	}
 }

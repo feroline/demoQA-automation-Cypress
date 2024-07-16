@@ -1,4 +1,4 @@
-import Colors from '../../../support/Enum/Colors';
+import Colors from '../../support/Enum/Colors';
 import locators from './TextBoxLocators';
 
 class ElementsPage {
