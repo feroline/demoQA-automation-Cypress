@@ -15,7 +15,7 @@ describe('Partição Visualizar Dados', () => {
 		cy.fixture('/webTables/colunas').then((colunas) => {
 			WebTables.headerTable()
 				.should('contain.text', `${colunas.firstname}`)
-				.should('contain.text', `${colunas.lastnamae}`)
+				.should('contain.text', `${colunas.lastname}`)
 				.should('contain.text', `${colunas.age}`)
 				.should('contain.text', `${colunas.salary}`)
 				.should('contain.text', `${colunas.department}`)

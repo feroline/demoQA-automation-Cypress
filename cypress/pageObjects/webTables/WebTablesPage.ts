@@ -14,9 +14,9 @@ class WebTablesPage {
 	 * @returns a linhha ou as linhas da tabela
 	 */
 	rowTable(index?: number) {
-		if (index) return cy.get(`div[role="rowgroup"]:nth-child(${index})`);
-
-		return cy.get('div[role="rowgroup"]');
+		return index == undefined
+			? cy.get('div[role="rowgroup"]')
+			: cy.get(`div[role="rowgroup"]:nth-child(${index})`);
 	}
 
 	setSearchBox(text: string) {
