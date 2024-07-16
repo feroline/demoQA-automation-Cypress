@@ -1,4 +1,4 @@
-import HomePage from '../pagesObjects/home/HomePage';
+import HomePage from '../pageObjects/home/HomePage';
 import HomeLinks from '../support/Enum/links/Home';
 
 const Home = new HomePage();
