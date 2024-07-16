@@ -1,6 +1,5 @@
-import HomePage from '../../pages/HomePage';
-import WebTablesPage from '../../pages/Elements/WebTablesPage';
-import { forEach } from '../../../node_modules/cypress/types/lodash/index';
+import HomePage from '../../pageObjects/home/HomePage';
+import WebTablesPage from '../../pageObjects/webTables/WebTablesPage';
 
 const Home = new HomePage();
 const WebTables = new WebTablesPage();
