@@ -1,6 +1,6 @@
-import HomePage from '../../pages/home/HomePage';
+import HomePage from '../../pagesObjects/home/HomePage';
 import ElementsLink from '../../support/Enum/links/Elements';
-import CheckBoxPage from '../../pages/checkBox/CheckBoxPage';
+import CheckBoxPage from '../../pagesObjects/checkBox/CheckBoxPage';
 import CheckBoxText from '../../support/Enum/CheckBoxText';
 
 const Home = new HomePage();

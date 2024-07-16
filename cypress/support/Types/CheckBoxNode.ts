@@ -1,4 +1,3 @@
-//TODO excluir essa tipagem e colocar em um enum as strings, simplificando a chamada e verificação
 type CheckBoxNode =
 	| 'home'
 	| 'desktop'
