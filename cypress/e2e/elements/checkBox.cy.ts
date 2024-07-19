@@ -23,6 +23,7 @@ describe('Testes da tela com Check Box', () => {
 				.should('be.visible')
 				.and('contain.text', CheckBoxText.Home);
 
+			// TODO: Usar Within logo abaixo
 			CheckBox.collapseExpandNode('home').then(() => {
 				CheckBox.getNodeByLabel('desktop')
 					.should('be.visible')

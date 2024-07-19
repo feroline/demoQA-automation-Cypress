@@ -18,6 +18,8 @@ describe('Teste da tela com Text Box', () => {
 	});
 
 	describe('Partição Valida', () => {
+		// TODO: Pegar dado por userForm e usar within
+
 		it('Preencher todos os campos com dados válidos', () => {
 			cy.fixture('/usuarios/valido').then((usuario) => {
 				TextBox.username().type(usuario.name);

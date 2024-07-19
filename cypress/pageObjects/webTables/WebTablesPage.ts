@@ -27,6 +27,20 @@ class WebTablesPage {
 	searchBtn() {
 		return cy.get(searchInput).siblings('div.input-group-append').click();
 	}
+
+	createUser() {
+		cy.get('#userForm').within(($form) => {
+			cy.fixture('/webTables/createUser').then((user) => {
+				cy.get('input#firstName').type(user.firstname);
+				cy.get('input#lastName').type(user.lastname);
+				cy.get('input#userEmail').type(user.email);
+				cy.get('input#age').type(user.age);
+				cy.get('input#salary').type(user.salary);
+				cy.get('input#department').type(user.department);
+				cy.get('button[type="submit"]').click();
+			});
+		});
+	}
 }
 
 export default WebTablesPage;

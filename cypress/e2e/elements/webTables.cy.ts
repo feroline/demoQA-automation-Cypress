@@ -1,3 +1,4 @@
+import { data } from '../../../node_modules/cypress/types/jquery/index';
 import HomePage from '../../pageObjects/home/HomePage';
 import WebTablesPage from '../../pageObjects/webTables/WebTablesPage';
 
@@ -10,7 +11,7 @@ beforeEach(() => {
 	WebTables.webTablesMenu();
 });
 
-describe('Partição Visualizar Dados', () => {
+describe('Visualizar Dados', () => {
 	it('Verifica se as colunas estão sendo apresentadas na tabela', () => {
 		cy.fixture('/webTables/colunas').then((colunas) => {
 			WebTables.headerTable()
@@ -38,8 +39,9 @@ describe('Partição Visualizar Dados', () => {
 	});
 });
 
-describe('Partição Pesquisar Dados', () => {
+describe('Pesquisar Dados', () => {
 	// TODO: Pesquisar por dado inexistente
+	// TODO: Usar Within nas tables
 	describe('Pesquisar por Firstname', () => {
 		it('Pesquisa com string completa', () => {
 			cy.fixture('/webTables/data').then((data) => {
@@ -280,6 +282,19 @@ describe('Partição Pesquisar Dados', () => {
 			});
 		});
 	});
+});
+
+// TODO: ADICIONAR CRUD DE TESTES:
+describe.only('Adicionar Dados', () => {
+	describe('Partição Válida', () => {
+		it('Preencher com todos os campos', () => {
+			WebTables.newUser();
+			WebTables.modalVisible(true);
+			WebTables.createUser();
+		});
+	});
+
+	// it('Partição Inválida', () => {})
 });
 
 // TODO: ADICIONAR PARTIÇÃO DE ADICIONAR
