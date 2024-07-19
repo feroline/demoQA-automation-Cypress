@@ -121,6 +121,7 @@ describe('Testes da tela com Check Box', () => {
 			CheckBox.expandAll();
 
 			CheckBox.getTreeNode().then(() => {
+				// TODO: Criar método para verificar visibilidade
 				CheckBox.getNodeByLabel('desktop').should('be.visible');
 				CheckBox.getNodeByLabel('documents').should('be.visible');
 				CheckBox.getNodeByLabel('downloads').should('be.visible');
@@ -145,6 +146,7 @@ describe('Testes da tela com Check Box', () => {
 		it('Home', () => {
 			CheckBox.collapseExpandNode('home');
 			CheckBox.collapseExpandNode('home').then(() => {
+				// TODO: Criar método para verificar invisibilidade
 				CheckBox.getNodeByLabel('desktop').should('not.exist');
 				CheckBox.getNodeByLabel('documents').should('not.exist');
 				CheckBox.getNodeByLabel('downloads').should('not.exist');

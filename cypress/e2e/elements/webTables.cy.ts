@@ -1,9 +1,7 @@
-import { Resposta } from './../../support/interface/Resposta';
 import { data } from '../../../node_modules/cypress/types/jquery/index';
 import HomePage from '../../pageObjects/home/HomePage';
 import WebTablesPage from '../../pageObjects/webTables/WebTablesPage';
 import Colors from '../../support/Enum/Colors';
-import { respByType, Resposta } from '../../support/interface/Resposta';
 
 const Home = new HomePage();
 const WebTables = new WebTablesPage();
@@ -48,6 +46,7 @@ describe('Pesquisar Dados', () => {
 	describe('Pesquisar por Firstname', () => {
 		it('Pesquisa com string completa', () => {
 			cy.fixture('/webTables/data').then((data) => {
+				// TODO: CONVERTER EM MÉTODO
 				let firstname = data[0].firstname;
 
 				WebTables.setSearchBox(firstname);
@@ -58,6 +57,7 @@ describe('Pesquisar Dados', () => {
 
 		it('Pesquisa com string parcial', () => {
 			cy.fixture('/webTables/data').then((data) => {
+				// TODO: CONVERTER EM MÉTODO
 				let firstname = data[0].firstname;
 
 				for (let i = 0; i <= 3; i++) {
@@ -71,6 +71,7 @@ describe('Pesquisar Dados', () => {
 
 		it('Pesquisa com string LowerCase', () => {
 			cy.fixture('/webTables/data').then((data) => {
+				// TODO: CONVERTER EM MÉTODO
 				let firstname = data[0].firstname;
 
 				WebTables.setSearchBox(firstname.toLowerCase());
@@ -80,6 +81,7 @@ describe('Pesquisar Dados', () => {
 		});
 		it('Pesquisa com string UpperCase', () => {
 			cy.fixture('/webTables/data').then((data) => {
+				// TODO: CONVERTER EM MÉTODO
 				let firstname = data[0].firstname;
 
 				WebTables.setSearchBox(firstname.toUpperCase());

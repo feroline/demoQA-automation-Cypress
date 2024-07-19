@@ -28,6 +28,7 @@ describe('Teste da tela com Text Box', () => {
 				TextBox.permanentAddress().type(usuario.permanentAddress);
 				TextBox.submitButton().click();
 
+				// TODO: Passar o label para um enum
 				TextBox.outputName()
 					.should('contain.text', 'Name')
 					.and('contain.text', usuario.name);
