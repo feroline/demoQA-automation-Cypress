@@ -9,6 +9,7 @@ declare global {
 			getItemMenu(textoItem: string): Chainable;
 			verificaMensagemInicial(): Chainable;
 			visitarToolsQA(): Chainable;
+			validateColors(tipo: ResponseType, locator: string): Chainable;
 		}
 	}
 }

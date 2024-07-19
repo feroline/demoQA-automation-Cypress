@@ -17,3 +17,21 @@ Cypress.Commands.add('visitarToolsQA', () => {
 		return false;
 	});
 });
+
+import Colors from './Enum/Colors';
+Cypress.Commands.add(
+	'validateColors',
+	(tipo: ResponseType, locator: string) => {
+		if (tipo == 'error') {
+			cy.get(locator, { timeout: 6000 }).and('css', 'border-color', Colors.Error);
+		} else if (tipo == 'default') {
+			cy
+				.get(locator, { timeout: 6000 })
+				.and('css', 'border-color', Colors.Standard);
+		} else if ('basic') {
+			cy
+				.get(locator, { timeout: 6000 })
+				.and('css', 'border-color', Colors.Success);
+		}
+	}
+);

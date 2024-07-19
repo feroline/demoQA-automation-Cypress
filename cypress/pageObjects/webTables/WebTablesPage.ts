@@ -28,18 +28,45 @@ class WebTablesPage {
 		return cy.get(searchInput).siblings('div.input-group-append').click();
 	}
 
-	createUser() {
-		cy.get('#userForm').within(($form) => {
-			cy.fixture('/webTables/createUser').then((user) => {
-				cy.get('input#firstName').type(user.firstname);
-				cy.get('input#lastName').type(user.lastname);
-				cy.get('input#userEmail').type(user.email);
-				cy.get('input#age').type(user.age);
-				cy.get('input#salary').type(user.salary);
-				cy.get('input#department').type(user.department);
-				cy.get('button[type="submit"]').click();
+	newUserBtn() {
+		cy.get('#addNewRecordButton').click();
+	}
+
+	modalVisible(visible: boolean) {
+		visible
+			? cy.get('div.modal-dialog[role="document"]').should('be.visible')
+			: cy.get('div.modal-dialog[role="document"]').should('not.exist');
+	}
+
+	modalClose() {
+		cy.get('button.close').click();
+	}
+
+	createUser(create: boolean) {
+		if (create) {
+			cy.get('#userForm').within(($form) => {
+				cy.fixture('/webTables/createUser').then((user) => {
+					cy.get('input#firstName').type(user.firstname);
+					cy.get('input#lastName').type(user.lastname);
+					cy.get('input#userEmail').type(user.email);
+					cy.get('input#age').type(user.age);
+					cy.get('input#salary').type(user.salary);
+					cy.get('input#department').type(user.department);
+					cy.get('button[type="submit"]').click();
+				});
 			});
-		});
+		} else {
+			cy.get('button[type="submit"]').click();
+		}
+	}
+
+	// TODO: ADICIONAR VALIDATE INIDIVIDUAL DOS CAMPOS OBRIGATÓRIOS
+	validateFirstname(tipo: ResponseType) {
+		cy.validateColors(tipo, 'input#firstName');
+	}
+
+	validateLastname(tipo: ResponseType) {
+		cy.validateColors(tipo, 'input#lastName');
 	}
 }
 

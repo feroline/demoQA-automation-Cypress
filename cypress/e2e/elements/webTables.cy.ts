@@ -1,6 +1,9 @@
+import { Resposta } from './../../support/interface/Resposta';
 import { data } from '../../../node_modules/cypress/types/jquery/index';
 import HomePage from '../../pageObjects/home/HomePage';
 import WebTablesPage from '../../pageObjects/webTables/WebTablesPage';
+import Colors from '../../support/Enum/Colors';
+import { respByType, Resposta } from '../../support/interface/Resposta';
 
 const Home = new HomePage();
 const WebTables = new WebTablesPage();
@@ -287,14 +290,29 @@ describe('Pesquisar Dados', () => {
 // TODO: ADICIONAR CRUD DE TESTES:
 describe.only('Adicionar Dados', () => {
 	describe('Partição Válida', () => {
-		it('Preencher com todos os campos', () => {
-			WebTables.newUser();
+		it('Verificar visibilidade modal', () => {
+			WebTables.modalVisible(false);
+			WebTables.newUserBtn();
 			WebTables.modalVisible(true);
-			WebTables.createUser();
+			WebTables.modalClose();
+			WebTables.modalVisible(false);
+		});
+		it('Preencher com todos os campos', () => {
+			WebTables.newUserBtn();
+			WebTables.createUser(true);
 		});
 	});
 
-	// it('Partição Inválida', () => {})
+	describe('Partição Inválida', () => {
+		it.only('Não preencher os campos', () => {
+			WebTables.newUserBtn();
+			WebTables.modalVisible(true);
+			WebTables.createUser(false);
+			// TODO:Converter em um método as seguintes linhas
+			WebTables.validateFirstname('error');
+			WebTables.validateLastname('error');
+		});
+	});
 });
 
 // TODO: ADICIONAR PARTIÇÃO DE ADICIONAR

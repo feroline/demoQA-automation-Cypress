@@ -46,6 +46,7 @@ class ElementsPage {
 		return cy.get(locators.output).find(locators.permanentAddressInput);
 	}
 
+	// TODO: Chamar commands
 	validateErrorEmail() {
 		return cy
 			.get(locators.emailInput, { timeout: 6000 })
