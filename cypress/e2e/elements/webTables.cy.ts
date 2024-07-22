@@ -310,9 +310,7 @@ describe.only('Adicionar Dados', () => {
 			WebTables.newUserBtn();
 			WebTables.modalVisible(true);
 			WebTables.createUser(false);
-			// TODO:Converter em um método as seguintes linhas
-			WebTables.validateFirstname('error');
-			WebTables.validateLastname('error');
+			WebTables.validadeEmpty();
 		});
 	});
 });

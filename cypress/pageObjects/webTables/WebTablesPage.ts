@@ -1,12 +1,12 @@
-const searchInput = '#searchBox';
+import locators from './WebTableLocators';
 class WebTablesPage {
 	// TODO: ADICIONAR LOCATOR
 	webTablesMenu() {
-		return cy.getItemMenu('Web Tables').click();
+		return cy.getItemMenu(locators.itemMenu).click();
 	}
 
 	headerTable() {
-		return cy.get('div.ReactTable div.rt-thead.-header');
+		return cy.get(locators.headerTable);
 	}
 
 	/**
@@ -15,58 +15,88 @@ class WebTablesPage {
 	 * @returns a linhha ou as linhas da tabela
 	 */
 	rowTable(index?: number) {
+		// TODO: verificar se há algum método no cypress pronto para tables e rows
 		return index == undefined
-			? cy.get('div[role="rowgroup"]')
-			: cy.get(`div[role="rowgroup"]:nth-child(${index})`);
+			? cy.get(locators.rowTable)
+			: cy.get(`${locators.rowTable}:nth-child(${index})`);
 	}
 
 	setSearchBox(text: string) {
-		return cy.get(searchInput).type(text);
+		return cy.get(locators.searchInput).type(text);
 	}
 
 	searchBtn() {
-		return cy.get(searchInput).siblings('div.input-group-append').click();
+		return cy
+			.get(locators.searchInput)
+			.siblings('div.input-group-append')
+			.click();
 	}
 
 	newUserBtn() {
-		cy.get('#addNewRecordButton').click();
+		cy.get(locators.newUserBtn).click();
 	}
 
 	modalVisible(visible: boolean) {
 		visible
-			? cy.get('div.modal-dialog[role="document"]').should('be.visible')
-			: cy.get('div.modal-dialog[role="document"]').should('not.exist');
+			? cy.get(locators.modal).should('be.visible')
+			: cy.get(locators.modal).should('not.exist');
 	}
 
 	modalClose() {
-		cy.get('button.close').click();
+		cy.get(locators.modalCloseBtn).click();
 	}
 
-	createUser(create: boolean) {
-		if (create) {
-			cy.get('#userForm').within(($form) => {
+	createUser(user: boolean) {
+		if (user) {
+			cy.get(locators.userForm).within(($form) => {
 				cy.fixture('/webTables/createUser').then((user) => {
-					cy.get('input#firstName').type(user.firstname);
-					cy.get('input#lastName').type(user.lastname);
-					cy.get('input#userEmail').type(user.email);
-					cy.get('input#age').type(user.age);
-					cy.get('input#salary').type(user.salary);
-					cy.get('input#department').type(user.department);
-					cy.get('button[type="submit"]').click();
+					cy.get(locators.firstnameInput).type(user.firstname);
+					cy.get(locators.lasnameInput).type(user.lastname);
+					cy.get(locators.emailInput).type(user.email);
+					cy.get(locators.ageInput).type(user.age);
+					cy.get(locators.salaryInput).type(user.salary);
+					cy.get(locators.departmentInput).type(user.department);
+					cy.get(locators.submitBtn).click();
 				});
 			});
 		} else {
-			cy.get('button[type="submit"]').click();
+			cy.get(locators.submitBtn).click();
 		}
 	}
 
 	// TODO: ADICIONAR VALIDATE INIDIVIDUAL DOS CAMPOS OBRIGATÓRIOS
 	validateFirstname(tipo: ResponseType) {
-		cy.validateColors(tipo, 'input#firstName');
+		cy.validateColors(tipo, locators.firstnameInput);
 	}
 
 	validateLastname(tipo: ResponseType) {
-		cy.validateColors(tipo, 'input#lastName');
+		cy.validateColors(tipo, locators.lasnameInput);
+	}
+
+	validateEmail(tipo: ResponseType) {
+		cy.validateColors(tipo, locators.emailInput);
+	}
+
+	validateAge(tipo: ResponseType) {
+		cy.validateColors(tipo, locators.ageInput);
+	}
+
+	validateSalary(tipo: ResponseType) {
+		cy.validateColors(tipo, locators.salaryInput);
+	}
+
+	validateDepartment(tipo: ResponseType) {
+		cy.validateColors(tipo, locators.departmentInput);
+	}
+
+	validadeEmpty() {
+		const tipo = 'error';
+		cy.validateColors(tipo, locators.firstnameInput);
+		cy.validateColors(tipo, locators.lasnameInput);
+		cy.validateColors(tipo, locators.emailInput);
+		cy.validateColors(tipo, locators.ageInput);
+		cy.validateColors(tipo, locators.salaryInput);
+		cy.validateColors(tipo, locators.departmentInput);
 	}
 }
 
