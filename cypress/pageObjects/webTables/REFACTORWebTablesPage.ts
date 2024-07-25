@@ -17,8 +17,8 @@ class WebTablesPage {
 	rowTable(index?: number) {
 		// TODO: verificar se há algum método no cypress pronto para tables e rows
 		return index == undefined
-			? cy.get(locators.rowTable)
-			: cy.get(`${locators.rowTable}:nth-child(${index})`);
+			? cy.get(locators.rowTable).first()
+			: cy.get(locators.rowTable).eq(index);
 	}
 
 	setSearchBox(text: string) {
@@ -26,10 +26,7 @@ class WebTablesPage {
 	}
 
 	searchBtn() {
-		return cy
-			.get(locators.searchInput)
-			.siblings('div.input-group-append')
-			.click();
+		return cy.get(locators.searchInput).siblings(locators.searchBtn).click();
 	}
 
 	newUserBtn() {

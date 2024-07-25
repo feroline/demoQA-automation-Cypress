@@ -11,13 +11,17 @@ Cypress.Commands.add('verificaMensagemInicial', () => {
 		.should('be.visible');
 });
 
-Cypress.Commands.add('visitarToolsQA', () => {
-	cy.visit('/', { failOnStatusCode: false });
+Cypress.Commands.add('visitarToolsQA', (partialURL?: string) => {
+	partialURL
+		? cy.visit(partialURL, { failOnStatusCode: false })
+		: cy.visit('/', { failOnStatusCode: false });
+
 	Cypress.on('uncaught:exception', (err, runnable) => {
 		return false;
 	});
 });
 
+import { partial } from '../../node_modules/cypress/types/lodash/index';
 import Colors from './Enum/Colors';
 Cypress.Commands.add(
 	'validateColors',
@@ -35,3 +39,7 @@ Cypress.Commands.add(
 		}
 	}
 );
+
+Cypress.Commands.add('verificaUrl', (partialURL: string) => {
+	cy.url().should('equal', Cypress.config('baseUrl') + partialURL);
+});
