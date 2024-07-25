@@ -12,13 +12,12 @@ describe('Testes na WebTable', () => {
 	const dataFixture = '/webTables/data';
 
 	describe('Tela inicial', () => {
-		it.only('Verifica URL da página', () => {
-			cy.verificaURL(ElementsLink.WebTables);
-			// cy.url().should('equal', Cypress.config('baseUrl') + ElementsLink.WebTables);
+		it('Verifica URL da página', () => {
+			cy.verificaUrl(ElementsLink.WebTables);
 		});
 	});
-	describe('Verifica apresentação dos dados na tabela', () => {
-		it('Verifica se as colunas estão sendo apresentadas na tabela', () => {
+	describe('Verifica apresentação dos usuários na tabela', () => {
+		it('Verifica as colunas ', () => {
 			WebTables.headerTable().within(($headerTable) => {
 				cy.fixture(colunasFixture).then((coluna) => {
 					expect($headerTable).to.contain(coluna.firstname);
@@ -31,7 +30,7 @@ describe('Testes na WebTable', () => {
 			});
 		});
 
-		it('Verifica se os dados da fixture, estão sendo apresentados com os mesmos valores e ordenação, na tabela ', () => {
+		it('Verifica os dados da fixture por ordenação e valor', () => {
 			cy.fixture(dataFixture).then((data) => {
 				for (let i in data) {
 					WebTables.rowTable(parseInt(i)).within(($row) => {
@@ -44,5 +43,11 @@ describe('Testes na WebTable', () => {
 				}
 			});
 		});
+	});
+
+	describe('Verifica a pesquisa dos usuários apresentados na tabela', () => {
+		// TODO: ANTES DE INICIAR A ESCRITAS DOS CENÁRIOS, ADICIONAR AO CHECKLIST
+		// it('Pesquisa por usuário com dado Inexistente - dado utilizado:Firstname',() => {})
+		// it('Pesquisa por usuário com dado Parcial - dado utilizado:Email', () => {})
 	});
 });
