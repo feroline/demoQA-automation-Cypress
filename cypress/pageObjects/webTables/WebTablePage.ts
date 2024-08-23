@@ -47,8 +47,8 @@ class WebTablesPage {
 		cy.get(locators.rowMsg).should('contain.text', msg);
 	}
 
-	verifyDataRowTable(text: string, contain?: boolean) {
-		contain == true || contain == undefined
+	verifyDataRowTable(text: string, contain: boolean) {
+		contain === true
 			? cy.get(locators.rowTable).should('contain.text', text)
 			: cy.get(locators.rowTable).should('not.contain.text', text);
 	}
@@ -113,24 +113,45 @@ class WebTablesPage {
 		return cy.get(locators.actionEdit).first().parents(locators.divRow);
 	}
 
-	// TODO: mudar oldUser para objeto
-	editUser(oldUser: Array<any>, editUserFixture: user) {
-		cy.get(locators.userForm).within(($form) => {
-			//Verifica se o form contém as informações do usuário apresentadas antes de ser editado
-			// TODO Verificar em cada input
-			oldUser.forEach((dado) => {
-				expect($form).to.contain.text(dado);
-			});
-
-			// Edita os dados
-			cy.get(locators.firstnameInput).type(editUserFixture.firstname);
-			cy.get(locators.lasnameInput).type(editUserFixture.lastname);
-			cy.get(locators.ageInput).type(editUserFixture.age);
-			cy.get(locators.emailInput).type(editUserFixture.email);
-			cy.get(locators.salaryInput).type(editUserFixture.salary);
-			cy.get(locators.departmentInput).type(editUserFixture.department);
+	editUser(userData: string[] | Array<any> | void, editUserFixture: user) {
+		cy.get(locators.userForm).within(() => {
+			// userData.forEach((dado) => {
+			// 	cy.get(`input[value="${dado}"]`);
+			// });
+			cy.get(locators.firstnameInput).clear().type(editUserFixture.firstname);
+			cy.get(locators.lasnameInput).clear().type(editUserFixture.lastname);
+			cy.get(locators.ageInput).clear().type(editUserFixture.age);
+			cy.get(locators.emailInput).clear().type(editUserFixture.email);
+			cy.get(locators.salaryInput).clear().type(editUserFixture.salary);
+			cy.get(locators.departmentInput).clear().type(editUserFixture.department);
 			cy.get(locators.submitBtn).click();
 		});
+	}
+
+	//para que os resultados possam ser explorados deve ser chamado dentro de uma promisse com 'then'
+	getUserRow(indiceRow?: number): Array<string> {
+		let userRow = new Array();
+		let row;
+
+		if (!indiceRow || indiceRow === 0) {
+			row = cy.get(locators.actionEdit).first().parents(locators.divRow);
+		} else {
+			row = cy.get(locators.actionEdit).eq(indiceRow).parents(locators.divRow);
+		}
+
+		row.within(($row) => {
+			let celulas = $row[0].childNodes;
+			let length = celulas.length;
+
+			celulas.forEach((celula, i) => {
+				//não vai armazenar os valores da celula de action
+				if (i != length - 1) {
+					userRow.push(celula.textContent);
+				}
+			});
+		});
+
+		return userRow;
 	}
 }
 

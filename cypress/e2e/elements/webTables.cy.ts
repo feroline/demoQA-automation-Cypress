@@ -1,3 +1,4 @@
+import { forIn } from '../../../node_modules/cypress/types/lodash/index';
 import WebTablesPage from '../../pageObjects/webTables/WebTablePage';
 import ElementsLink from '../../support/Enum/links/Elements';
 
@@ -62,7 +63,7 @@ describe('Testes na WebTable', () => {
 				let firstname = data[0].firstname;
 
 				WebTables.setSearchBox(`${firstname}{ENTER}`);
-				WebTables.verifyDataRowTable(firstname);
+				WebTables.verifyDataRowTable(firstname, true);
 			});
 		});
 
@@ -72,7 +73,7 @@ describe('Testes na WebTable', () => {
 
 				WebTables.setSearchBox(`${firstname}{BACKSPACE}{BACKSPACE}{BACKSPACE}`);
 				WebTables.searchBtn();
-				WebTables.verifyDataRowTable(firstname);
+				WebTables.verifyDataRowTable(firstname, true);
 			});
 		});
 
@@ -82,7 +83,7 @@ describe('Testes na WebTable', () => {
 
 				WebTables.setSearchBox(firstname.toLowerCase());
 				WebTables.searchBtn();
-				WebTables.verifyDataRowTable(firstname);
+				WebTables.verifyDataRowTable(firstname, true);
 			});
 		});
 
@@ -92,7 +93,7 @@ describe('Testes na WebTable', () => {
 
 				WebTables.setSearchBox(firstname.toUpperCase());
 				WebTables.searchBtn();
-				WebTables.verifyDataRowTable(firstname);
+				WebTables.verifyDataRowTable(firstname, true);
 			});
 		});
 	});
@@ -111,12 +112,12 @@ describe('Testes na WebTable', () => {
 				WebTables.newUserBtn();
 				cy.fixture(validUserFixture).then((user) => {
 					WebTables.createUser(user);
-					WebTables.verifyDataRowTable(user.firstname);
-					WebTables.verifyDataRowTable(user.lastname);
-					WebTables.verifyDataRowTable(user.age);
-					WebTables.verifyDataRowTable(user.email);
-					WebTables.verifyDataRowTable(user.salary);
-					WebTables.verifyDataRowTable(user.department);
+					WebTables.verifyDataRowTable(user.firstname, true);
+					WebTables.verifyDataRowTable(user.lastname, true);
+					WebTables.verifyDataRowTable(user.age, true);
+					WebTables.verifyDataRowTable(user.email, true);
+					WebTables.verifyDataRowTable(user.salary, true);
+					WebTables.verifyDataRowTable(user.department, true);
 				});
 			});
 		});
@@ -156,28 +157,40 @@ describe('Testes na WebTable', () => {
 		});
 	});
 
-	// TODO: Implementar edição de usuário
 	describe('Editar usuário verificar edição de usuário', () => {
-		// TODO Verificar visibilidade do modal
+		it('Verificar visibilidade do modal', () => {
+			WebTables.modalVisible(false);
+			WebTables.newUserBtn();
+			WebTables.modalVisible(true);
+			WebTables.modalClose();
+			WebTables.modalVisible(false);
+		});
 
 		describe('Dados válidos', () => {
-			it.only('Editar usuário com dados válidos', () => {
-				let oldUser = Array();
-
-				WebTables.getFistRow().within(($row) => {
-					let celulas = $row[0].childNodes;
-
-					celulas.forEach((attr) => {
-						oldUser.push(attr.textContent);
-					});
-				});
+			it('Editar usuário com dados válidos', () => {
+				let oldUser = WebTables.getUserRow();
 
 				WebTables.editFirstUser();
+
 				cy.fixture(editUserFixture).then((user) => {
 					WebTables.editUser(oldUser, user);
+
+					WebTables.verifyDataRowTable(user.firstname, true);
+					WebTables.verifyDataRowTable(user.lastname, true);
+					WebTables.verifyDataRowTable(user.age, true);
+					WebTables.verifyDataRowTable(user.email, true);
+					WebTables.verifyDataRowTable(user.salary, true);
+					WebTables.verifyDataRowTable(user.department, true);
+
+					oldUser.forEach((dado) => {
+						WebTables.verifyDataRowTable(dado, false);
+					});
 				});
 			});
 		});
+
+		// TODO Implementar edição de usuários com dados inválidos
+		// TODO Implementar edição de usuários com com dados faltantes
 		describe('Dados inválidos', () => {});
 	});
 
