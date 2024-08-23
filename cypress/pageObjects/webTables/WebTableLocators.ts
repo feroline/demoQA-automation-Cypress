@@ -1,6 +1,7 @@
 const WebTablesLocators = {
 	itemMenu: 'Web Tables',
 	searchInput: '#searchBox',
+	searchBtn: '.input-group-append',
 	headerTable: 'div.ReactTable div.rt-thead.-header',
 	rowTable: 'div[role="rowgroup"]',
 	newUserBtn: '#addNewRecordButton',
@@ -14,6 +15,7 @@ const WebTablesLocators = {
 	salaryInput: 'input#salary',
 	departmentInput: 'input#department',
 	submitBtn: 'button[type="submit"]',
+	rowMsg: 'div.rt-noData',
 };
 
 export default WebTablesLocators;

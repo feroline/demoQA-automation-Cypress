@@ -3,19 +3,21 @@ import ElementsLink from '../../support/Enum/links/Elements';
 
 const WebTables = new WebTablesPage();
 
+// TODO: Colocar em um enum
+const msgTabbleNotFound = 'No rows found';
+const webTableDataFixture = '/webTables/data';
+
 beforeEach(() => {
 	cy.visitarToolsQA(ElementsLink.WebTables);
 });
 
 describe('Testes na WebTable', () => {
 	const colunasFixture = '/webTables/colunas';
-	const dataFixture = '/webTables/data';
+	const usuariosFixture = '/webTables/data';
+	const validUserFixture = '/webTables/validUser';
+	const emptyUserFixture = '/webTables/emptyUser';
+	const invalidUserFixture = '/webTables/invalidUser';
 
-	describe('Tela inicial', () => {
-		it('Verifica URL da página', () => {
-			cy.verificaUrl(ElementsLink.WebTables);
-		});
-	});
 	describe('Verifica apresentação dos usuários na tabela', () => {
 		it('Verifica as colunas ', () => {
 			WebTables.headerTable().within(($headerTable) => {
@@ -31,14 +33,14 @@ describe('Testes na WebTable', () => {
 		});
 
 		it('Verifica os dados da fixture por ordenação e valor', () => {
-			cy.fixture(dataFixture).then((data) => {
-				for (let i in data) {
+			cy.fixture(usuariosFixture).then((usuario) => {
+				for (let i in usuario) {
 					WebTables.rowTable(parseInt(i)).within(($row) => {
-						expect($row).to.contain(data[i].firstname);
-						expect($row).to.contain(data[i].lastname);
-						expect($row).to.contain(data[i].age);
-						expect($row).to.contain(data[i].salary);
-						expect($row).to.contain(data[i].department);
+						expect($row).to.contain(usuario[i].firstname);
+						expect($row).to.contain(usuario[i].lastname);
+						expect($row).to.contain(usuario[i].age);
+						expect($row).to.contain(usuario[i].salary);
+						expect($row).to.contain(usuario[i].department);
 					});
 				}
 			});
@@ -46,8 +48,121 @@ describe('Testes na WebTable', () => {
 	});
 
 	describe('Verifica a pesquisa dos usuários apresentados na tabela', () => {
-		// TODO: ANTES DE INICIAR A ESCRITAS DOS CENÁRIOS, ADICIONAR AO CHECKLIST
-		// it('Pesquisa por usuário com dado Inexistente - dado utilizado:Firstname',() => {})
-		// it('Pesquisa por usuário com dado Parcial - dado utilizado:Email', () => {})
+		it('Pesquisar usuário Inexistente - dado utilizado:Firstname', () => {
+			WebTables.searchUser(false, 'Inexistente');
+			WebTables.verifyMsgTable(msgTabbleNotFound);
+		});
+
+		it('Pesquisar usuário com espaço em branco', () => {
+			WebTables.searchUser(false, '        ');
+			WebTables.verifyMsgTable(msgTabbleNotFound);
+		});
+
+		it('Pesquisar usuário com informação completa e com enter - dado utilizado:Firstname', () => {
+			cy.fixture(webTableDataFixture).then((data) => {
+				let firstname = data[0].firstname;
+
+				WebTables.setSearchBox(`${firstname}{ENTER}`);
+				WebTables.verifyDataRowTable(firstname);
+			});
+		});
+
+		it('Pesquisar usuário com informação incompleta - dado utilizado:Firstname', () => {
+			cy.fixture(webTableDataFixture).then((data) => {
+				let firstname = data[0].firstname;
+
+				WebTables.setSearchBox(`${firstname}{BACKSPACE}{BACKSPACE}{BACKSPACE}`);
+				WebTables.searchBtn();
+				WebTables.verifyDataRowTable(firstname);
+			});
+		});
+
+		it('Pesquisar usuário com informação LowerCase - dado utilizado:Firstname', () => {
+			cy.fixture(webTableDataFixture).then((data) => {
+				let firstname = data[0].firstname;
+
+				WebTables.setSearchBox(firstname.toLowerCase());
+				WebTables.searchBtn();
+				WebTables.verifyDataRowTable(firstname);
+			});
+		});
+
+		it('Pesquisar usuário com informação UpperCase - dado utilizado:Firstname', () => {
+			cy.fixture(webTableDataFixture).then((data) => {
+				let firstname = data[0].firstname;
+
+				WebTables.setSearchBox(firstname.toUpperCase());
+				WebTables.searchBtn();
+				WebTables.verifyDataRowTable(firstname);
+			});
+		});
 	});
+
+	describe('Adicionar usuário e verificar adição de usuário', () => {
+		it('Abrir e fechar modal', () => {
+			WebTables.modalVisible(false);
+			WebTables.newUserBtn();
+			WebTables.modalVisible(true);
+			WebTables.modalClose();
+			WebTables.modalVisible(false);
+		});
+
+		describe('Partição Válida', () => {
+			it('Adicionar usuário com todos os Dados válidos', () => {
+				WebTables.newUserBtn();
+				cy.fixture(validUserFixture).then((user) => {
+					WebTables.createUser(user);
+					WebTables.verifyDataRowTable(user.firstname);
+					WebTables.verifyDataRowTable(user.lastname);
+					WebTables.verifyDataRowTable(user.age);
+					WebTables.verifyDataRowTable(user.email);
+					WebTables.verifyDataRowTable(user.salary);
+					WebTables.verifyDataRowTable(user.department);
+				});
+			});
+		});
+
+		describe('Partição inválida', () => {
+			it('Não preencher os campos e clicar em salvar', () => {
+				WebTables.newUserBtn();
+				WebTables.formSubmit();
+				WebTables.validateEmptyForm();
+			});
+
+			it('Preenche os campos com espaço em branco e clicar em salvar', () => {
+				WebTables.newUserBtn();
+				cy.fixture(emptyUserFixture).then((user) => {
+					WebTables.createUser(user);
+				});
+				WebTables.validateEmptyForm();
+			});
+
+			it('Preencher os campos com dados inválidos e clicar em salvar', () => {
+				WebTables.newUserBtn();
+				cy.fixture(invalidUserFixture).then((user) => {
+					WebTables.createUser(user);
+
+					WebTables.validateEmail();
+					WebTables.validateSalary();
+					WebTables.validateAge();
+
+					WebTables.verifyDataRowTable(user.firstname, false);
+					WebTables.verifyDataRowTable(user.lastname, false);
+					WebTables.verifyDataRowTable(user.email, false);
+					WebTables.verifyDataRowTable(user.age, false);
+					WebTables.verifyDataRowTable(user.salary, false);
+					WebTables.verifyDataRowTable(user.department, false);
+				});
+			});
+		});
+	});
+
+	// TODO: Implementar edição de usuário
+	// describe('Editar usuário verificar edição de usuário', () => {
+	// describe('Dados válidos', () => {})
+	// describe('Dados inválidos', () => {})
+	// })
+
+	// TODO: Implementar exclusão de usuário
+	// describe('Excluir usuário e verificar exclusão de usuário',() => {})
 });
