@@ -104,6 +104,34 @@ class WebTablesPage {
 	validateAge() {
 		cy.validateColors('error', locators.ageInput);
 	}
+
+	editFirstUser() {
+		cy.get(locators.actionEdit).first().click();
+	}
+
+	getFistRow() {
+		return cy.get(locators.actionEdit).first().parents(locators.divRow);
+	}
+
+	// TODO: mudar oldUser para objeto
+	editUser(oldUser: Array<any>, editUserFixture: user) {
+		cy.get(locators.userForm).within(($form) => {
+			//Verifica se o form contém as informações do usuário apresentadas antes de ser editado
+			// TODO Verificar em cada input
+			oldUser.forEach((dado) => {
+				expect($form).to.contain.text(dado);
+			});
+
+			// Edita os dados
+			cy.get(locators.firstnameInput).type(editUserFixture.firstname);
+			cy.get(locators.lasnameInput).type(editUserFixture.lastname);
+			cy.get(locators.ageInput).type(editUserFixture.age);
+			cy.get(locators.emailInput).type(editUserFixture.email);
+			cy.get(locators.salaryInput).type(editUserFixture.salary);
+			cy.get(locators.departmentInput).type(editUserFixture.department);
+			cy.get(locators.submitBtn).click();
+		});
+	}
 }
 
 export default WebTablesPage;

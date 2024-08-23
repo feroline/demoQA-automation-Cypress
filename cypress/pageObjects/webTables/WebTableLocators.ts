@@ -16,6 +16,8 @@ const WebTablesLocators = {
 	departmentInput: 'input#department',
 	submitBtn: 'button[type="submit"]',
 	rowMsg: 'div.rt-noData',
+	divRow: 'div[role="row"]',
+	actionEdit: 'div.action-buttons>span[title="Edit"]',
 };
 
 export default WebTablesLocators;

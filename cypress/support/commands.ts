@@ -21,7 +21,6 @@ Cypress.Commands.add('visitarToolsQA', (partialURL?: string) => {
 	});
 });
 
-import { partial } from '../../node_modules/cypress/types/lodash/index';
 import Colors from './Enum/Colors';
 Cypress.Commands.add(
 	'validateColors',

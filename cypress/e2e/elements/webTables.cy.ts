@@ -3,21 +3,20 @@ import ElementsLink from '../../support/Enum/links/Elements';
 
 const WebTables = new WebTablesPage();
 
-// TODO: Colocar em um enum
 const msgTabbleNotFound = 'No rows found';
 const webTableDataFixture = '/webTables/data';
+const colunasFixture = '/webTables/colunas';
+const usuariosFixture = '/webTables/data';
+const validUserFixture = '/webTables/validUser';
+const emptyUserFixture = '/webTables/emptyUser';
+const invalidUserFixture = '/webTables/invalidUser';
+const editUserFixture = '/webTables/editUser';
 
 beforeEach(() => {
 	cy.visitarToolsQA(ElementsLink.WebTables);
 });
 
 describe('Testes na WebTable', () => {
-	const colunasFixture = '/webTables/colunas';
-	const usuariosFixture = '/webTables/data';
-	const validUserFixture = '/webTables/validUser';
-	const emptyUserFixture = '/webTables/emptyUser';
-	const invalidUserFixture = '/webTables/invalidUser';
-
 	describe('Verifica apresentação dos usuários na tabela', () => {
 		it('Verifica as colunas ', () => {
 			WebTables.headerTable().within(($headerTable) => {
@@ -158,10 +157,29 @@ describe('Testes na WebTable', () => {
 	});
 
 	// TODO: Implementar edição de usuário
-	// describe('Editar usuário verificar edição de usuário', () => {
-	// describe('Dados válidos', () => {})
-	// describe('Dados inválidos', () => {})
-	// })
+	describe('Editar usuário verificar edição de usuário', () => {
+		// TODO Verificar visibilidade do modal
+
+		describe('Dados válidos', () => {
+			it.only('Editar usuário com dados válidos', () => {
+				let oldUser = Array();
+
+				WebTables.getFistRow().within(($row) => {
+					let celulas = $row[0].childNodes;
+
+					celulas.forEach((attr) => {
+						oldUser.push(attr.textContent);
+					});
+				});
+
+				WebTables.editFirstUser();
+				cy.fixture(editUserFixture).then((user) => {
+					WebTables.editUser(oldUser, user);
+				});
+			});
+		});
+		describe('Dados inválidos', () => {});
+	});
 
 	// TODO: Implementar exclusão de usuário
 	// describe('Excluir usuário e verificar exclusão de usuário',() => {})
