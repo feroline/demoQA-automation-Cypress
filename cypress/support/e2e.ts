@@ -16,7 +16,7 @@ declare global {
 			 * @example cy.verificaURL('/url-desejada/x')
 			 */
 			verificaUrl(partialURL: string): Chainable;
-			validateOldUserForm(userData: Array<string>): Chainable;
+			validateOldUserForm(userData: Array<string>, exist: boolean): Chainable;
 		}
 	}
 }
