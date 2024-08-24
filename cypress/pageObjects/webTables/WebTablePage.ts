@@ -93,6 +93,10 @@ class WebTablesPage {
 		cy.validateColors(tipo, locators.departmentInput);
 	}
 
+	validadeFirstname() {
+		cy.validateColors('error', locators.firstnameInput);
+	}
+
 	validateEmail() {
 		cy.validateColors('error', locators.emailInput);
 	}
@@ -109,25 +113,39 @@ class WebTablesPage {
 		cy.get(locators.actionEdit).first().click();
 	}
 
+	deleteFirstUser() {
+		cy.get(locators.actionDelete).first().click();
+	}
+
 	getFistRow() {
 		return cy.get(locators.actionEdit).first().parents(locators.divRow);
 	}
 
-	editUser(userData: string[] | Array<any> | void, editUserFixture: user) {
+	editUser(
+		userData: string[] | Array<any>,
+		editUserFixture: user,
+		semFirstname?: boolean
+	) {
 		cy.get(locators.userForm).within(() => {
-			// userData.forEach((dado) => {
-			// 	cy.get(`input[value="${dado}"]`);
-			// });
-			cy.get(locators.firstnameInput).clear().type(editUserFixture.firstname);
+			userData.forEach((dado) => {
+				cy.get(`input[value="${dado}"]`);
+			});
+
 			cy.get(locators.lasnameInput).clear().type(editUserFixture.lastname);
 			cy.get(locators.ageInput).clear().type(editUserFixture.age);
 			cy.get(locators.emailInput).clear().type(editUserFixture.email);
 			cy.get(locators.salaryInput).clear().type(editUserFixture.salary);
 			cy.get(locators.departmentInput).clear().type(editUserFixture.department);
+
+			semFirstname === false
+				? cy.get(locators.firstnameInput).clear()
+				: cy.get(locators.firstnameInput).clear().type(editUserFixture.firstname);
+
 			cy.get(locators.submitBtn).click();
 		});
 	}
 
+	// TODO: converter em promisse
 	//para que os resultados possam ser explorados deve ser chamado dentro de uma promisse com 'then'
 	getUserRow(indiceRow?: number): Array<string> {
 		let userRow = new Array();

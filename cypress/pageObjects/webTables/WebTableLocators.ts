@@ -18,6 +18,7 @@ const WebTablesLocators = {
 	rowMsg: 'div.rt-noData',
 	divRow: 'div[role="row"]',
 	actionEdit: 'div.action-buttons>span[title="Edit"]',
+	actionDelete: 'div.action-buttons>span[title="Delete"]',
 };
 
 export default WebTablesLocators;

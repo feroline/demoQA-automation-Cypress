@@ -166,7 +166,7 @@ describe('Testes na WebTable', () => {
 			WebTables.modalVisible(false);
 		});
 
-		describe('Dados válidos', () => {
+		describe('Partição válida', () => {
 			it('Editar usuário com dados válidos', () => {
 				let oldUser = WebTables.getUserRow();
 
@@ -189,11 +189,37 @@ describe('Testes na WebTable', () => {
 			});
 		});
 
-		// TODO Implementar edição de usuários com dados inválidos
-		// TODO Implementar edição de usuários com com dados faltantes
-		describe('Dados inválidos', () => {});
+		describe('Partição inválida', () => {
+			it('Editar usuário com campo nome vazio', () => {
+				let oldUser = WebTables.getUserRow();
+
+				WebTables.editFirstUser();
+
+				cy.fixture(editUserFixture).then((user) => {
+					WebTables.editUser(oldUser, user, false);
+					WebTables.validadeFirstname();
+				});
+			});
+
+			it('Editar usuário com dados inválidos', () => {
+				let oldUser = WebTables.getUserRow();
+
+				WebTables.editFirstUser();
+
+				cy.fixture(emptyUserFixture).then((user) => {
+					WebTables.editUser(oldUser, user);
+					WebTables.validateEmptyForm();
+				});
+			});
+
+			it('Editar usuário com campos em branco', () => {});
+		});
 	});
 
+	it.only('Excluir usuário e verificar exclusão', () => {
+		// TODO: CONVERTER A FUNÇÃO getUserRow em promisse
+		let oldUser = WebTables.getUserRow();
+	});
 	// TODO: Implementar exclusão de usuário
 	// describe('Excluir usuário e verificar exclusão de usuário',() => {})
 });
