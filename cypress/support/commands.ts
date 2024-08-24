@@ -1,11 +1,14 @@
 Cypress.Commands.add('getItemMenu', (textoItem: string) => {
+	// TODO: Adicionar a um locator
 	cy.xpath(
 		`//div[contains(@class,'show') and contains(@class,'collapse') ]/ul/li/span[contains(.,'${textoItem}')]`
 	);
 });
 
 Cypress.Commands.add('verificaMensagemInicial', () => {
+	// TODO: Adicionar a um enum
 	const mensagem = 'Please select an item from left to start practice.';
+	// TODO: Adicionar a um locator
 	return cy
 		.xpath(`//div[contains(@class,'playgound-body')][contains(.,'${mensagem}')]`)
 		.should('be.visible');
@@ -14,7 +17,7 @@ Cypress.Commands.add('verificaMensagemInicial', () => {
 Cypress.Commands.add('visitarToolsQA', (partialURL?: string) => {
 	partialURL
 		? cy.visit(partialURL, { failOnStatusCode: false })
-		: cy.visit('/', { failOnStatusCode: false });
+		: cy.visit(`${Cypress.config('baseUrl')}`, { failOnStatusCode: false });
 
 	Cypress.on('uncaught:exception', (err, runnable) => {
 		return false;
