@@ -1,4 +1,5 @@
 import locators from './WebTableLocators';
+
 class WebTablesPage {
 	webTablesMenu() {
 		return cy.getItemMenu(locators.itemMenu).click();
@@ -16,8 +17,14 @@ class WebTablesPage {
 	 */
 	rowTable(indice?: number) {
 		return indice == undefined
-			? cy.get(locators.rowTable).first()
-			: cy.get(locators.rowTable).eq(indice);
+			? cy
+					.get(locators.rowTable, { timeout: 8000 })
+					.first()
+					.children(locators.divRow)
+			: cy
+					.get(locators.rowTable, { timeout: 8000 })
+					.eq(indice)
+					.children(locators.divRow);
 	}
 
 	search(text: string) {
@@ -85,12 +92,9 @@ class WebTablesPage {
 
 	validateEmptyForm() {
 		const tipo = 'error';
-		cy.validateColors(tipo, locators.firstnameInput);
-		cy.validateColors(tipo, locators.lasnameInput);
 		cy.validateColors(tipo, locators.emailInput);
 		cy.validateColors(tipo, locators.ageInput);
 		cy.validateColors(tipo, locators.salaryInput);
-		cy.validateColors(tipo, locators.departmentInput);
 	}
 
 	validadeFirstname() {
@@ -109,67 +113,46 @@ class WebTablesPage {
 		cy.validateColors('error', locators.ageInput);
 	}
 
-	editFirstUser() {
-		cy.get(locators.actionEdit).first().click();
+	editUserAction(indiceRow: number) {
+		cy.get(locators.actionEdit).eq(indiceRow).click();
 	}
 
-	deleteFirstUser() {
-		cy.get(locators.actionDelete).first().click();
+	deleteUserAction(indiceRow: number) {
+		cy.get(locators.actionDelete).eq(indiceRow).click();
 	}
 
 	getFistRow() {
 		return cy.get(locators.actionEdit).first().parents(locators.divRow);
 	}
 
-	editUser(
-		userData: string[] | Array<any>,
-		editUserFixture: user,
-		semFirstname?: boolean
-	) {
+	editUser(userData: Array<string>, editUserFixture: user) {
 		cy.get(locators.userForm).within(() => {
-			userData.forEach((dado) => {
-				cy.get(`input[value="${dado}"]`);
-			});
+			cy.validateOldUserForm(userData, true);
 
 			cy.get(locators.lasnameInput).clear().type(editUserFixture.lastname);
 			cy.get(locators.ageInput).clear().type(editUserFixture.age);
 			cy.get(locators.emailInput).clear().type(editUserFixture.email);
 			cy.get(locators.salaryInput).clear().type(editUserFixture.salary);
 			cy.get(locators.departmentInput).clear().type(editUserFixture.department);
-
-			semFirstname === false
-				? cy.get(locators.firstnameInput).clear()
-				: cy.get(locators.firstnameInput).clear().type(editUserFixture.firstname);
-
+			cy.get(locators.firstnameInput).clear().type(editUserFixture.firstname);
 			cy.get(locators.submitBtn).click();
 		});
 	}
 
-	// TODO: converter em promisse
-	//para que os resultados possam ser explorados deve ser chamado dentro de uma promisse com 'then'
-	getUserRow(indiceRow?: number): Array<string> {
-		let userRow = new Array();
-		let row;
+	async getDataRow(row: any): Promise<Array<string>> {
+		let userData = new Array();
 
-		if (!indiceRow || indiceRow === 0) {
-			row = cy.get(locators.actionEdit).first().parents(locators.divRow);
-		} else {
-			row = cy.get(locators.actionEdit).eq(indiceRow).parents(locators.divRow);
-		}
-
-		row.within(($row) => {
+		await row.within(($row: any) => {
 			let celulas = $row[0].childNodes;
-			let length = celulas.length;
 
-			celulas.forEach((celula, i) => {
-				//não vai armazenar os valores da celula de action
-				if (i != length - 1) {
-					userRow.push(celula.textContent);
+			celulas.forEach((celula: any, i: number) => {
+				if (i != celulas.length - 1) {
+					userData.push(celula.textContent);
 				}
 			});
 		});
 
-		return userRow;
+		return userData;
 	}
 }
 

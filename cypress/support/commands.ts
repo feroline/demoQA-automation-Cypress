@@ -42,3 +42,18 @@ Cypress.Commands.add(
 Cypress.Commands.add('verificaUrl', (partialURL: string) => {
 	cy.url().should('equal', Cypress.config('baseUrl') + partialURL);
 });
+
+Cypress.Commands.add(
+	'validateOldUserForm',
+	(userData: Array<string>, exist: boolean) => {
+		if (exist === true) {
+			userData.forEach((dado) => {
+				cy.get(`input[value="${dado}"]`).should('exist');
+			});
+		} else {
+			userData.forEach((dado) => {
+				cy.get(`input[value="${dado}"]`).should('not.exist');
+			});
+		}
+	}
+);

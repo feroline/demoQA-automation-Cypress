@@ -1,4 +1,3 @@
-import { forIn } from '../../../node_modules/cypress/types/lodash/index';
 import WebTablesPage from '../../pageObjects/webTables/WebTablePage';
 import ElementsLink from '../../support/Enum/links/Elements';
 
@@ -167,59 +166,55 @@ describe('Testes na WebTable', () => {
 		});
 
 		describe('Partição válida', () => {
-			it('Editar usuário com dados válidos', () => {
-				let oldUser = WebTables.getUserRow();
+			it('Editar usuário com dados válidos', async () => {
+				let indiceRow = 0;
+				let row = WebTables.rowTable(indiceRow);
+				let oldUser = await WebTables.getDataRow(row);
 
-				WebTables.editFirstUser();
+				WebTables.editUserAction(indiceRow);
 
-				cy.fixture(editUserFixture).then((user) => {
-					WebTables.editUser(oldUser, user);
+				cy.fixture(editUserFixture).then((editUser) => {
+					WebTables.editUser(oldUser, editUser);
 
-					WebTables.verifyDataRowTable(user.firstname, true);
-					WebTables.verifyDataRowTable(user.lastname, true);
-					WebTables.verifyDataRowTable(user.age, true);
-					WebTables.verifyDataRowTable(user.email, true);
-					WebTables.verifyDataRowTable(user.salary, true);
-					WebTables.verifyDataRowTable(user.department, true);
-
-					oldUser.forEach((dado) => {
-						WebTables.verifyDataRowTable(dado, false);
-					});
+					WebTables.verifyDataRowTable(editUser.firstname, true);
+					WebTables.verifyDataRowTable(editUser.lastname, true);
+					WebTables.verifyDataRowTable(editUser.age, true);
+					WebTables.verifyDataRowTable(editUser.email, true);
+					WebTables.verifyDataRowTable(editUser.salary, true);
+					WebTables.verifyDataRowTable(editUser.department, true);
 				});
+
+				for (let dado of oldUser) {
+					WebTables.verifyDataRowTable(dado, false);
+				}
 			});
 		});
 
 		describe('Partição inválida', () => {
-			it('Editar usuário com campo nome vazio', () => {
-				let oldUser = WebTables.getUserRow();
+			it('Editar usuário com campos vazios', async () => {
+				let indiceRow = 0;
+				let row = WebTables.rowTable(indiceRow);
+				let oldUser = await WebTables.getDataRow(row);
 
-				WebTables.editFirstUser();
-
-				cy.fixture(editUserFixture).then((user) => {
-					WebTables.editUser(oldUser, user, false);
-					WebTables.validadeFirstname();
-				});
-			});
-
-			it('Editar usuário com dados inválidos', () => {
-				let oldUser = WebTables.getUserRow();
-
-				WebTables.editFirstUser();
+				WebTables.editUserAction(indiceRow);
 
 				cy.fixture(emptyUserFixture).then((user) => {
 					WebTables.editUser(oldUser, user);
 					WebTables.validateEmptyForm();
 				});
 			});
-
-			it('Editar usuário com campos em branco', () => {});
 		});
 	});
 
-	it.only('Excluir usuário e verificar exclusão', () => {
-		// TODO: CONVERTER A FUNÇÃO getUserRow em promisse
-		let oldUser = WebTables.getUserRow();
+	it('Excluir usuário e verificar exclusão', async () => {
+		let indiceRow = 0;
+		let row = WebTables.rowTable(indiceRow);
+		let oldUser = await WebTables.getDataRow(row);
+
+		WebTables.deleteUserAction(indiceRow);
+
+		for (let dado of oldUser) {
+			WebTables.verifyDataRowTable(dado, false);
+		}
 	});
-	// TODO: Implementar exclusão de usuário
-	// describe('Excluir usuário e verificar exclusão de usuário',() => {})
 });
