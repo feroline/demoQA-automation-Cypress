@@ -1,4 +1,3 @@
-import CheckBoxNode from '../../support/Types/CheckBoxNode';
 const CheckBoxLocators = {
 	itemMenu: 'Check Box',
 	collapseExpandBtn: 'button.rct-collapse-btn',
