@@ -1,15 +1,11 @@
-import HomePage from '../../pageObjects/home/HomePage';
 import ElementsLink from '../../support/Enum/links/Elements';
 import CheckBoxPage from '../../pageObjects/checkBox/CheckBoxPage';
 import CheckBoxText from '../../support/Enum/CheckBoxText';
 
-const Home = new HomePage();
 const CheckBox = new CheckBoxPage();
 
 beforeEach(() => {
-	cy.visitarToolsQA();
-	Home.elements().click();
-	CheckBox.checkBoxMenu();
+	cy.visitarToolsQA(ElementsLink.Checkbox);
 });
 
 describe('Testes da tela com Check Box', () => {
@@ -23,6 +19,7 @@ describe('Testes da tela com Check Box', () => {
 				.should('be.visible')
 				.and('contain.text', CheckBoxText.Home);
 
+			// TODO: Usar Within logo abaixo
 			CheckBox.collapseExpandNode('home').then(() => {
 				CheckBox.getNodeByLabel('desktop')
 					.should('be.visible')
@@ -120,6 +117,7 @@ describe('Testes da tela com Check Box', () => {
 			CheckBox.expandAll();
 
 			CheckBox.getTreeNode().then(() => {
+				// TODO: Criar método para verificar visibilidade
 				CheckBox.getNodeByLabel('desktop').should('be.visible');
 				CheckBox.getNodeByLabel('documents').should('be.visible');
 				CheckBox.getNodeByLabel('downloads').should('be.visible');
@@ -144,6 +142,7 @@ describe('Testes da tela com Check Box', () => {
 		it('Home', () => {
 			CheckBox.collapseExpandNode('home');
 			CheckBox.collapseExpandNode('home').then(() => {
+				// TODO: Criar método para verificar invisibilidade
 				CheckBox.getNodeByLabel('desktop').should('not.exist');
 				CheckBox.getNodeByLabel('documents').should('not.exist');
 				CheckBox.getNodeByLabel('downloads').should('not.exist');

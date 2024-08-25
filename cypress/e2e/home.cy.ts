@@ -4,7 +4,7 @@ import HomeLinks from '../support/Enum/links/Home';
 const Home = new HomePage();
 
 beforeEach(() => {
-	cy.visitarToolsQA();
+	cy.visitarToolsQA('/');
 });
 
 describe('Teste de Home', () => {

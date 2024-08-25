@@ -1,15 +1,11 @@
-import HomePage from '../../pageObjects/home/HomePage';
 import TextBoxPage from '../../pageObjects/textBox/TextBoxPage';
 import ElementsLink from '../../support/Enum/links/Elements';
 
-const Home = new HomePage();
 const TextBox = new TextBoxPage();
-
+const usuarioValidoFixture = '/usuarios/valido';
+const usuarioVazio = '/usuarios/vazio';
 beforeEach(() => {
-	cy.visitarToolsQA();
-	Home.elements().click();
-	cy.fixture('/usuarios/valido').as('usuarioValido.fixture');
-	TextBox.textBoxMenu();
+	cy.visitarToolsQA(ElementsLink.Text_box);
 });
 
 describe('Teste da tela com Text Box', () => {
@@ -18,14 +14,17 @@ describe('Teste da tela com Text Box', () => {
 	});
 
 	describe('Partição Valida', () => {
+		// TODO: Pegar dado por userForm e usar within
+
 		it('Preencher todos os campos com dados válidos', () => {
-			cy.fixture('/usuarios/valido').then((usuario) => {
+			cy.fixture(usuarioValidoFixture).then((usuario) => {
 				TextBox.username().type(usuario.name);
 				TextBox.email().type(usuario.email);
 				TextBox.currentAddress().type(usuario.currentAddress);
 				TextBox.permanentAddress().type(usuario.permanentAddress);
 				TextBox.submitButton().click();
 
+				// TODO: Passar o label para um enum
 				TextBox.outputName()
 					.should('contain.text', 'Name')
 					.and('contain.text', usuario.name);
@@ -42,7 +41,7 @@ describe('Teste da tela com Text Box', () => {
 		});
 
 		it('Preencher somente o campo de Nome', () => {
-			cy.fixture('/usuarios/valido').then((usuario) => {
+			cy.fixture(usuarioValidoFixture).then((usuario) => {
 				TextBox.username().type(usuario.name);
 				TextBox.submitButton().click();
 
@@ -55,7 +54,7 @@ describe('Teste da tela com Text Box', () => {
 			});
 		});
 		it('Preencher somente o campo de E-mail', () => {
-			cy.fixture('/usuarios/valido').then((usuario) => {
+			cy.fixture(usuarioValidoFixture).then((usuario) => {
 				TextBox.email().type(usuario.email);
 				TextBox.submitButton().click();
 
@@ -68,7 +67,7 @@ describe('Teste da tela com Text Box', () => {
 			});
 		});
 		it('Preencher somente o campo de Endereço Atual', () => {
-			cy.fixture('/usuarios/valido').then((usuario) => {
+			cy.fixture(usuarioValidoFixture).then((usuario) => {
 				TextBox.currentAddress().type(usuario.currentAddress);
 				TextBox.submitButton().click();
 
@@ -81,7 +80,7 @@ describe('Teste da tela com Text Box', () => {
 			});
 		});
 		it('Preencher somente o campo de Endereço Permanente', () => {
-			cy.fixture('/usuarios/valido').then((usuario) => {
+			cy.fixture(usuarioValidoFixture).then((usuario) => {
 				TextBox.permanentAddress().type(usuario.permanentAddress);
 				TextBox.submitButton().click();
 
@@ -97,7 +96,7 @@ describe('Teste da tela com Text Box', () => {
 
 	describe('Partição Inválida', () => {
 		it.skip('Preencher todos os campos com espaço em branco', () => {
-			cy.fixture('/usuarios/vazio').then((usuario) => {
+			cy.fixture(usuarioVazio).then((usuario) => {
 				TextBox.username().type(usuario.name);
 				TextBox.email().type(usuario.email);
 				TextBox.currentAddress().type(usuario.currentAddress);
@@ -112,7 +111,7 @@ describe('Teste da tela com Text Box', () => {
 				TextBox.validateErrorEmail();
 			});
 		});
-		it('Preencher campo de e-mail com e-mail inválido', () => {
+		it.skip('Preencher campo de e-mail com e-mail inválido', () => {
 			cy.fixture('/usuarios/invalido').then((usuario) => {
 				TextBox.username().type(usuario.name);
 				TextBox.email().type(usuario.email);

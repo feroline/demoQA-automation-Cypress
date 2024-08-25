@@ -1,10 +1,7 @@
-import HomePage from '../../pageObjects/home/HomePage';
 import ElementsLink from '../../support/Enum/links/Elements';
-const Home = new HomePage();
 
 beforeEach(() => {
-	cy.visitarToolsQA();
-	Home.elements().click();
+	cy.visitarToolsQA(ElementsLink.Elements);
 });
 
 describe('Testes da página Elements', () => {
