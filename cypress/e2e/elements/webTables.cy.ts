@@ -166,7 +166,6 @@ describe('Testes na WebTable', () => {
 		});
 
 		describe('Partição válida', () => {
-			// FIXME: está gerando erro no within dentro do getDataRow() foi após adicionar o session.
 			it('Editar usuário com dados válidos', async () => {
 				let indiceRow = 0;
 				let row = WebTables.rowTable(indiceRow);
@@ -183,16 +182,15 @@ describe('Testes na WebTable', () => {
 					WebTables.verifyDataRowTable(editUser.email, true);
 					WebTables.verifyDataRowTable(editUser.salary, true);
 					WebTables.verifyDataRowTable(editUser.department, true);
-				});
 
-				for (let dado of oldUser) {
-					WebTables.verifyDataRowTable(dado, false);
-				}
+					for (let dado of oldUser) {
+						WebTables.verifyDataRowTable(dado, false);
+					}
+				});
 			});
 		});
 
 		describe('Partição inválida', () => {
-			// FIXME: está gerando erro no within dentro do getDataRow()  foi após adicionar o session.
 			it('Editar usuário com campos vazios', async () => {
 				let indiceRow = 0;
 				let row = WebTables.rowTable(indiceRow);
@@ -208,16 +206,17 @@ describe('Testes na WebTable', () => {
 		});
 	});
 
-	// FIXME: está gerando erro no within dentro do getDataRow()  foi após adicionar o session.
-	it('Excluir usuário e verificar exclusão', async () => {
-		let indiceRow = 0;
-		let row = WebTables.rowTable(indiceRow);
-		let oldUser = await WebTables.getDataRow(row);
+	describe('Excluir usuário', () => {
+		it.only('Excluir usuário e verificar exclusão', async () => {
+			let indiceRow = 0;
+			let row = WebTables.rowTable(indiceRow);
+			let oldUser = WebTables.getDataRow(row);
 
-		WebTables.deleteUserAction(indiceRow);
+			WebTables.deleteUserAction(indiceRow);
 
-		for (let dado of oldUser) {
-			WebTables.verifyDataRowTable(dado, false);
-		}
+			(await oldUser).forEach((dado) => {
+				WebTables.verifyDataRowTable(dado, false);
+			});
+		});
 	});
 });

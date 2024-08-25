@@ -139,10 +139,10 @@ class WebTablesPage {
 		});
 	}
 
-	async getDataRow(row: any): Promise<Array<string>> {
-		let userData = new Array();
+	getDataRow(row: any): string[] {
+		let userData: string[] = [];
 
-		await row.within(($row: any) => {
+		row.then(($row: any) => {
 			let celulas = $row[0].childNodes;
 
 			celulas.forEach((celula: any, i: number) => {
