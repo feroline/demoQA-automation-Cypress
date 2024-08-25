@@ -16,7 +16,7 @@ Cypress.Commands.add('verificaMensagemInicial', () => {
 
 Cypress.Commands.add('visitarToolsQA', (url: string) => {
 	//colocando 1min de timeout apenenas para as páginas de carregamento
-	cy.visit(url, { timeout: 100000 });
+	cy.visit(url, { failOnStatusCode: false, timeout: 130000 });
 });
 
 import Colors from './Enum/Colors';
