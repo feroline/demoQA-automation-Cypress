@@ -1,14 +1,10 @@
-import HomePage from '../../pageObjects/home/HomePage';
 import ElementsLink from '../../support/Enum/links/Elements';
 import RadioButtonPage from '../../pageObjects/radioButton/RadioBtnPage';
 
-const Home = new HomePage();
 const RadioButton = new RadioButtonPage();
 
 beforeEach(() => {
-	cy.visitarToolsQA();
-	Home.elements().click();
-	RadioButton.radioBtnMenu();
+	cy.visitarToolsQA(ElementsLink.RadioButton);
 });
 
 describe('Testes da página de Radio Button', () => {

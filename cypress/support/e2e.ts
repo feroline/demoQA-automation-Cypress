@@ -2,13 +2,27 @@
 import './commands';
 require('@cypress/xpath');
 
+beforeEach(() => {
+	cy.session(
+		'performance',
+		() => {
+			cy.visit('/', { timeout: 100000 });
+		},
+		{ cacheAcrossSpecs: true }
+	);
+});
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+	return false;
+});
+
 declare global {
 	namespace Cypress {
 		interface Chainable {
 			xpath(xpathSelector: string): Chainable;
 			getItemMenu(textoItem: string): Chainable;
 			verificaMensagemInicial(): Chainable;
-			visitarToolsQA(partialURL?: string): Chainable;
+			visitarToolsQA(partialURL: string): Chainable;
 			validateColors(tipo: ResponseType, locator: string): Chainable;
 			/**
 			 * @description Verifica se a URL da página atual é exatamente igual a URL base + URL parcial passada como parâmetro

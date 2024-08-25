@@ -14,14 +14,9 @@ Cypress.Commands.add('verificaMensagemInicial', () => {
 		.should('be.visible');
 });
 
-Cypress.Commands.add('visitarToolsQA', (partialURL?: string) => {
-	partialURL
-		? cy.visit(partialURL, { failOnStatusCode: false })
-		: cy.visit(`${Cypress.config('baseUrl')}`, { failOnStatusCode: false });
-
-	Cypress.on('uncaught:exception', (err, runnable) => {
-		return false;
-	});
+Cypress.Commands.add('visitarToolsQA', (url: string) => {
+	//colocando 1min de timeout apenenas para as páginas de carregamento
+	cy.visit(url, { timeout: 100000 });
 });
 
 import Colors from './Enum/Colors';

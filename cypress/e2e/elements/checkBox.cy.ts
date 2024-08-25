@@ -1,15 +1,11 @@
-import HomePage from '../../pageObjects/home/HomePage';
 import ElementsLink from '../../support/Enum/links/Elements';
 import CheckBoxPage from '../../pageObjects/checkBox/CheckBoxPage';
 import CheckBoxText from '../../support/Enum/CheckBoxText';
 
-const Home = new HomePage();
 const CheckBox = new CheckBoxPage();
 
 beforeEach(() => {
-	cy.visitarToolsQA();
-	Home.elements().click();
-	CheckBox.checkBoxMenu();
+	cy.visitarToolsQA(ElementsLink.Checkbox);
 });
 
 describe('Testes da tela com Check Box', () => {

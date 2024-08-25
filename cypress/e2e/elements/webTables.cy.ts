@@ -166,6 +166,7 @@ describe('Testes na WebTable', () => {
 		});
 
 		describe('Partição válida', () => {
+			// FIXME: está gerando erro no within dentro do getDataRow() foi após adicionar o session.
 			it('Editar usuário com dados válidos', async () => {
 				let indiceRow = 0;
 				let row = WebTables.rowTable(indiceRow);
@@ -191,6 +192,7 @@ describe('Testes na WebTable', () => {
 		});
 
 		describe('Partição inválida', () => {
+			// FIXME: está gerando erro no within dentro do getDataRow()  foi após adicionar o session.
 			it('Editar usuário com campos vazios', async () => {
 				let indiceRow = 0;
 				let row = WebTables.rowTable(indiceRow);
@@ -206,6 +208,7 @@ describe('Testes na WebTable', () => {
 		});
 	});
 
+	// FIXME: está gerando erro no within dentro do getDataRow()  foi após adicionar o session.
 	it('Excluir usuário e verificar exclusão', async () => {
 		let indiceRow = 0;
 		let row = WebTables.rowTable(indiceRow);
