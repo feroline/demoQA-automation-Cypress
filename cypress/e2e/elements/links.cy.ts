@@ -1,6 +1,5 @@
-// @ts-nocheck
-
-import LinksPage from '../../pageObjects/links/linksPage';
+// TODO: adicionar um alias para a importação dos pageObjects
+import LinksPage from '../../pageObjects/links/LinksPage';
 import ElementsLinks from '../../support/Enum/links/Elements';
 
 const Links = new LinksPage();
