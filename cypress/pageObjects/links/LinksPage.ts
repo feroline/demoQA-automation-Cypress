@@ -1,4 +1,6 @@
 import locators from './LinksLocators';
+import homeLocators from '../home/HomeLocators';
+import Cards from '../../support/Enum/Cards';
 
 class LinksPage {
 	getsimpleLink() {
@@ -15,6 +17,10 @@ class LinksPage {
 
 	expectUrl(response: Response | Object | any, urlEsperada: URL) {
 		expect(response.allRequestResponses[0]['Request URL']).be.equal(urlEsperada);
+	}
+
+	checkRedirectFrontHome() {
+		cy.xpath(homeLocators.cardXpath(Cards.Elements)).should('be.visible');
 	}
 }
 

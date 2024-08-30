@@ -10,10 +10,22 @@ beforeEach(() => {
 	cy.visitarToolsQA(ElementsLinks.Links);
 });
 
-describe('Opens New Tab - Frontend', () => {
-	it('Verificar status e url de resposta do Simple Link', () => {
+describe('Simple Link', () => {
+	it('Check FrontEnd (Opens New Tab)', () => {
 		Links.getsimpleLink().then(($link) => {
-			cy.request(Links.getPropHref($link)).as('request');
+			const href = Links.getPropHref($link);
+
+			cy.visit(href);
+			Links.checkRedirectFrontHome();
+			cy.url().should('be.equal', `${baseUrl}/`);
+		});
+	});
+
+	it('Check Backend (API)', () => {
+		Links.getsimpleLink().then(($link) => {
+			const href = Links.getPropHref($link);
+
+			cy.request(href).as('request');
 
 			cy.get('@request').then((response) => {
 				Links.expectStatus(response, 200);
@@ -21,10 +33,10 @@ describe('Opens New Tab - Frontend', () => {
 			});
 		});
 	});
-
-	// TODO: Implementar dynamic link
-	// it('Dynamic Link', () => {})
 });
+
+// TODO: Implementar dynamic link
+// it('Dynamic Link', () => {})
 
 // TODO: Implementar os testes de API
 // describe('Backend(API)',() =>{})
