@@ -1,7 +1,5 @@
-// TODO: adicionar um alias para a importação dos pageObjects
-// import LinksPage from '../../pageObjects/links/LinksPage';
 import LinksPage from '@pageObject/links/LinksPage';
-import ElementsLinks from '../../support/Enum/links/Elements';
+import ElementsLinks from '@enum/links/Elements';
 
 const Links = new LinksPage();
 const baseUrl = Cypress.config('baseUrl');

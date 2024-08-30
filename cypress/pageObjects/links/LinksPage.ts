@@ -1,6 +1,6 @@
 import locators from './LinksLocators';
-import homeLocators from '../home/HomeLocators';
-import Cards from '../../support/Enum/Cards';
+import homeLocators from '@pageObject/home/HomeLocators';
+import Cards from '@enum/Cards';
 
 class LinksPage {
 	getsimpleLink() {

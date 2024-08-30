@@ -1,5 +1,5 @@
 import locator from './ButtonsLocatos';
-import mensagens from '../../support/Enum/ButtonsMsg';
+import mensagens from '@enum/ButtonsMsg';
 
 class ButtonsPage {
 	dbClickButton(dbClick: boolean) {
