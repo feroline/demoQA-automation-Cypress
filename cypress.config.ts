@@ -1,4 +1,6 @@
 import { defineConfig } from 'cypress';
+import 'module-alias/register';
+
 require('dotenv').config();
 
 export default defineConfig({
@@ -7,11 +9,9 @@ export default defineConfig({
 		pageLoadTimeout: 10000,
 		baseUrl: 'https://demoqa.com',
 		setupNodeEvents(on, config) {
-			// implement node event listeners here
 			on('task', {
 				pause(ms) {
 					return new Promise((resolve) => {
-						// tasks should not resolve with undefined
 						setTimeout(() => resolve(null), ms);
 					});
 				},

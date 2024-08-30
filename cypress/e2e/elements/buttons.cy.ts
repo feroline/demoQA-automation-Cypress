@@ -1,5 +1,5 @@
-import ButtonsPage from '../../pageObjects/buttons/ButtonsPage';
-import ElementsLink from '../../support/Enum/links/Elements';
+import ButtonsPage from '@pageObject/buttons/ButtonsPage';
+import ElementsLink from '@enum/links/Elements';
 
 const Buttons = new ButtonsPage();
 

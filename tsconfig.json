@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "target": "ES2023",
     "lib": [
       "ES2023",
@@ -9,9 +10,21 @@
       "cypress",
       "node"
     ],
-    "strict": true
+    "strict": true,
+    "baseUrl": "./cypress",
+    "paths": {
+      "@pageObject/*": [
+        "pageObjects/*"
+      ],
+      "@enum/*": [
+        "support/Enum/*"
+      ],
+      "@type/*": [
+        "support/Types/*"
+      ]
+    }
   },
   "include": [
     "**/*.ts"
-  ]
+  ],
 }

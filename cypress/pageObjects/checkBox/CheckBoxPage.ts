@@ -1,4 +1,4 @@
-import CheckBoxNode from '../../support/Types/CheckBoxNode';
+import CheckBoxNode from '@type/CheckBoxNode';
 import locators from './CheckBoxLocators';
 
 class CheckBoxPage {

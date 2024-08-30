@@ -1,5 +1,5 @@
 import locators from './HomeLocators';
-import Cards from '../../support/Enum/Cards';
+import Cards from '@enum/Cards';
 
 class HomePage {
 	link?: string;

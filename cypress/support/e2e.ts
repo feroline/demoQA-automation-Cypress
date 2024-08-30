@@ -1,5 +1,5 @@
-// Import commands.js using ES2015 syntax:
 import './commands';
+
 require('@cypress/xpath');
 
 beforeEach(() => {
@@ -7,8 +7,8 @@ beforeEach(() => {
 		'performance',
 		() => {
 			cy.visit('/', { timeout: 100000 });
-		},
-		{ cacheAcrossSpecs: true }
+		}
+		// { cacheAcrossSpecs: true }
 	);
 });
 

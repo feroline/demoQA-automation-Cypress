@@ -1,5 +1,5 @@
-import HomePage from '../pageObjects/home/HomePage';
-import HomeLinks from '../support/Enum/links/Home';
+import HomePage from '@pageObject/home/HomePage';
+import HomeLinks from '@enum/links/Home';
 
 const Home = new HomePage();
 
