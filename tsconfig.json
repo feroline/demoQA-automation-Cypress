@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "target": "ES2023",
     "lib": [
       "ES2023",
@@ -13,5 +14,5 @@
   },
   "include": [
     "**/*.ts"
-  ]
+  ],
 }

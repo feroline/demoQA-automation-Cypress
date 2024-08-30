@@ -1,13 +1,13 @@
 {
-  "devDependencies": {
-    "@cypress/xpath": "^2.0.3",
-    "cypress": "^13.12.0",
-    "cypress-xpath": "^2.0.1",
-    "dotenv": "^16.4.5",
-    "typescript": "^5.5.2"
-  },
-  "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run"
-  }
+	"devDependencies": {
+		"@cypress/xpath": "^2.0.3",
+		"cypress": "^13.14.0",
+		"cypress-xpath": "^2.0.1",
+		"dotenv": "^16.4.5",
+		"typescript": "^5.5.2"
+	},
+	"scripts": {
+		"cy:open": "cypress open",
+		"cy:run": "cypress run"
+	}
 }

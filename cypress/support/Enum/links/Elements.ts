@@ -5,6 +5,7 @@ enum Elements {
 	RadioButton = '/radio-button',
 	WebTables = '/webtables',
 	Buttons = '/buttons/',
+	Links = '/links',
 }
 
 export default Elements;
