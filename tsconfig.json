@@ -10,7 +10,16 @@
       "cypress",
       "node"
     ],
-    "strict": true
+    "strict": true,
+    "baseUrl": "./cypress",
+    "paths": {
+      "@pageObjects/*": [
+        "pageObjects/*"
+      ],
+      "@enum/*": [
+        "support/Enum/*"
+      ]
+    }
   },
   "include": [
     "**/*.ts"

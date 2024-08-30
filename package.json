@@ -9,5 +9,12 @@
 	"scripts": {
 		"cy:open": "cypress open",
 		"cy:run": "cypress run"
+	},
+	"dependencies": {
+		"module-alias": "^2.2.3"
+	},
+	"_moduleAliases": {
+		"@pageObjects": "dist/pageObjects",
+		"@enum": "dist/support/Enum"
 	}
 }

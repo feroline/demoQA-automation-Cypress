@@ -1,5 +1,5 @@
-import ElementsLink from '../../support/Enum/links/Elements';
-import RadioButtonPage from '../../pageObjects/radioButton/RadioBtnPage';
+import ElementsLink from '@enum/links/Elements';
+import RadioButtonPage from '@pageObjects/radioButton/RadioBtnPage';
 
 const RadioButton = new RadioButtonPage();
 

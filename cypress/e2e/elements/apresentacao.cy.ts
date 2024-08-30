@@ -1,4 +1,4 @@
-import ElementsLink from '../../support/Enum/links/Elements';
+import ElementsLink from '@enum/links/Elements';
 
 beforeEach(() => {
 	cy.visitarToolsQA(ElementsLink.Elements);

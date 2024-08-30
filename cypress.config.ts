@@ -1,4 +1,5 @@
 import { defineConfig } from 'cypress';
+import 'module-alias/register';
 
 require('dotenv').config();
 
@@ -11,7 +12,6 @@ export default defineConfig({
 			on('task', {
 				pause(ms) {
 					return new Promise((resolve) => {
-						// tasks should not resolve with undefined
 						setTimeout(() => resolve(null), ms);
 					});
 				},

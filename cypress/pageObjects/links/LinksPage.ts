@@ -15,7 +15,7 @@ class LinksPage {
 		expect(response.status).be.equal(200);
 	}
 
-	expectUrl(response: Response | Object | any, urlEsperada: URL) {
+	expectUrl(response: Response | Object | any, urlEsperada: string) {
 		expect(response.allRequestResponses[0]['Request URL']).be.equal(urlEsperada);
 	}
 

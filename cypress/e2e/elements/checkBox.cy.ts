@@ -1,6 +1,6 @@
-import ElementsLink from '../../support/Enum/links/Elements';
-import CheckBoxPage from '../../pageObjects/checkBox/CheckBoxPage';
-import CheckBoxText from '../../support/Enum/CheckBoxText';
+import ElementsLink from '@enum/links/Elements';
+import CheckBoxPage from '@pageObjects/checkBox/CheckBoxPage';
+import CheckBoxText from '@enum/CheckBoxText';
 
 const CheckBox = new CheckBoxPage();
 
