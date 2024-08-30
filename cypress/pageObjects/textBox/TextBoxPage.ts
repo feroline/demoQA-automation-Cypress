@@ -2,10 +2,6 @@ import Colors from '@enum/Colors';
 import locators from './TextBoxLocators';
 
 class ElementsPage {
-	textBoxMenu() {
-		return cy.getItemMenu(locators.itemMenu).click();
-	}
-
 	username() {
 		return cy.get(locators.usernameInput);
 	}

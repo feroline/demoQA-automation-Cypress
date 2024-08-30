@@ -2,9 +2,6 @@ import CheckBoxNode from '@type/CheckBoxNode';
 import locators from './CheckBoxLocators';
 
 class CheckBoxPage {
-	checkBoxMenu() {
-		return cy.getItemMenu(locators.itemMenu).click();
-	}
 	/**
 	 * @param node é o elemento que deseja expandir e collapsar
 	 * @type Node

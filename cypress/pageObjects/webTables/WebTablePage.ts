@@ -1,10 +1,6 @@
 import locators from './WebTableLocators';
 
 class WebTablesPage {
-	webTablesMenu() {
-		return cy.getItemMenu(locators.itemMenu).click();
-	}
-
 	headerTable() {
 		return cy.get(locators.headerTable);
 	}
