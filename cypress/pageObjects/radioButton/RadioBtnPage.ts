@@ -1,10 +1,6 @@
 import locators from './RadioBtnLocators';
 
 class RadioButtonPage {
-	radioBtnMenu() {
-		return cy.getItemMenu(locators.itemMenu).click();
-	}
-
 	yesByRadio() {
 		return cy.get(locators.yesRadio);
 	}

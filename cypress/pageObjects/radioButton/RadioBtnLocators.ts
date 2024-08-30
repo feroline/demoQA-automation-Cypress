@@ -1,5 +1,4 @@
 const RadioButtonLocators = {
-	itemMenu: 'Radio Button',
 	yesRadio: '#yesRadio',
 	impressiveRadio: '#impressiveRadio',
 	noRadio: '#noRadio',

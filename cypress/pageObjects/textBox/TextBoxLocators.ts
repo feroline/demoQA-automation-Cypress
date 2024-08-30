@@ -1,5 +1,4 @@
 const TextBoxLocators = {
-	itemMenu: 'Text Box',
 	usernameInput: '#userName',
 	emailInput: '#userEmail',
 	currentAddressInput: '#currentAddress',

@@ -1,5 +1,4 @@
 const WebTablesLocators = {
-	itemMenu: 'Web Tables',
 	searchInput: '#searchBox',
 	searchBtn: '.input-group-append',
 	headerTable: 'div.ReactTable div.rt-thead.-header',

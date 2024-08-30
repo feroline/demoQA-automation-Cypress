@@ -1,12 +1,11 @@
+// TODO: Adicionar cenário na tela inicial que valida todos os itens do menu;
 Cypress.Commands.add('getItemMenu', (textoItem: string) => {
-	// TODO: Adicionar a um locator
 	cy.xpath(
 		`//div[contains(@class,'show') and contains(@class,'collapse') ]/ul/li/span[contains(.,'${textoItem}')]`
 	);
 });
 
 Cypress.Commands.add('verificaMensagemInicial', () => {
-	// TODO: Adicionar a um enum
 	const mensagem = 'Please select an item from left to start practice.';
 	// TODO: Adicionar a um locator
 	return cy

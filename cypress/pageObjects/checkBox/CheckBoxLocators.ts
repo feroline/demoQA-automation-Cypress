@@ -1,5 +1,4 @@
 const CheckBoxLocators = {
-	itemMenu: 'Check Box',
 	collapseExpandBtn: 'button.rct-collapse-btn',
 	treeNode: '#tree-node',
 	expandAllBtn: () =>
