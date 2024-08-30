@@ -14,7 +14,8 @@
 		"module-alias": "^2.2.3"
 	},
 	"_moduleAliases": {
-		"@pageObjects": "dist/pageObjects",
-		"@enum": "dist/support/Enum"
+		"@pageObject": "dist/pageObjects",
+		"@enum": "dist/support/Enum",
+		"@type": "dist/support/Types"
 	}
 }

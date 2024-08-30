@@ -1,4 +1,4 @@
-import HomePage from '@pageObjects/home/HomePage';
+import HomePage from '@pageObject/home/HomePage';
 import HomeLinks from '@enum/links/Home';
 
 const Home = new HomePage();

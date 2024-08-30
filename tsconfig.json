@@ -13,11 +13,14 @@
     "strict": true,
     "baseUrl": "./cypress",
     "paths": {
-      "@pageObjects/*": [
+      "@pageObject/*": [
         "pageObjects/*"
       ],
       "@enum/*": [
         "support/Enum/*"
+      ],
+      "@type/*": [
+        "support/Types/*"
       ]
     }
   },
