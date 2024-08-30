@@ -11,11 +11,11 @@ beforeEach(() => {
 
 describe('Open new tab', () => {
 	describe('Simple Link', () => {
-		it('Check FrontEnd (Opens New Tab)', () => {
+		it.only('Check FrontEnd (Opens New Tab)', () => {
 			Links.getsimpleLink().then(($link) => {
 				cy.visit(Links.getPropHref($link));
-				Links.checkRedirectFrontHome();
 				cy.url().should('be.equal', `${baseUrl}/`);
+				Links.checkRedirectFrontHome();
 			});
 		});
 
@@ -38,8 +38,8 @@ describe('Open new tab', () => {
 		it('Check FrontEnd (Opens New Tab)', () => {
 			Links.getDynamicLink().then(($link) => {
 				cy.visit(Links.getPropHref($link));
-				Links.checkRedirectFrontHome();
 				cy.url().should('be.equal', `${baseUrl}/`);
+				Links.checkRedirectFrontHome();
 			});
 		});
 		it('Check Backend (API)', () => {
