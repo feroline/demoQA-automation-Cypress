@@ -4,19 +4,55 @@ import Cards from '@enum/Cards';
 
 class LinksPage {
 	getsimpleLink() {
-		return cy.get(locators.simpleLink).click();
+		return cy.get(locators.simple).click();
+	}
+
+	getDynamicLink() {
+		return cy.get(locators.dynamic).click();
 	}
 
 	getPropHref($link: JQuery<HTMLElement>) {
 		return $link.prop('href');
 	}
 
-	expectStatus(response: Response | Object | any, cod: number) {
-		expect(response.status).be.equal(200);
+	createdLink() {
+		cy.get(locators.created).click();
 	}
 
-	expectUrl(response: Response | Object | any, urlEsperada: string) {
-		expect(response.allRequestResponses[0]['Request URL']).be.equal(urlEsperada);
+	noContentLink() {
+		cy.get(locators.noContent).click();
+	}
+
+	movedLink() {
+		cy.get(locators.moved).click();
+	}
+
+	badRequestLink() {
+		cy.get(locators.badRequest).click();
+	}
+
+	unauthorizedLink() {
+		cy.get(locators.unauthorized).click();
+	}
+
+	forbiddenLink() {
+		cy.get(locators.forbidden).click();
+	}
+
+	notFoundLink() {
+		cy.get(locators.notFound).click();
+	}
+
+	expectStatus(statusRecebido: number | undefined, cod: number) {
+		expect(statusRecebido).be.equal(cod);
+	}
+
+	expectUrl(urlRecebida: string | undefined, urlEsperada: string) {
+		expect(urlRecebida).be.equal(urlEsperada);
+	}
+
+	expectRequestUrl(requestUrl: string, urlEsperada: string) {
+		expect(requestUrl).be.equal(urlEsperada);
 	}
 
 	checkRedirectFrontHome() {
