@@ -6,6 +6,7 @@ enum Elements {
 	WebTables = '/webtables',
 	Buttons = '/buttons/',
 	Links = '/links',
+	BrokenLinks = '/broken',
 }
 
 export default Elements;
