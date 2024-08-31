@@ -1,4 +1,4 @@
-import locators from './brokenLinksLocators';
+import locators from './BrokenLinksLocators';
 
 class BrokenLinksPage {
 	checkValidImage() {
