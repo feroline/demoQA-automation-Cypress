@@ -5,6 +5,7 @@ require('dotenv').config();
 
 export default defineConfig({
 	projectId: process.env.CYPRESS_PROJECT_ID,
+	chromeWebSecurity: false,
 	e2e: {
 		pageLoadTimeout: 10000,
 		baseUrl: 'https://demoqa.com',
