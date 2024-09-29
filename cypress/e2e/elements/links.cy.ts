@@ -11,7 +11,7 @@ beforeEach(() => {
 
 describe('Open new tab', () => {
 	describe('Simple Link', () => {
-		it.only('Check FrontEnd (Opens New Tab)', () => {
+		it('Check FrontEnd (Opens New Tab)', () => {
 			Links.getsimpleLink().then(($link) => {
 				cy.visit(Links.getPropHref($link));
 				cy.url().should('be.equal', `${baseUrl}/`);
@@ -42,6 +42,7 @@ describe('Open new tab', () => {
 				Links.checkRedirectFrontHome();
 			});
 		});
+
 		it('Check Backend (API)', () => {
 			Links.getDynamicLink().then(($link) => {
 				cy.request(Links.getPropHref($link)).as('request');
