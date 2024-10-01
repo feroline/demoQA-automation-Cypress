@@ -7,6 +7,7 @@ enum Elements {
 	Buttons = '/buttons/',
 	Links = '/links',
 	BrokenLinks = '/broken',
+	DynamicProperties = '/dynamic-properties',
 }
 
 export default Elements;
