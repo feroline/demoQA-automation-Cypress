@@ -7,6 +7,7 @@ enum Elements {
 	Buttons = '/buttons/',
 	Links = '/links',
 	BrokenLinks = '/broken',
+	UploadDownload = '/upload-download',
 }
 
 export default Elements;
