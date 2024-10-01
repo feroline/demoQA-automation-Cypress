@@ -8,6 +8,7 @@ enum Elements {
 	Links = '/links',
 	BrokenLinks = '/broken',
 	DynamicProperties = '/dynamic-properties',
+	UploadDownload = '/upload-download',
 }
 
 export default Elements;

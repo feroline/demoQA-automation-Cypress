@@ -2,6 +2,7 @@ import { defineConfig } from 'cypress';
 import 'module-alias/register';
 
 require('dotenv').config();
+const { verifyDownloadTasks, isFileExist } = require('cy-verify-downloads');
 
 export default defineConfig({
 	projectId: process.env.CYPRESS_PROJECT_ID,
@@ -16,6 +17,8 @@ export default defineConfig({
 						setTimeout(() => resolve(null), ms);
 					});
 				},
+				verifyDownloadTasks,
+				isFileExist,
 			});
 		},
 	},
