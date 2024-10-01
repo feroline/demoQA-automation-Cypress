@@ -1,6 +1,7 @@
 {
 	"devDependencies": {
 		"@cypress/xpath": "^2.0.3",
+		"cy-verify-downloads": "^0.2.5",
 		"cypress": "^13.14.0",
 		"cypress-xpath": "^2.0.1",
 		"dotenv": "^16.4.5",

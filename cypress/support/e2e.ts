@@ -1,6 +1,7 @@
 import './commands';
 
 require('@cypress/xpath');
+require('cy-verify-downloads').addCustomCommand();
 
 beforeEach(() => {
 	cy.session(
@@ -31,6 +32,12 @@ declare global {
 			 */
 			verificaUrl(partialURL: string): Chainable;
 			validateOldUserForm(userData: Array<string>, exist: boolean): Chainable;
+			/**
+			 * @param textOfFile
+			 * @param options
+			 * @tutorial https://www.npmjs.com/package/cy-verify-downloads
+			 */
+			verifyDownload(textOfFile: string, options?: Object): Chainable;
 		}
 	}
 }
