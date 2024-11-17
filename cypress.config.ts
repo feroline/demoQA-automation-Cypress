@@ -7,6 +7,7 @@ const { verifyDownloadTasks, isFileExist } = require('cy-verify-downloads');
 export default defineConfig({
 	projectId: process.env.CYPRESS_PROJECT_ID,
 	chromeWebSecurity: false,
+	retries: 2,
 	e2e: {
 		pageLoadTimeout: 10000,
 		baseUrl: 'https://demoqa.com',

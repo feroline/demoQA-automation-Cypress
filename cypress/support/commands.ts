@@ -1,4 +1,5 @@
 // TODO: Adicionar cenário na tela inicial que valida todos os itens do menu;
+
 Cypress.Commands.add('getItemMenu', (textoItem: string) => {
 	cy.xpath(
 		`//div[contains(@class,'show') and contains(@class,'collapse') ]/ul/li/span[contains(.,'${textoItem}')]`
@@ -7,14 +8,13 @@ Cypress.Commands.add('getItemMenu', (textoItem: string) => {
 
 Cypress.Commands.add('verificaMensagemInicial', () => {
 	const mensagem = 'Please select an item from left to start practice.';
-	// TODO: Adicionar a um locator
+
 	return cy
 		.xpath(`//div[contains(@class,'playgound-body')][contains(.,'${mensagem}')]`)
 		.should('be.visible');
 });
 
 Cypress.Commands.add('visitarToolsQA', (url: string) => {
-	//colocando 1min de timeout apenenas para as páginas de carregamento
 	cy.visit(url, { failOnStatusCode: false, timeout: 130000 });
 });
 
@@ -28,7 +28,7 @@ Cypress.Commands.add(
 			cy
 				.get(locator, { timeout: 6000 })
 				.and('css', 'border-color', Colors.Standard);
-		} else if ('basic') {
+		} else if (tipo == 'basic') {
 			cy
 				.get(locator, { timeout: 6000 })
 				.and('css', 'border-color', Colors.Success);

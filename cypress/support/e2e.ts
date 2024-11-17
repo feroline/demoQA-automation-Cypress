@@ -4,13 +4,11 @@ require('@cypress/xpath');
 require('cy-verify-downloads').addCustomCommand();
 
 beforeEach(() => {
-	cy.session(
-		'performance',
-		() => {
-			cy.visit('/', { timeout: 100000 });
-		}
-		// { cacheAcrossSpecs: true }
-	);
+	cy.session('performance', () => {
+		cy.visit('/', {
+			timeout: 100000,
+		});
+	});
 });
 
 Cypress.on('uncaught:exception', (err, runnable) => {

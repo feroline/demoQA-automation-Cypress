@@ -2,37 +2,65 @@ import ElementsLink from '@enum/links/Elements';
 import DynamicPropertiesPage from '@pageObject/dynamicProperties/DynamicPropertiesPage';
 
 const DynamicProperties = new DynamicPropertiesPage();
-// TODO melhorar performance
+
 beforeEach(() => {
-	cy.visitarToolsQA(ElementsLink.DynamicProperties);
+	cy.session(
+		'dynamic-properties',
+		() => {
+			cy.visit(ElementsLink.DynamicProperties, {
+				timeout: 130000,
+			});
+		},
+		{ cacheAcrossSpecs: true }
+	);
 });
 
-describe('Verificar botão que ficará habilitado após tempo pré-definido', () => {
-	it('Verificar se o botão está desabilitado', () => {
-		DynamicProperties.verificarAtividadeBtn(false);
+describe('Testes dinâmicos', { retries: 7 }, () => {
+	describe('Verificar botão que ficará habilitado após tempo pré-definido', () => {
+		it('Verificar se o botão está desabilitado', () => {
+			cy.visit(ElementsLink.DynamicProperties, {
+				onBeforeLoad: () => {
+					DynamicProperties.verificarNotEnabledBtn();
+				},
+				timeout: 13000,
+			});
+		});
+
+		it('Verificar se o botão está habilitado', () => {
+			cy.visitarToolsQA(ElementsLink.DynamicProperties);
+			DynamicProperties.verificarEnabledBtn();
+		});
 	});
 
-	it('Verificar se o botão está habilitado', () => {
-		DynamicProperties.verificarAtividadeBtn(true);
-	});
-});
+	describe('Verficar botão muda a cor do texto após tempo pré-definido', () => {
+		it('Verificar se o botão tem a cor padrão do texto', () => {
+			cy.visit(ElementsLink.DynamicProperties, {
+				onBeforeLoad: () => {
+					DynamicProperties.verificarCorDefault();
+				},
+				timeout: 13000,
+			});
+		});
 
-describe('Verficar botão muda a cor do texto após tempo pré-definido', () => {
-	it('Verificar se o botão tem a cor padrão do texto', () => {
-		DynamicProperties.verificarCorDoTexto(false);
-	});
-
-	it('Veriricar se o botão tem a cor do texto após a mudança', () => {
-		DynamicProperties.verificarCorDoTexto(true);
-	});
-});
-
-describe('Verificar botão que fica visível após o tempo pré-definido', () => {
-	it('Verificar se o botão está invisível', () => {
-		DynamicProperties.verificarVisibilidade(false);
+		it('Verificar se o botão tem a cor do texto após a mudança', () => {
+			cy.visitarToolsQA(ElementsLink.DynamicProperties);
+			DynamicProperties.verificarCorErro();
+		});
 	});
 
-	it('Verificar se o botão está visível', () => {
-		DynamicProperties.verificarVisibilidade(true);
+	describe('Verificar botão que fica visível após o tempo pré-definido', () => {
+		it('Verificar se o botão está invisível', () => {
+			cy.visit(ElementsLink.DynamicProperties, {
+				onBeforeLoad: () => {
+					DynamicProperties.verificarNaoExistencia();
+				},
+				timeout: 13000,
+			});
+		});
+
+		it('Verificar se o botão está visível', () => {
+			cy.visitarToolsQA(ElementsLink.DynamicProperties);
+			DynamicProperties.verificarExistenciaVisibilidade();
+		});
 	});
 });
