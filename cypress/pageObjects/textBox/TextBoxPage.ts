@@ -2,6 +2,8 @@ import Colors from '@enum/Colors';
 import locators from './TextBoxLocators';
 
 class ElementsPage {
+	// TODO remover return nestes casos abaixo
+	// TODO ver se é preciso remover return nos outros casos
 	username() {
 		return cy.get(locators.usernameInput);
 	}
