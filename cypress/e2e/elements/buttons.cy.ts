@@ -1,4 +1,4 @@
-import ButtonsPage from '@pageObject/buttons/ButtonsPage';
+import ButtonsPage from '@pageObject/elements/buttons/ButtonsPage';
 import ElementsLink from '@enum/links/Elements';
 
 const Buttons = new ButtonsPage();

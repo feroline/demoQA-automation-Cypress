@@ -1,5 +1,5 @@
 import ElementsLink from '@enum/links/Elements';
-import DynamicPropertiesPage from '@pageObject/dynamicProperties/DynamicPropertiesPage';
+import DynamicPropertiesPage from '@pageObject/elements/dynamicProperties/DynamicPropertiesPage';
 
 const DynamicProperties = new DynamicPropertiesPage();
 

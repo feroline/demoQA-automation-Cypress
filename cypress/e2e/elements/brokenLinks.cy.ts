@@ -1,4 +1,4 @@
-import BrokenLinksPage from '@pageObject/brokenLinks/BrokenLinksPage';
+import BrokenLinksPage from '@pageObject/elements/brokenLinks/BrokenLinksPage';
 import ElementsLinks from '@enum/links/Elements';
 
 const brokenLinks = new BrokenLinksPage();

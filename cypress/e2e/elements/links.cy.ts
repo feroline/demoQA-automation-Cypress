@@ -1,4 +1,4 @@
-import LinksPage from '@pageObject/links/LinksPage';
+import LinksPage from '@pageObject/elements/links/LinksPage';
 import ElementsLinks from '@enum/links/Elements';
 import Link from '@enum/links/Link';
 

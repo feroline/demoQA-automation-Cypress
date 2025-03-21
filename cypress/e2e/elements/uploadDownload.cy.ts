@@ -1,5 +1,5 @@
 import ElementsLink from '@enum/links/Elements';
-import UploadDownloadPage from '@pageObject/uploadDownload/UploadDownloadPage';
+import UploadDownloadPage from '@pageObject/elements/uploadDownload/UploadDownloadPage';
 
 const UploadDownload = new UploadDownloadPage();
 
