@@ -1,4 +1,4 @@
-import TextBoxPage from '@pageObject/textBox/TextBoxPage';
+import TextBoxPage from '@pageObject/elements/textBox/TextBoxPage';
 import ElementsLink from '@enum/links/Elements';
 
 const TextBox = new TextBoxPage();

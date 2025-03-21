@@ -1,4 +1,4 @@
-import WebTablesPage from '@pageObject/webTables/WebTablePage';
+import WebTablesPage from '@pageObject/elements/webTables/WebTablePage';
 import ElementsLink from '@enum/links/Elements';
 
 const WebTables = new WebTablesPage();
